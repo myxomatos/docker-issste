@@ -2300,7 +2300,7 @@ CREATE TABLE IF NOT EXISTS `incidencia_historico` (
   `comentario` text COLLATE utf8_unicode_ci NOT NULL,
   `asignacion` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL NULL DEFAULT,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `incidencia_id` (`incidencia_id`),
   KEY `user_id` (`user_id`)
