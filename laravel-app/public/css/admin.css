@@ -1,0 +1,103 @@
+.card_admin_sidebar {
+    height: 100%;
+    padding: 20px;
+    background-color: #691c32;
+    border-radius: inherit;
+}
+.card_counter {
+    background-color: #10312b;
+}
+.color_7 {
+    color: #bc955c;
+}
+.color_1 {
+    color: #9f2241;
+}
+.color_6 {
+    color: #10312b;
+}
+.color_darkred {
+    background-color: darkred;
+}
+.color_green {
+    background-color: darkgreen;
+}
+.button_add {
+    background: transparent;
+    border: 1px solid #bc955c;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
+}
+.button_add:hover {
+    background: #bc955c;
+    border: 1px solid #bc955c;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
+}
+.paginate_new {
+    background-color: #ddc9a3;
+    color: gray;
+}
+.paginate_new:hover {
+    background-color: #bc955c;
+    color: gray;
+}
+.button_back {
+    background-color: #9f2241;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
+}
+.button_back:hover {
+    background: #691c32;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
+}
+.button_back_2 {
+    background-color: #bc955c;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
+}
+.button_back_2:hover {
+    background: #bc955c;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
+}
+.textTransform {
+    text-transform: uppercase !important;
+}
+.box_animation {
+    animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .padd_style {
+        padding: 0px 15px 0px 45px;
+    }
+}
+
+@media (min-width: 769px) {
+}

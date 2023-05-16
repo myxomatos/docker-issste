@@ -1,0 +1,151 @@
+/* Adaptacion para dispositivos moviles */
+@media (max-width: 980px){
+}
+
+
+
+/* Adaptación para PC´s */
+@media (min-width: 981px){
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .logo_login{}
+
+}
+
+@media  (min-width: 980px) and (max-width:1399px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1400px) and (max-width:1500px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1400px) and (max-width:1700px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1400px) and (max-width:2000px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1501px) and (max-width:1600px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1601px) and (max-width:1700px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1701px) and (max-width:1800px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1701px) and (max-width:2500px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1801px) and (max-width:1900px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+
+}
+
+@media  (min-width: 1901px) and (max-width:2500px) {
+    #page{max-width:1200px;padding:0 15px;margin:0 auto}
+    .welcome{font-family: Consolas, monaco, monospace; font-size: 24px}
+    .button_in_out{margin-right: 15px; margin-left: 15px; background: transparent; border-radius: 8px; color: white}
+    .button_in_out:hover{margin-right: 15px; margin-left: 15px; background: #BC955C; border: 1px solid #BC955C; color: white}
+    .button_login{border-radius: 8px; color: #9F2241; background: transparent; border: 1px solid #9F2241}
+    .button_login:hover{background: #9F2241; color: white}
+    .logo{margin: 15px 0px 15px 80px; background-repeat: no-repeat;height: 50px;width: 150px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .image{ width: 100%; height: 740px; margin-top: -240px; background: transparent}
+    .logo_footer{margin: 30px 0px 30px 80px; background-repeat: no-repeat;height: 70px;width: 220px;background-image: url(https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg) !important}
+    .padd_marg_card{padding: 50px 20px; margin: 40px 790px}
+
+}
