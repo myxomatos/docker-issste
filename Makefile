@@ -1,8 +1,8 @@
 setupUbuntu:
 	@make build
+	@make up
 	@make permissions
-	# @make up
-	# @make data
+	@make data
 
 setupMac:
 	@make build
@@ -12,9 +12,9 @@ setupMac:
 build:
 	docker-compose build --no-cache --force-rm
 permissions:
-	docker exec issste sh -c "sudo chmod -R 775 storage"
-	docker exec issste sh -c "sudo chmod -R ugo+rw storage"
-	docker exec issste/laravel-app sh -c "php artisan cache:clear"
+	docker exec issste sh -c "chmod -R 775 storage"
+	docker exec issste sh -c "chmod -R ugo+rw storage"
+	docker exec issste sh -c "php artisan cache:clear"
 stop:
 	docker-compose stop
 up:
