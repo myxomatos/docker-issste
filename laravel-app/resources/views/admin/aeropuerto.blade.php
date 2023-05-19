@@ -12,12 +12,8 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Genero</th>
-                    <th>Fecha de nacimiento</th>
-                    <th>RFC</th>
-                    <th>Tipo Derechohabiente</th>
                     <th>Diagnostico</th>
                     <th>Hospital</th>
-                    <th>Estado</th>
 
                 </tr>
                 </thead>
@@ -37,24 +33,11 @@
                         <td class="textTransform">
                             {{ $i->genero }}
                         </td>
-                        <td>
-                            {{ $i->edad }}
-                        </td>
-                        <td>
-                            {{ $i->rfc }}
-                        </td>
-                        <td>
-                            {{ $i->tipo_derechohabiente }}
-                        </td>
                         <td class="textTransform">
                             {{ $i->diagnostico }}
                         </td>
                         <td class="textTransform">
                             {{ $i->hospitales->nombre }}
-                        </td>
-                        
-                        <td class="textTransform">
-                            {{ $i->status }}
                         </td>
                     </tr>
                 @endforeach
@@ -72,10 +55,25 @@
                 <li class="page-item"><a name="clicking" class="page-link" href="{{ route('aeropuerto') }}">Next</a></li>
                 @endif
               </ul>
-              <div class="uk-alert-primary" uk-alert>
-                <a class="uk-alert-close" uk-close></a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-            </div>
+              <div class="uk-alert" uk-alert>
+                <img style="width: 500px;" src="../../../public/img/Screenshot 2023-05-17 at 22.11.00.png" alt="">
+                <p class="text-xs">El Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE), a través de la
+Dirección Estratégica de Información, Supervisión y Evaluación (DEISE), hace de su conocimiento que
+los datos personales proporcionados en el Sistema de Registro de Actividades de Enlaces en Salas de
+Urgencias (SIRAESU), están protegidos y resguardados, conforme a lo dispuesto por la Ley General de
+Protección de Datos Personales en Posesión de Sujetos Obligados y demás normatividad aplicable.
+Sus datos personales serán utilizados en el ejercicio de las facultades previstos en los artículos 3
+fracción I, 5 y 11 de la Ley del Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado;
+1, 4 fracción I inciso d), 57 fracciones V, IX, X, XI y XVIII del Estatuto Orgánico del Instituto de Seguridad
+y Servicios Sociales de los Trabajadores del Estado. No se requerirá del consentimiento del particular
+para la transferencia y tratamiento de datos personales en términos del artículo 1, 3 fracciones II, III, IX,
+X, XXXII y XXXIII, 4, 16, 17, 18, 21, 22, 23, 25, 26 y 28 de la Ley General de Protección de Datos Personales
+en Posesión de Sujetos Obligados.</p>
+                <p class="text-xs">Podrá oponerse al uso de sus datos personales para fines específicos conforme a los requisitos
+establecidos en el Aviso de Privacidad Integral.</p>
+                <p class="text-xs">Sí desea conocer nuestro Aviso de Privacidad Integral ingrese aquí:</br><a style="color: blue;"href="#">http://www.issste.gob.mx/transparencia/transparenciaaprivacidad.html.</a></p>
+                <p class="text-xs">Fecha de elaboración o actualización: 02/05/2023</p>
+              </div>
         </div>
     </div>
 <script>

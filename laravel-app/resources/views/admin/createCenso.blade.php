@@ -196,34 +196,87 @@
             <button style="float: right;margin: 15px 15px 0px 0px" type="button" uk-close></button>
         </a>
 
-
         <div class="uk-modal-header">
-            <h2 class="uk-modal-title">Headline</h2>
+            <img src="../../../public/img/Screenshot 2023-05-17 at 22.11.00.png" alt="">
+        </div>
+        <div class="uk-modal-header">
+            <h2 style="font-size: 14px;" class="uk-modal-title text-center">AVISO DE PRIVACIDAD INTEGRAL PARA EL SISTEMA DE REGISTRO DE ACTIVIDADES
+
+DE ENLACES EN SALAS DE URGENCIAS (SIRAESU)</h2>
         </div>
 
         <div class="uk-modal-body" uk-overflow-auto>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5 style="font-weight: bold;">¿Quiénes somos?</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style="color: #3A3B3C;" class="text-sm">El Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE), a través de la
+Dirección Estratégica de Información, Supervisión y Evaluación (DEISE), con domicilio en Avenida
+Jesús García Corona # 140, Colonia Buenavista, Alcaldía Cuauhtémoc, C.P. 06350, Ciudad de México, es
+el sujeto obligado y responsable del uso y protección de sus datos personales, los cuales serán
+protegidos conforme a lo dispuesto por la Ley General de Protección de Datos Personales en Posesión
+de Sujetos Obligados y demás normativa que resulte aplicable.</p>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5 style="font-weight: bold;">¿Para qué fines utilizaremos sus datos personales?</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style="color: #3A3B3C;" class="text-sm">Los datos personales que recabamos de Usted, a través del SIRAESU, cuyo administrador y
+responsable es el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado, los
+utilizaremos para asociarlo con el Número de Folio que le es asignado a su ingreso al Servicio de
+Urgencias y/o Admisión Continua, del cual se realizará el despliegue oportuno y fidedigno en el
+Sistema, acompañado del dato de salud y su hora de actualización, para con ello mantener una
+interface de información permanente con sus familiares y/o acompañantes, lo que se traduce en el
+fortalecimiento de los vínculos de confianza y credibilidad de la atención médica que se le otorga.</p>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h5 style="font-weight: bold;">¿Qué datos personales utilizaremos para estos fines?</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style="color: #3A3B3C;" class="text-sm">Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los
+siguientes datos personales del Paciente en el Servicio de Urgencias y/o Admisión Continua:</p>
+            <ul style="color: #3A3B3C;" class="list-disc text-sm">
+                <li>Nombre</li>
+                <li>Clave Única de Registro de Población (CURP)</li>
+                <li>Dato de Salud (Entendido este como el estatus de su atención médica: VALORACIÓN,
+INTERNAMIENTO, EGRESO A DOMICILIO o QUIRÓFANO).</li>
+            </ul>
+            <h5 style="font-weight: bold;">¿Cómo puede acceder, rectificar o cancelar sus datos personales u oponerse a su uso?</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style="color: #3A3B3C;" class="text-sm">Tiene derecho a conocer qué datos personales tenemos de Usted, para qué los utilizamos y las
+condiciones del uso que les damos (Acceso).</p>
+<p style="color: #3A3B3C;" class="text-sm">Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté
+desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o
+bases de datos cuando considere que la misma no está siendo utilizada adecuadamente
+(Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición).
+Estos derechos se conocen como derechos ARCO.</p>
+<p style="color: #3A3B3C;" class="text-sm">La solicitud de derechos ARCO debe ser presentada a través de los medios o ventanillas de atención
+señaladas en este aviso de privacidad y debe contener la siguiente información: 1. El nombre y
+domicilio del titular o cualquier otro medio para recibir la respuesta (si el titular omite la dirección o
+cualquier otro medio que haya elegido para contactarlo, se tendrá por no recibida la solicitud). 2. Los
+documentos que acrediten la identidad o la personalidad del titular o su representante. 3. La descripción clara y precisa de los datos personales respecto de los cuales el titular busca ejercer
+alguno de los derechos. 4. En su caso, otros elementos o documentos que faciliten la localización de
+los datos personales.</p>
+            <h5 style="font-weight: bold;">Mecanismos, medios y procedimientos disponibles para ejercer los derechos de Acceso,
+Rectificación, Cancelación y Oposición (ARCO).</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style="color: #3A3B3C;" class="text-sm">Para ejercer estos derechos el titular podrá acudir a la Unidad de Transparencia del ISSSTE, con
+domicilio en Avenida Jesús García Corona # 140, Planta Baja, Colonia Buenavista, Alcaldía
+Cuauhtémoc, C.P. 06350, Ciudad de México o manifestarlo, a través del correo electrónico:
+<a style="color: blue;"href="#">unidad.transparencia@issste.gob.mx</a> de la Unidad de Transparencia del ISSSTE, dirigido a su Titular, la
+Mtra. Laura Luisa Dorantes Sánchez.</p>
+            <h5 style="font-weight: bold;">Transferencia de datos personales.</h5>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p style="color: #3A3B3C;" class="text-sm">No se realizarán transferencias de datos personales, salvo aquéllas que sean necesarias para atender
+requerimientos de información de una autoridad competente que esté debidamente fundados y
+motivados.</p>
+            <h5 style="font-weight: bold;">¿Cómo puede conocer los cambios en este aviso de privacidad?</h5>
+
+            <p style="color: #3A3B3C;" class="text-sm">El presente aviso de privacidad puede sufrir cambios o actualizaciones derivadas de las modificaciones
+a la normatividad en la materia; de nuestras propias necesidades por los seguros, prestaciones o
+servicios que brindamos; de nuestras prácticas de privacidad, o por otras causas. Nos
+comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso de
+privacidad, a través de la liga <a style="color: blue;"href="#">http://www.issste.gob.mx/transparencia/transparenciaaprivacidad.html.</a></p>
 
         </div>
 
         <div class="uk-modal-footer uk-text-right">
+            <img src="../../../public/img/Screenshot 2023-05-17 at 22.14.22.png" alt="">
             <a href="{{ route('homeIndexPanel') }}">
                 <button class="button_back_2" type="button">Cancelar</button>
             </a>

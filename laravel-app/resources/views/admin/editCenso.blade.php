@@ -59,7 +59,7 @@
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">Fecha de nacimiento</label>
                                 <div class="uk-form-controls">
-                                    <input  value="{{ $censo->edad }}" required name="edad" class="uk-input" id="form-stacked-text" type="date" placeholder="Edad">
+                                    <input  value="{{ $censo->edad }}" name="edad" class="uk-input" id="form-stacked-text" type="date" placeholder="Edad">
                                 </div>
                             </div>
                             <div class="uk-margin">
