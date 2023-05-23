@@ -1,4 +1,4 @@
-setupUbuntu:
+setupU:
 	@make build
 	@make up
 	@make permissions
@@ -14,7 +14,10 @@ build:
 permissions:
 	docker exec issste sh -c "chmod -R 775 storage"
 	docker exec issste sh -c "chmod -R ugo+rw storage"
+	docker exec issste sh -c "chmod -R 775 public/img/evidencia"
+	docker exec issste sh -c "chmod -R ugo+rw public/img/evidencia"
 	docker exec issste sh -c "php artisan cache:clear"
+		
 stop:
 	docker-compose stop
 up:
