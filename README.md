@@ -19,8 +19,7 @@ En el SCIRE (en su versión preliminar) se registran las actividades de los enla
 <br/>
 </div>
 
-- [**CONFIGURACION DEL SERVIDOR**](#configuracion-del-servidor)
-- [**LIBRERIAS PROPIAS DEL APLICATIVO**](#librerias-propias-del-aplicativo)
+- [**CONFIGURACION Y CREACION DE LOS CONTENEDORES BACKEND Y FRONTEND**](#configuracion-y-creacion-de-los-contenedores-backend-y-frontend)
 - [**INSTALACION DEL APLICATIVO**](#instalacion-del-aplicativo)
 - [**CONFIGURACION DEL APLICATIVO**](#configuracion-del-aplicativo)
 - [**EJECUCION DEL APLICATIVO**](#ejecucion-del-aplicativo)
@@ -28,3 +27,47 @@ En el SCIRE (en su versión preliminar) se registran las actividades de los enla
 - [**AMBIENTACIÓN**](#ambientación)
 - [**ACTUALIZACIÓN DE CÓDIGO**](#actualización-por-git)
 - [**CONSIDERACIONES FINALES**](#consideraciones-finales)
+
+
+## CONFIGURACION Y CREACION DE LOS CONTENEDORES BACKEND Y FRONTEND
+
+- **Prerrequisitos**
+
+  - Sistema operativo linux, Ubuntu Server 22.04.2
+  - Docker versión 24.0.1 o superior.
+  - Docker-compose versión 2.17.2 o superior
+  - 16 GB de memoria RAM.
+  - Procesador a 3.2 GHz con 4MB Cache o superior.
+  - Disco duro con capacidad mínima de 100 GB.
+  - Puerto USB para Soporte de Instalación, conexión ssh, gitbash o ftps.
+
+  - Tener acceso al código fuente de SIRAESU:
+
+    - Docker-ISSSTE
+
+  - Tener conexión a Internet para la descarga de los componentes y librerias necesarias para la creacion de la aplicacion y los contenedores.
+
+## INSTALACION DEL APLICATIVO
+
+  Para la instalacion del aplicativo se necesita la infraestructura de Docker y Docker Compose. El aplicativo se instala de manera local y es necesario descargar de las librerias los requerimientos necesarios para la creacion de la aplicacion y los contenedores.
+
+  - **Crear la dirección de trabajo** <br />
+  Ej: /home/usuario/project/docker-issste/
+
+  - **Descargar de respaldo de archivos fuente en directorio** <br />
+  El codigo se descarga directamente del repositorio de GitHub, éste es el comando que se debe ejecutar en la terminal dentro de la ruta/direcciond e trabajo:
+
+    **_git clone https://github.com/myxomatos/docker-issste.git_**
+
+
+- **Directorios creados despues de descargar el repositorio:**
+
+  - laravel-app
+  - readmeImg
+  - docker-compose.yml
+  - Dockerfile
+  - Makefile
+  - README.md
+
+  (Ejemplo:) <br />
+  ![Abrir Proyecto](readmeImg/directorio-general.png) <br />
