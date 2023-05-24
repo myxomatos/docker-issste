@@ -21,7 +21,6 @@ En el SCIRE (en su versión preliminar) se registran las actividades de los enla
 
 - [**CONFIGURACION Y CREACION DE LOS CONTENEDORES BACKEND Y FRONTEND**](#configuracion-y-creacion-de-los-contenedores-backend-y-frontend)
 - [**INSTALACION DEL APLICATIVO**](#instalacion-del-aplicativo)
-- [**CONFIGURACION DEL APLICATIVO**](#configuracion-del-aplicativo)
 - [**EJECUCION DEL APLICATIVO**](#ejecucion-del-aplicativo)
 - [**INFRAESTRUCTURA**](#infraestructura)
 - [**AMBIENTACIÓN**](#ambientación)
@@ -49,18 +48,19 @@ En el SCIRE (en su versión preliminar) se registran las actividades de los enla
 
 ## INSTALACION DEL APLICATIVO
 
-  Para la instalacion del aplicativo se necesita la infraestructura de Docker y Docker Compose. El aplicativo se instala de manera local y es necesario descargar de las librerias los requerimientos necesarios para la creacion de la aplicacion y los contenedores.
+Para la instalacion del aplicativo se necesita la infraestructura de Docker y Docker Compose. El aplicativo se instala de manera local y es necesario descargar de las librerias los requerimientos necesarios para la creacion de la aplicacion y los contenedores.
 
   - **Crear la dirección de trabajo** <br />
   Ej: /home/usuario/project/docker-issste/
 
-  - **Descargar de respaldo de archivos fuente en directorio** <br />
+  - **Descargar la carpeta que contiene el codigo fuente de la aplicacion** <br />
   El codigo se descarga directamente del repositorio de GitHub, éste es el comando que se debe ejecutar en la terminal dentro de la ruta/direcciond e trabajo:
 
-    **_git clone https://github.com/myxomatos/docker-issste.git_**
+    ```sh
+    git clone https://github.com/myxomatos/docker-issste.git
+    ```
 
-
-- **Directorios creados despues de descargar el repositorio:**
+- **Directorios creados despues de descargar el repositorio:** <br />
 
   - laravel-app
   - readmeImg
@@ -71,3 +71,43 @@ En el SCIRE (en su versión preliminar) se registran las actividades de los enla
 
   (Ejemplo:) <br />
   ![Abrir Proyecto](readmeImg/directorio-general.png) <br />
+
+## EJECUCION DEL APLICATIVO
+
+- **Creacion de los contenedores:** <br />
+
+  - Asegurate que el Docker Desktop se haya instalado correctamente y ejecutalo
+
+    - ![Abrir Proyecto](readmeImg/docker-desktop.png) <br /><br />
+
+  - Abre la terminal y navega a la ruta en donde descargaste la carpeta
+
+    - ![Abrir Proyecto](readmeImg/directorio-general.png) <br /><br />
+
+  - Para construir los contenedores de la Aplicacion y la base de datos, debes ejecutar el siguiente comando el cual descargara y construira todos los modulos para el Backend y el Frontend, recuerda ejetura el comando en la terminal dentro de la ruta del proyecto: 
+  
+    **Ej: /home/usuario/project/docker-issste/**
+  
+    ```sh
+    docker-compose build --no-cache --force-rm
+    ```
+  - La construccion del Docker se iniciará despues de ejecutar el comando
+
+    - ![Abrir Proyecto](readmeImg/build.png) <br />
+
+  - Una vez terminada la creacion del Docker/Contenedor verás una ventana similar a ésta:
+  
+    - ![Abrir Proyecto](readmeImg/buildfinish.png) <br /><br />
+
+- **Inicializacion de los contenedores:** <br />
+
+  - Para inicializar los contenedores y que los servicios se ejecuten debes ejecutar el siguiente comando en la terminal dentro de la ruta del proyecto
+
+    **Ej: /home/usuario/project/docker-issste/**
+  
+    ```sh
+    docker-compose up -d
+    ```
+  - Cuando los servicios se hayan levantado
+
+    - ![Abrir Proyecto](readmeImg/docker-up.png) <br />
