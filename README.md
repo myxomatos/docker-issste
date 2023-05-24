@@ -18,15 +18,13 @@ Para alcanzar ese objetivo, el programa de Trato Digno contaba con una herramien
 En el SCIRE (en su versión preliminar) se registran las actividades de los enlaces como:  permanencia en la jornada y hospital asignado; informe a derechohabientes sobre los servicios del MOVU; número de pláticas sobre el Triage; disponibilidad de sillas de ruedas; registro de incidencias de personal, servicios e infraestructura; seguimiento de incidencias; orientación e informes a derechohabientes; censo sobre pacientes ingresados, egresos, canalizaciones, defunciones, pacientes en observación, familiares; camilleros, enfermeras y médicos; peticiones canalizadas por el programa de Asistencia Telefónica ISSSTE-Tel; reporte diario y quincenal de actividades; directorio de enlaces en Unidades Médicas; entre otros.
 <br/>
 </div>
+<br/>
 
 - [**CONFIGURACION Y CREACION DE LOS CONTENEDORES BACKEND Y FRONTEND**](#configuracion-y-creacion-de-los-contenedores-backend-y-frontend)
 - [**INSTALACION DEL APLICATIVO**](#instalacion-del-aplicativo)
 - [**EJECUCION DEL APLICATIVO**](#ejecucion-del-aplicativo)
-- [**INFRAESTRUCTURA**](#infraestructura)
-- [**AMBIENTACIÓN**](#ambientación)
-- [**ACTUALIZACIÓN DE CÓDIGO**](#actualización-por-git)
+- [**AGREGAR LA BASE DE DATOS AL CONTENEDOR**](#agregar-la-base-de-datos-al-contenedor)
 - [**CONSIDERACIONES FINALES**](#consideraciones-finales)
-
 
 ## CONFIGURACION Y CREACION DE LOS CONTENEDORES BACKEND Y FRONTEND
 
@@ -111,3 +109,108 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
   - Cuando los servicios se hayan levantado
 
     - ![Abrir Proyecto](readmeImg/docker-up.png) <br />
+
+- **Crear los permisos de escritura en el proyecto:** <br />
+
+  - Para escribir dentro del contenedor de la aplicacion es necesario crear permisos en dos archivos
+
+    **Carpeta Storage**
+
+      - **Ej: /home/usuario/project/docker-issste/laravel-app/storage**
+
+        Ejecuta los siguientes comandos:
+  
+        ```sh
+        docker exec issste sh -c "chmod -R 775 storage"
+        docker exec issste sh -c "chmod -R ugo+rw storage"
+        ```
+
+    **Carpeta Evidencia**
+
+      - **Ej: /home/usuario/project/docker-issste/laravel-app/public/img/evidencia**
+
+        Ejecuta los siguientes comandos:
+  
+        ```sh
+        docker exec issste sh -c "chmod -R 775 public/img/evidencia"
+        docker exec issste sh -c "chmod -R ugo+rw public/img/evidencia"
+        ```
+
+      - **Limpia el cache de la Aplicacion**
+
+        Ejecuta el siguiente comando:
+  
+        ```sh
+        docker exec issste sh -c "php artisan cache:clear"
+        ```
+
+      - **Cuando termines veras una venta similar a ésta**
+
+        ![Abrir Proyecto](readmeImg/cache-cleared.png) <br />
+
+- **Revision de los contenedores** <br />
+
+    Puedes revisar que los contenedores esten corriendo de dos manera
+
+    - **Docker Desktop**<br />
+    ![Abrir Proyecto](readmeImg/docker-desktop-up.png) <br />
+
+    - **Terminal**<br />
+    Ejecuta el siguiente comando:
+      ```sh
+      docker container ls
+      ```
+      ![Abrir Proyecto](readmeImg/docker-up-terminal.png) <br />
+
+- **Revision de la Aplicacion** <br />
+
+    Revisar que la aplicacion este corriendo correctamente en el localhost:8080
+
+    ![Abrir Proyecto](readmeImg/app.png) <br />
+
+
+
+## AGREGAR LA BASE DE DATOS AL CONTENEDOR
+
+Finalmente tienes que agregar la base de Datos al Contenedor del administrador de la Base de Datos (MySQL).
+
+- **Agregar el archivo issste.sql al contenedor de la Base de Datos** <br />
+
+  - Para ejecutar el comando asegurate de navegar hasta la ruta principal del proyecto.
+
+    **Ej: /home/usuario/project/docker-issste/**
+  
+    ```sh
+    docker cp ./laravel-app/public/issste.sql docker-issste_mysql_db_1:/
+    ```
+  - Veras un mensaje similar a éste una vez que el archivo issste.sql se haya movido al Contenedor correcto:
+
+    ![Abrir Proyecto](readmeImg/sql-copy.png) <br />
+
+  - Tambien puedes entrar al contenedor y validar que el archivo exista en la estructura de archivos del contenedor:
+  
+    Ejecuta el siguiente comando:
+    ```sh
+    docker exec -it docker-issste_mysql_db_1 bash
+    ```
+    ![Abrir Proyecto](readmeImg/container-check.png) <br />
+
+- **Agregar la Base de Datos al Administrador MySQL** <br />
+
+  - Para ejecutar el comando asegurate de navegar hasta la ruta principal del proyecto.
+
+    **Ej: /home/usuario/project/docker-issste/**
+  
+    ```sh
+    docker exec -it docker-issste_mysql_db_1 bash -c 'exec mysql -uroot -proot issste < issste.sql'
+    ```
+  - Veras un mensaje similar a éste una vez que la Base de Datos haya sido copiada:
+
+    ![Abrir Proyecto](readmeImg/copy-to-mysql.png) <br />
+
+
+## CONSIDERACIONES FINALES
+
+Prueba con una de las cuentas de Administrador que el acceso este funcionando correctamente:
+
+![Abrir Proyecto](readmeImg/final-test.png) <br />
