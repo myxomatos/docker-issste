@@ -407,6 +407,7 @@ class AdminController extends Controller
         $user = User::create([
             'name' => $request->nombre,
             'email' => $request->email,
+            'turno' => $request->turno,
             'apellido' => $request->apellidos,
             'rol' => $request->rol,
             'hospital_id' => $request->hospital,
