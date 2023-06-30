@@ -8,12 +8,9 @@
             <table class="uk-table uk-table-striped">
                 <thead>
                 <tr>
-                    <th>Cama</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Genero</th>
-                    <th>Diagnostico</th>
-                    <th>Hospital</th>
+                    <th>Folio</th>
+                    <th>Dato de Salud</th>
+                    <th>Hora de actualización</th>
 
                 </tr>
                 </thead>
@@ -21,23 +18,17 @@
                 @foreach($censos as $i)
                     <tr>
                         <td>
-                            {{ $i->cama }}
+                            {{ $i->folio }}
                         </td>
-                        <td class="textTransform">
-                            {{ $i->nombre }}
+                        <td>
+                            {{ $i->dato_salud }}
                         </td>
-
-                        <td class="textTransform">
-                            {{ $i->apellidos }}
-                        </td>
-                        <td class="textTransform">
-                            {{ $i->genero }}
-                        </td>
-                        <td class="textTransform">
-                            {{ $i->diagnostico }}
-                        </td>
-                        <td class="textTransform">
-                            {{ $i->hospitales->nombre }}
+                        <td>
+<!--                            --><?php
+//                                $historico = \App\Models\HistoricoCenso::where('censo_id',$i->id)
+//                            ->orderBy('updated_at', 'desc')->first();
+//                            ?>
+                            {{ $i->updated_at }}
                         </td>
                     </tr>
                 @endforeach

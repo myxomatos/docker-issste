@@ -90,6 +90,15 @@ class ActividadesController extends Controller
             ->where('fecha','<=',$fin)
             ->where('user_id',$usuario->id)
             ->get();
+        $incidencias = DB::table('incidencias')
+            ->select('incidencias.nombre','hospitales.nombre as hospital','users.rol','incidencias.status as status','incidencia_historico.asignacion','users.name','users.apellido','incidencia_historico.comentario')
+            ->join('incidencia_historico','incidencias.id','=','incidencia_historico.incidencia_id')
+            ->join('users', 'users.id', '=', 'incidencias.user_id')
+            ->join('hospitales', 'hospitales.id', '=', 'incidencias.hospital_id')
+            ->where('incidencias.created_at','>=',$inicio)
+            ->where('incidencias.created_at','<=',$fin)
+            ->where('users.id',$usuario->id)
+            ->get();
 //        $actividades = Actividades::where('created_at','>=',$inicio)
 //            ->where('created_at','<=',$fin)
 //           ->where('user_id',$usuario->id)
@@ -104,18 +113,35 @@ class ActividadesController extends Controller
                 ->where('fecha','<=',$fin)
                 ->where('users.subcordinador_id',$usuario->id)
                 ->get();
+            $incidencias = DB::table('incidencias')
+                ->select('incidencias.nombre','hospitales.nombre as hospital','users.rol','incidencias.status as status','incidencia_historico.asignacion','users.name','users.apellido','incidencia_historico.comentario')
+                ->join('incidencia_historico','incidencias.id','=','incidencia_historico.incidencia_id')
+                ->join('users', 'users.id', '=', 'incidencias.user_id')
+                ->join('hospitales', 'hospitales.id', '=', 'incidencias.hospital_id')
+                ->where('incidencias.created_at','>=',$inicio)
+                ->where('incidencias.created_at','<=',$fin)
+                ->where('users.subcordinador_id',$usuario->id)
+                ->get();
 
         }elseif($usuario->rol== 'coordinador'){
 
             $actividades = DB::table('reportes')
-                ->select('reportes.nombre','reportes.fecha','reportes.cantidad','reportes.descripcion_actividad','users.name as enlace','users.apellido as apellidoEnlace','hospitales.nombre as hospital','users.rol')
+                ->select('reportes.nombre','reportes.fecha','reportes.cantidad','reportes.descripcion_actividad','users.name as enlace','users.apellido as apellidoEnlace','hospitales.nombre as hospital','users.rol','reportes.status as status')
                 ->join('users', 'users.id', '=', 'reportes.user_id')
                 ->join('hospitales', 'hospitales.id', '=', 'reportes.hospital_id')
                 ->where('fecha','>=',$inicio)
                 ->where('fecha','<=',$fin)
                 ->get();
+            $incidencias = DB::table('incidencias')
+                ->select('incidencias.nombre','hospitales.nombre as hospital','users.rol','incidencias.status as status','incidencia_historico.asignacion','users.name','users.apellido','incidencia_historico.comentario')
+                ->join('incidencia_historico','incidencias.id','=','incidencia_historico.incidencia_id')
+                ->join('users', 'users.id', '=', 'incidencias.user_id')
+                ->join('hospitales', 'hospitales.id', '=', 'incidencias.hospital_id')
+                ->where('incidencias.created_at','>=',$inicio)
+                ->where('incidencias.created_at','<=',$fin)
+                ->get();
         }
-        return view('reportes.export', compact('actividades','inicio','fin'));
+        return view('reportes.export', compact('actividades','inicio','fin','incidencias'));
 
     }
 

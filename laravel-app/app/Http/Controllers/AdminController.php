@@ -209,13 +209,28 @@ class AdminController extends Controller
         }
         public function indexCensos(){
             $usuario = Auth::User();
-            $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(25);
-            //$censos = Censos::paginate(25);
+            if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
+                if ($usuario->rol== 'coordinador'){
+                    $censos = Censos::paginate(25);
+                }elseif($usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(25);
+                }
+            }
+    
+    
+    //        $censos = Censos::paginate(25);
             return view ('admin.indexCensos',compact('censos'));
         }
         public function aeropuerto(){
             $usuario = Auth::User();
-            $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(25);
+            if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
+                if ($usuario->rol== 'coordinador'){
+                    $censos = Censos::paginate(25);
+                }elseif($usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(25);
+                }
+            }
+    
             return view ('admin.aeropuerto',compact('censos'));
         }
         public function directorio(){
@@ -263,6 +278,8 @@ class AdminController extends Controller
             $censos->tipo_hospitalizacion = $request->tipo_hospitalizacion;
             $censos->diagnostico = $request->diagnostico;
             $censos->cama = $request->cama;
+            $censos->folio = $request->folio;
+            $censos->dato_salud = $request->dato_salud;
             $censos->status = $request->status;
             $censos->creado_por = $usuario->id;
             $censos->save();
@@ -311,6 +328,8 @@ class AdminController extends Controller
                 $censos->status = $request->status;
                 $censos->cama = $request->cama;
                 $censos->doctor = $request->doctor;
+                $censos->folio = $request->folio;
+                $censos->dato_salud = $request->dato_salud;
                 $censos->created_at = $request->fecha_ingreso;
                 $censos->tipo_egreso = $request->tipo_egreso;
                 $censos->tipo_hospitalizacion = $request->tipo_hospitalizacion;
@@ -322,7 +341,7 @@ class AdminController extends Controller
                     'created_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
                     'updated_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
                 ));
-
+                $censos->updated_at = $current_date_time = Carbon::now()->toDateTimeString();
 
             $censos->save();
         }
@@ -404,6 +423,15 @@ class AdminController extends Controller
         }
     }
     public function storeColaborador(Request $request){
+        $request->validate([
+            //            'name' => ['required', 'string', 'max:255'],
+            //            'name' => ['required', 'string', 'max:255'],
+            //            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            //            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            //            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            //        ]);
+        ]);
         $user = User::create([
             'name' => $request->nombre,
             'email' => $request->email,
@@ -412,6 +440,8 @@ class AdminController extends Controller
             'rol' => $request->rol,
             'hospital_id' => $request->hospital,
             'subcordinador_id' => $request->subcoordinador,
+            'turno' => $request->turno,
+            'dias_laborales' => $request->dias_laborales,
             'password' => Hash::make($request->password),
         ]);
 

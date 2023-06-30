@@ -8,63 +8,176 @@
             @include('partials.sidebar')
         </div>
         <div class="uk-width-expand@m padd_style">
-        <a href="{{ route('homeIndexPanel') }}">
-                        <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
-                            Volver
-                        </button>
-                    </a>
             <div class="uk-text-center">
                 <h2>
                     Reporte
                 </h2>
 
             </div>
-            
             <div class="uk-card uk-card-default uk-card-body">
-                
                 <form onsubmit="return changeDate()">
                     <th>Fecha inicio:<input type="date" placeholder="Inicio" id="inicio" name="inicio" value="{{ $inicio }}" min="2018-10-08"></th>
                     <th>Fecha fin:<input type="date" placeholder="Fin" id="fin" name="fin" value="{{ $fin }}" max="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"></th>
                     <th><button type="submit" id="send" name="send" class="button_back">Filtrar</button></th>
                 </form>
                 @if(Auth::User()->rol === 'enlace')
-                    <table border="1" id="reportes" style="width: 100%">
-                        Reporte del {{ $inicio }} al {{ $fin }} <br>
+                    <div id="reportes">
+                        <table border="1" id="reportesOLD" style="width: 100%">
+                            Reporte del {{ $inicio }} al {{ $fin }} <br>
 
-                        Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
+                            Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
 
-                        <thead>
-                        <tr class="uk-hidden">
-                            <th style="border: 1px solid black">Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}</th>
-                        </tr>
-                        <tr class="uk-hidden">
-                            <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
-                        </tr>
-                        <tr>
-                            <th style="border: 1px solid black">Actividad</th>
-                            <th style="border: 1px solid black">Subactividad</th>
-                            <th style="border: 1px solid black">Cantidad</th>
-                            <th style="border: 1px solid black">Fecha</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($actividades as $invoice)
-                            <tr style="border: 1px solid black">
-                                <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
-                               <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
-
-
-
+                            <thead>
+                            <tr class="uk-hidden">
+                                <th style="border: 1px solid black">Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            <tr class="uk-hidden">
+                                <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black">
+                                    Actividades
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black">Actividad</th>
+                                <th style="border: 1px solid black">Subactividad</th>
+                                <th style="border: 1px solid black">Cantidad</th>
+                                <th style="border: 1px solid black">Fecha</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($actividades as $invoice)
+                                <tr style="border: 1px solid black">
+                                    <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
+                                    <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
+
+
+
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                        <table border="1" id="reportesOLD" style="width: 100%">
+
+
+                            <thead>
+                            <tr>
+                                <th style="border: 1px solid black">
+                                    Incidencias
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black">Incidencia</th>
+                                <th style="border: 1px solid black">Status</th>
+                                <th style="border: 1px solid black">Creado por</th>
+                                <th style="border: 1px solid black">Asignacion</th>
+                                <th style="border: 1px solid black">Hospital</th>
+                                <th style="border: 1px solid black">Comentarios</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($incidencias as $in)
+                                <tr style="border: 1px solid black">
+                                    <td style="border: 1px solid black">{{ $in->nombre }}</td>
+                                    <td style="border: 1px solid black">{{ $in->status }}</td>
+                                    <td style="border: 1px solid black"> {{ $in->name }}</td>
+                                    <td style="border: 1px solid black">{{ $in->asignacion }}</td>
+                                    <td style="border: 1px solid black">{{ $in->hospital }}</td>
+                                    <td style="border: 1px solid black">{{ $in->comentario }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+
+                        </table>
+                    </div>
+
                 @endif
                 @if(Auth::User()->rol === 'subcoordinador')
-                    <table border="1" id="reportes" style="width: 100%">
+                    <div id="reportes">
+                        <table border="1" id="reportesOLD" style="width: 100%">
+                            Reporte del {{ $inicio }} al {{ $fin }} <br>
+
+                            Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
+
+                            <thead>
+                            <tr class="uk-hidden">
+                                <th style="border: 1px solid black">Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}</th>
+                            </tr>
+                            <tr class="uk-hidden">
+                                <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black">Actividad</th>
+                                <th style="border: 1px solid black">Subactividad</th>
+                                <th style="border: 1px solid black">Tipo Subactividad</th>
+                                <th style="border: 1px solid black">Cantidad</th>
+                                <th style="border: 1px solid black">Fecha</th>
+                                <th style="border: 1px solid black">Nombre</th>
+                                <th style="border: 1px solid black">Hospital</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($actividades as $invoice)
+                                <tr style="border: 1px solid black">
+                                    <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->descripcion_subactividad }}</td>
+                                    <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->enlace }} {{ $invoice->apellidoEnlace }}</td>
+                                    <td style="border: 1px solid black">{{ $invoice->hospital }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
+                        <table border="1" id="reportesa" style="width: 100%">
+
+
+                            <thead>
+                            <tr>
+                                <th style="border: 1px solid black">
+                                    Incidencias
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black">Incidencia</th>
+                                <th style="border: 1px solid black">Status</th>
+                                <th style="border: 1px solid black">Creado por</th>
+                                <th style="border: 1px solid black">Asignacion</th>
+                                <th style="border: 1px solid black">Hospital</th>
+                                <th style="border: 1px solid black">Comentarios</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach($incidencias as $in)
+                                <tr style="border: 1px solid black">
+                                    <td style="border: 1px solid black">{{ $in->nombre }}</td>
+                                    <td style="border: 1px solid black">{{ $in->status }}</td>
+                                    <td style="border: 1px solid black"> {{ $in->name }}</td>
+                                    <td style="border: 1px solid black">{{ $in->asignacion }}</td>
+                                    <td style="border: 1px solid black">{{ $in->hospital }}</td>
+                                    <td style="border: 1px solid black">{{ $in->comentario }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                @endif
+                @if(Auth::User()->rol === 'coordinador')
+                <div id="reportes">
+                    <table border="1" id="reportesa" style="width: 100%">
+                        Actividades<br>
                         Reporte del {{ $inicio }} al {{ $fin }} <br>
 
                         Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
@@ -77,43 +190,9 @@
                             <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
                         </tr>
                         <tr>
-                            <th style="border: 1px solid black">Actividad</th>
-                            <th style="border: 1px solid black">Subactividad</th>
-                            <th style="border: 1px solid black">Tipo Subactividad</th>
-                            <th style="border: 1px solid black">Cantidad</th>
-                            <th style="border: 1px solid black">Fecha</th>
-                            <th style="border: 1px solid black">Nombre</th>
-                            <th style="border: 1px solid black">Hospital</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($actividades as $invoice)
-                            <tr style="border: 1px solid black">
-                                <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->descripcion_subactividad }}</td>
-                                <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->enlace }} {{ $invoice->apellidoEnlace }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->hospital }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                @endif
-                @if(Auth::User()->rol === 'coordinador')
-                    <table border="1" id="reportes" style="width: 100%">
-                        Reporte del {{ $inicio }} al {{ $fin }} <br>
-
-                        Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
-
-                        <thead>
-                        <tr class="uk-hidden">
-                            <th style="border: 1px solid black">Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}</th>
-                        </tr>
-                        <tr class="uk-hidden">
-                            <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
+                            <th style="border: 1px solid black">
+                                Actividades
+                            </th>
                         </tr>
                         <tr>
                             <th style="border: 1px solid black">Actividad</th>
@@ -139,7 +218,44 @@
                             </tr>
                         @endforeach
                         </tbody>
+
                     </table>
+
+                    <table border="1" id="reportesa" style="width: 100%">
+
+
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid black">
+                                    Incidencias
+                                </th>
+                            </tr>
+                        <tr>
+                            <th style="border: 1px solid black">Incidencia</th>
+                            <th style="border: 1px solid black">Status</th>
+                            <th style="border: 1px solid black">Creado por</th>
+                            <th style="border: 1px solid black">Asignacion</th>
+                            <th style="border: 1px solid black">Hospital</th>
+                            <th style="border: 1px solid black">Comentarios</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach($incidencias as $in)
+                            <tr style="border: 1px solid black">
+                                <td style="border: 1px solid black">{{ $in->nombre }}</td>
+                                <td style="border: 1px solid black">{{ $in->status }}</td>
+                                <td style="border: 1px solid black"> {{ $in->name }}</td>
+                                <td style="border: 1px solid black">{{ $in->asignacion }}</td>
+                                <td style="border: 1px solid black">{{ $in->hospital }}</td>
+                                <td style="border: 1px solid black">{{ $in->comentario }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
+
                 @endif
                 <div class="uk-text-center uk-margin-top">
                     <button class="button_back" onclick="exportTableToExcel('reportes')">Descargar</button>
@@ -197,8 +313,3 @@
 
 
 @endsection
-
-
-
-
-

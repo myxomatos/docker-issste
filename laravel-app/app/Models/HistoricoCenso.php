@@ -13,7 +13,7 @@ class HistoricoCenso extends Model
     protected $fillable = [
         'id',
         'censo_id',
-
+        'updated_at'
 
     ];
 }

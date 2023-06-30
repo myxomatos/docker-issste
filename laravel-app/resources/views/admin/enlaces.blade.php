@@ -30,7 +30,8 @@
                         {{ $enlace->enlace }}
                     </td>
                     <td>
-                        {{ $enlace->dias_laborales }} de {{ $enlace->horario_entrada }} a {{ $enlace->horario_salida }}
+                    {{ $enlace->dias_laborales }}
+{{--                        de {{ $enlace->horario_entrada }} a {{ $enlace->horario_salida }}--}}
                     </td>
                     <td>
                         {{ $enlace->entrada }}

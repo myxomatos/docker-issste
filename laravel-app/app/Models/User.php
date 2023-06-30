@@ -23,7 +23,10 @@ class User extends Authenticatable
         'password',
         'rol',
         'hospital_id',
-        'email'
+        'email',
+        'subcordinador_id',
+        'turno',
+        'dias_laborales'
     ];
 
     /**

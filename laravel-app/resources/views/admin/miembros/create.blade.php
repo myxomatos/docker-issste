@@ -54,9 +54,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
-
-                        <div>
+                        
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">Email *</label>
@@ -64,17 +62,9 @@
                                     <input required name="email" class="uk-input" id="form-stacked-text" type="text" placeholder="correo@ejemplo">
                                 </div>
                             </div>
-                            <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-select">Turno *</label>
-                                <div class="uk-form-controls">
-                                    <select required name="turno" class="uk-select" id="search">
-                                        <option value="MATUTINO">MATUTINO</option>
-                                        <option value="VESPERTINO">VESPERTINO</option>
-                                        <option value="NOCTURNO">NOCTURNO</option>
-                                        <option value="FINES DE SEMANA Y FESTIVOS">FINES DE SEMANA Y FESTIVOS</option>
-                                    </select>
-                                </div>
                             </div>
+
+                            <div>
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-select">Hospital *</label>
                                 <div class="uk-form-controls">
@@ -82,6 +72,26 @@
                                         @foreach($hospitales as $h)
                                             <option value="{{ $h->id }}">{{ $h->nombre }}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                            <label class="uk-form-label" for="form-stacked-select">Turno *</label>
+                                <div class="uk-form-controls">
+                                    <select required name="turno" class="uk-select" id="search">
+                                        <option value="MATUTINO">Matutino</option>
+                                        <option value="VESPERTINO">Vespertino</option>
+                                        <option value="NOCTURNO">Nocturno</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-select">Dias laborales*</label>
+                                <div class="uk-form-controls">
+                                    <select required name="dias_laborales" class="uk-select" id="search">
+                                        <option value="LUNES A VIERNES">Lunes a Viernes</option>
+                                        <option value="LUNES A DOMINGO">Lunes a Domingo</option>
+                                        <option value="SABADOS, DOMINGOS Y DIAS FESTIVOS">Sabados, Domingos y Dias festivos</option>
                                     </select>
                                 </div>
                             </div>

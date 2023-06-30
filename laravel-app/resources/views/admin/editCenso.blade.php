@@ -102,8 +102,26 @@
                                    <input  value="{{ $censo->doctor }}" name="doctor" class="uk-input" id="form-stacked-text" type="text" placeholder="Doctor">
                                 </div>
                             </div>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Folio</label>
+                                <div class="uk-form-controls">
+                                    <input maxlength="10"  value="{{ $censo->folio }}" required name="folio" class="uk-input" id="form-stacked-text" type="text" placeholder="Folio">
+                                </div>
+                            </div>
                         </div>
                         <div>
+                            <div class="uk-margin">
+                            <label class="uk-form-label" for="form-stacked-select">Dato de Salud</label>
+                                <div class="uk-form-controls">
+                                    <select required name="dato_salud" class="uk-select" id="form-stacked-select">
+                                        <option value="{{ $censo->dato_salud }}">{{ $censo->dato_salud }}</option>
+                                        <option value="Valoración">Valoración</option>
+                                        <option value="Internamiento">Internamiento</option>
+                                        <option value="Egreso">Egreso</option>
+                                        <option value="Quirófano">Quirófano</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="uk-margin">
                             <label class="uk-form-label" for="form-stacked-text">Fecha de Ingreso</label>
                                 <div class="uk-form-controls">

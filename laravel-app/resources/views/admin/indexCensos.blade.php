@@ -109,7 +109,8 @@
 
                 </table>
                 <div class="uk-text-center">
-                    {!! $censos->links("partials.paginate") !!}
+                {{ $censos->links() }}
+{{--                    {!! $censos->links("partials.paginate") !!}--}}
                 </div>
             </div>
 

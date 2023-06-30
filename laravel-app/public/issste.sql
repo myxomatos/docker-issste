@@ -97,6 +97,8 @@ CREATE TABLE IF NOT EXISTS `censos` (
   `telefono` text COLLATE utf8_unicode_ci,
   `creado_por` int(11) NOT NULL,
   `hospital_id` int(11) NOT NULL,
+  `folio` text COLLATE utf8_unicode_ci,
+  `dato_salud` enum('Valoración','Internamiento','Egreso a Domicilio','Quirófano') COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` enum('delicado','muy delicado','grave','alta') COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
