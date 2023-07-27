@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="uk-padding">
+        <a href="{{ route('homeIndexPanel') }}">
+            <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
+                Volver
+            </button>
+        </a>
         <h2 class="color_7">
             Subcoordinadores
         </h2>
@@ -9,8 +14,10 @@
             <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Hora entrada</th>
                 <th>Hora salida</th>
+                <th>Hospital</th>
             </tr>
             </thead>
             <tbody>
@@ -20,10 +27,16 @@
                             {{ $subcordinador->name }}
                         </td>
                         <td>
+                            {{ $subcordinador->apellido }}
+                        </td>
+                        <td>
                             {{ $subcordinador->entrada }}
                         </td>
                         <td>
                             {{ $subcordinador->salida }}
+                        </td>
+                        <td>
+                            {{ $subcordinador->hospitales->nombre }}
                         </td>
                     </tr>
                 @endforeach

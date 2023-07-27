@@ -87,12 +87,12 @@
                                     <input name="telefono" class="uk-input" id="form-stacked-text" type="number" placeholder="Opcional">
                                 </div>
                             </div>
-                            <div class="uk-margin">
+                            <!-- <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-select">Nombre de Doctor</label>
                                 <div class="uk-form-controls">
                                     <input name="doctor" class="uk-input" id="form-stacked-text" type="text" placeholder="Doctor">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-select">Folio</label>
                                 <div class="uk-form-controls">
@@ -108,12 +108,12 @@
                                     <select required name="dato_salud" class="uk-select" id="form-stacked-select">
                                         <option value="Valoración">Valoración</option>
                                         <option value="Internamiento">Internamiento</option>
-                                        <option value="Egreso">Egreso</option>
+                                        <option value="Egreso a Domicilio">Egreso a Domicilio</option>
                                         <option value="Quirófano">Quirófano</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="uk-margin">
+                            <!-- <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-select">Diagnóstico *</label>
                                 <div class="uk-form-controls">
                                     <input class="uk-input" name="diagnostico" list="diagnostico-list" placeholder="Escribe un diagnóstico">
@@ -131,7 +131,7 @@
                               <div class="uk-form-controls">
                                   <input maxlength="100" name="notas_diagnostico" class="uk-input" id="form-stacked-text" type="text" placeholder="Notas de Diagnóstico">
                               </div>
-                            </div>
+                            </div> -->
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">RFC *</label>
                                 <div class="uk-form-controls">

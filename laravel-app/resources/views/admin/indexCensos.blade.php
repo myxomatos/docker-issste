@@ -51,9 +51,9 @@
                         <th>Fecha de nacimiento</th>
                         <th>Tipo Derechohabiente</th>
                         <th>Tipo Hospitalizacion</th>
-                        <th>Diagnostico</th>
+                        <!-- <th>Diagnostico</th> -->
                         <th>Hospital</th>
-                        <th>Doctor</th>
+                        <!-- <th>Doctor</th> -->
                         <th>Estado</th>
 
                     </tr>
@@ -91,15 +91,15 @@
                             <td>
                                 {{ $i->tipo_hospitalizacion }}
                             </td>
-                            <td class="textTransform">
+                            <!-- <td class="textTransform">
                                 {{ $i->diagnostico }}
-                            </td>
+                            </td> -->
                             <td class="textTransform">
                                 {{ $i->hospitales->nombre }}
                             </td>
-                            <td class="textTransform">
+                            <!-- <td class="textTransform">
                                 {{ $i->doctor }}
-                            </td>
+                            </td> -->
                             <td class="textTransform">
                                 {{ $i->status }}
                             </td>

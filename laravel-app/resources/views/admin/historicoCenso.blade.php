@@ -24,9 +24,9 @@
             <p class="uk-article-meta"style="text-transform: capitalize"> Genero: {{ $censo->genero }}</p>
             <p class="uk-article-meta"> Fecha de nacimiento: {{ $censo->edad }}</p>
             <p class="uk-article-meta"> Cama: {{ $censo->rfc}}</p>
-            <p class="uk-article-meta"> Diagnóstico: {{ $censo->diagnostico}}</p>
+            <!-- <p class="uk-article-meta"> Diagnóstico: {{ $censo->diagnostico}}</p> -->
             <p class="uk-article-meta"> Tipo Derechohabiente: {{ $censo->tipo_derechohabiente}}</p>
-            <p class="uk-article-meta"> Tipo Hospitalización: {{ $censo->tipo_hospitalizacion}}</p>
+            <!-- <p class="uk-article-meta"> Tipo Hospitalización: {{ $censo->tipo_hospitalizacion}}</p> -->
             <p class="uk-article-meta"> Telefono: {{ $censo->telefono}}</p>
 
             <h2 class="uk-article-title color_1"><a class="uk-link-reset" href="">Comentarios</a></h2>
