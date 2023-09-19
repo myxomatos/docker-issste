@@ -52,10 +52,10 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
   Ej: /home/usuario/project/docker-issste/
 
   - **Descargar la carpeta que contiene el codigo fuente de la aplicacion** <br />
-  El codigo se descarga directamente del repositorio de GitHub, éste es el comando que se debe ejecutar en la terminal dentro de la ruta/direcciond e trabajo:
+  El codigo se descarga directamente del repositorio de GitHub, éste es el comando que se debe ejecutar en la **Terminal (Linux)** ó **CMD/PowerShell (Windows)** dentro de la ruta/direcciond e trabajo:
 
     ```sh
-    git clone https://github.com/myxomatos/docker-issste.git
+    git clone http://10.9.70.21/alejandro.galaviz/siraesu.git
     ```
 
 - **Directorios creados despues de descargar el repositorio:** <br />
@@ -78,13 +78,13 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
 
     - ![Abrir Proyecto](readmeImg/docker-desktop.png) <br /><br />
 
-  - Abre la terminal y navega a la ruta en donde descargaste la carpeta
+  - Abre la **Terminal (Linux)** ó **CMD/PowerShell (Windows)** y navega a la ruta en donde descargaste la carpeta
 
     - ![Abrir Proyecto](readmeImg/directorio-general.png) <br /><br />
 
-  - Para construir los contenedores de la Aplicacion y la base de datos, debes ejecutar el siguiente comando el cual descargara y construira todos los modulos para el Backend y el Frontend, recuerda ejetura el comando en la terminal dentro de la ruta del proyecto: 
+  - Para construir los contenedores de la Aplicacion y la base de datos, debes ejecutar el siguiente comando el cual descargara y construira todos los modulos para el Backend y el Frontend, recuerda ejetura el comando en la **Terminal (Linux)** ó **CMD/PowerShell (Windows)** dentro de la ruta del proyecto: 
   
-    **Ej: /home/usuario/project/docker-issste/**
+    **Ej: /home/usuario/project/siraesu-main/**
   
     ```sh
     docker-compose build --no-cache --force-rm
@@ -99,9 +99,9 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
 
 - **Inicializacion de los contenedores:** <br />
 
-  - Para inicializar los contenedores y que los servicios se ejecuten debes ejecutar el siguiente comando en la terminal dentro de la ruta del proyecto
+  - Para inicializar los contenedores y que los servicios se ejecuten debes ejecutar el siguiente comando en la **Terminal (Linux)** ó **CMD/PowerShell (Windows)** dentro de la ruta del proyecto
 
-    **Ej: /home/usuario/project/docker-issste/**
+    **Ej: /home/usuario/project/siraesu-main/**
   
     ```sh
     docker-compose up -d
@@ -116,7 +116,7 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
 
     **Carpeta Storage**
 
-      - **Ej: /home/usuario/project/docker-issste/laravel-app/storage**
+      - **Ej: /home/usuario/project/siraesu-main/laravel-app/storage**
 
         Ejecuta los siguientes comandos:
   
@@ -127,9 +127,11 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
 
     **Carpeta Evidencia**
 
-      - **Ej: /home/usuario/project/docker-issste/laravel-app/public/img/evidencia**
+      
 
-        Ejecuta los siguientes comandos:
+      Ejecuta los siguientes y asegurate de estar nuevamente en la ruta principal del proyecto:
+        
+      - **Ej: /home/usuario/project/siraesu-main/**
   
         ```sh
         docker exec issste sh -c "chmod -R 775 public/img/evidencia"
@@ -138,8 +140,9 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
 
       - **Limpia el cache de la Aplicacion**
 
-        Ejecuta el siguiente comando:
-  
+      Ejecuta el siguiente comando desde la ruta principal del proyecto:
+
+      - **Ej: /home/usuario/project/siraesu-main/**
         ```sh
         docker exec issste sh -c "php artisan cache:clear"
         ```
@@ -155,7 +158,7 @@ Para la instalacion del aplicativo se necesita la infraestructura de Docker y Do
     - **Docker Desktop**<br />
     ![Abrir Proyecto](readmeImg/docker-desktop-up.png) <br />
 
-    - **Terminal**<br />
+    - **Terminal (Linux)** ó **CMD/PowerShell (Windows)**<br />
     Ejecuta el siguiente comando:
       ```sh
       docker container ls
@@ -177,8 +180,19 @@ Finalmente tienes que agregar la base de Datos al Contenedor del administrador d
 - **Agregar el archivo issste.sql al contenedor de la Base de Datos** <br />
 
   - Para ejecutar el comando asegurate de navegar hasta la ruta principal del proyecto.
+  - Antes de copiar el archivo es importante validar el nombre del conedor de la Base de Datos ya que éste cambio segun el Sistema Operativo
+    - **En la Terminal (Linux) ó CMD/PowerShell (Windows)**<br />
+    Ejecuta el siguiente comando:
+      ```sh
+      docker container ls
+      ```
+      ![Abrir Proyecto](readmeImg/docker-up-terminal.png) <br />
+      **El nombre del contenedor *"docker-issste_mysql_db_1"* puede cambiar entre *"_"(guión bajo)* ó *"-"(guión medio)* como en éste ejemplo:**
+      ***"docker-issste-mysql_db-1"***
 
-    **Ej: /home/usuario/project/docker-issste/**
+    - **Despues de haber definido el nombre del contenedor de la Base de Datos procede a ejecutar el siguiente comando para copiar la Base de Datos al contenedor.**
+
+    **Ej: /home/usuario/project/siraesu-main/**
   
     ```sh
     docker cp ./laravel-app/public/issste.sql docker-issste_mysql_db_1:/
@@ -202,8 +216,14 @@ Finalmente tienes que agregar la base de Datos al Contenedor del administrador d
     **Ej: /home/usuario/project/docker-issste/**
   
     ```sh
-    docker exec -it docker-issste_mysql_db_1 bash -c 'exec mysql -uroot -proot issste < issste.sql'
+    docker exec -it docker-issste_mysql_db_1 bash
     ```
+  'exec mysql -uroot -proot issste < issste.sql'
+  - Veras una linea similar a ésta: **"bash-4.4#"** enseguida executa el siguiente comando:
+    ```sh
+    exec mysql -uroot -proot issste < issste.sql
+    ```
+
   - Veras un mensaje similar a éste una vez que la Base de Datos haya sido copiada:
 
     ![Abrir Proyecto](readmeImg/copy-to-mysql.png) <br />
