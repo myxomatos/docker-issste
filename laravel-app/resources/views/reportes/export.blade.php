@@ -7,7 +7,13 @@
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebar')
         </div>
+        
         <div class="uk-width-expand@m padd_style">
+        <a href="{{ route('homeIndexPanel') }}">
+                        <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
+                            Volver
+                        </button>
+                    </a>
             <div class="uk-text-center">
                 <h2>
                     Reporte

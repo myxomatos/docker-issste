@@ -27,13 +27,13 @@
                     <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
                         <div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">Nombre</label>
+                                <label class="uk-form-label" for="form-stacked-text">Nombre *</label>
                                 <div class="uk-form-controls">
                                     <input value="{{ $censo->nombre }}" required name="nombre" class="uk-input" id="form-stacked-text" type="text" placeholder="Nombre">
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">Apellidos</label>
+                                <label class="uk-form-label" for="form-stacked-text">Apellidos *</label>
                                 <div class="uk-form-controls">
                                     <input  value="{{ $censo->apellidos }}" required name="apellidos" class="uk-input" id="form-stacked-text" type="text" placeholder="Apellidos">
                                 </div>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-select">Tipo Derechohabiente</label>
+                                <label class="uk-form-label" for="form-stacked-select">Tipo Derechohabiente *</label>
                                 <div class="uk-form-controls">
                                     <select required name="tipo_derechohabiente" class="uk-select" id="form-stacked-select">
                                         <option value="{{ $censo->tipo_derechohabiente }}">{{ $censo->tipo_derechohabiente }}</option>
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">Folio</label>
+                                <label class="uk-form-label" for="form-stacked-text">Folio *</label>
                                 <div class="uk-form-controls">
                                     <input maxlength="10"  value="{{ $censo->folio }}" required name="folio" class="uk-input" id="form-stacked-text" type="text" placeholder="Folio">
                                 </div>
@@ -111,7 +111,7 @@
                         </div>
                         <div>
                             <div class="uk-margin">
-                            <label class="uk-form-label" for="form-stacked-select">Dato de Salud</label>
+                            <label class="uk-form-label" for="form-stacked-select">Dato de Salud *</label>
                                 <div class="uk-form-controls">
                                     <select required name="dato_salud" class="uk-select" id="form-stacked-select">
                                         <option value="{{ $censo->dato_salud }}">{{ $censo->dato_salud }}</option>
@@ -141,14 +141,14 @@
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">RFC</label>
+                                <label class="uk-form-label" for="form-stacked-text">RFC *</label>
                                 <div class="uk-form-controls">
                                     <input  value="{{ $censo->rfc }}" required name="rfc" class="uk-input" id="form-stacked-text" type="text" placeholder="RFC">
                                 </div>
                             </div>
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-select">Hospital</label>
+                                <label class="uk-form-label" for="form-stacked-select">Hospital *</label>
                                 <div class="uk-form-controls">
                                     <select required name="hospital" class="uk-select" id="form-stacked-select">
                                         <option value="{{ $censo->hospitales->id }}">{{ $censo->hospitales->nombre }}</option>
@@ -159,13 +159,13 @@
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">Cama</label>
+                                <label class="uk-form-label" for="form-stacked-text">Cama *</label>
                                 <div class="uk-form-controls">
                                     <input  value="{{ $censo->cama}}" required name="cama" class="uk-input" id="form-stacked-text" type="text" placeholder="Cama">
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-select">Estado</label>
+                                <label class="uk-form-label" for="form-stacked-select">Estado *</label>
                                 <div class="uk-form-controls">
                                     <select required name="status" class="uk-select" id="form-stacked-select">
                                         <option value="{{ $censo->status }}">{{ $censo->status }}</option>
@@ -203,7 +203,7 @@
                         <div>
                             <div class="uk-margin-medium-top">
                                 <div class="uk-margin">
-                                    <label class="uk-form-label" for="form-stacked-select">Ingresa un comentario</label>
+                                    <label class="uk-form-label" for="form-stacked-select">Ingresa un comentario *</label>
                                     <div class="uk-form-controls">
                                         <textarea required name="comentario" class="uk-input" id="form-stacked-text" type="text"></textarea>
                                     </div>

@@ -9,7 +9,7 @@
         <div class="uk-width-expand@m padd_style">
             <div class="uk-text-center">
                 <h2>
-                    Inserta un colaborador nuevo
+                    Edición del Colaborador
                 </h2>
 
             </div>
@@ -89,7 +89,7 @@
                     <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
                         <div>
                             <div class="uk-margin  uk-margin-medium-top" style="text-align: right">
-                                <a href="{{ route('homeIndexPanel') }}">
+                                <a href="{{ route('enlacesIndex') }}">
                                     <span class="button_back"style="padding: 1px 38px 6px 38px;">
                                         Cancelar
                                     </span>
@@ -104,6 +104,7 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </div>
 
 

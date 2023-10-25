@@ -20,6 +20,7 @@
                 <th>Subcoordinador</th>
                 @if(Auth::User()->rol === 'coordinador')
                     <th>Acciones</th>
+                    <th></th>
                 @endif
             </tr>
             </thead>
@@ -36,6 +37,8 @@
                     <td>
                         {{ $enlace->entrada }}
                     </td>
+                    
+                    
                     <td>
 
                      @if($enlace->check_in === 1)
@@ -55,6 +58,14 @@
                                 Editar
                             </a>
                         </td>
+                        <td>
+                            <a href="{{ route('deleteEnlace',[$enlace->idEnlace]) }}">
+                                
+                                    <span style="color: red;" class="uk-margin-small-right" style="font-size: 16px" uk-icon="icon: trash"></span>
+                                
+                                
+                            </a>
+                        </td>
                     @endif
                 </tr>
             @endforeach
@@ -63,6 +74,5 @@
         </table>
         @endsection
     </div>
-
 
 

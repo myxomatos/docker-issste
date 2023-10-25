@@ -24,6 +24,7 @@
                     <th>Status</th>
                     @if(Auth::User()->rol === 'coordinador')
                     <th>Acciones</th>
+                    <th></th>
                     @endif
 
                 </tr>
@@ -43,6 +44,14 @@
                         <td>
                             <a href="{{ route('editHospital',[$hospital->id]) }}">
                                 Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('deleteHospital',[$hospital->id]) }}">
+                                
+                                    <span style="color: red;" class="uk-margin-small-right" style="font-size: 16px" uk-icon="icon: trash"></span>
+                                
+                                
                             </a>
                         </td>
                         @endif

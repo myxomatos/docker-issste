@@ -70,15 +70,10 @@
                         <li><a href="{{ route('reporteDate') }}">Reportes</a></li>
                     @endif
                     @if(Auth::User()->rol == 'coordinador')
-                        <li><a href="{{ route('createColaborador') }}">Insertar</a></li>
+                        <li><a href="{{ route('createColaborador') }}">Agregar un nuevo Colaborador</a></li>
                     @endif
                 </ul>
             </div>
-            <a href="{{route('logout')}}">
-                <button class="uk-button uk-button-default button_in_out">
-                    Cerrar Sesión
-                </button>
-            </a>
         </div>
      @endif
 

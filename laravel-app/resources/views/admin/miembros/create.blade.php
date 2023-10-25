@@ -6,15 +6,23 @@
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebar')
         </div>
+        
         <div class="uk-width-expand@m padd_style">
             <div class="uk-text-center">
+            <a href="{{ route('homeIndexPanel') }}">
+                        <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
+                            Volver
+                        </button>
+                </a>
                 <h2>
-                    Inserta un colaborador nuevo
+                    Agrega un Colaborador Nuevo
                 </h2>
+                
 
             </div>
+            
             <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
-
+                
                 <form  method="POST" action="{{ route('storeColaborador') }}" class="uk-form-stacked">
                     @csrf
                     <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
@@ -105,6 +113,7 @@
                                 <button type="submit" class="button_back"style="width: 150px;height: 30px">
                                     Guardar
                                 </button>
+                                
                             </div>
 
                         </div>
@@ -113,8 +122,9 @@
 
 
                 </form>
+                
             </div>
-
+            
         </div>
     </div>
 

@@ -398,11 +398,11 @@ class AdminController extends Controller
     }
     public function editHospital($id){
         $hospital = Hospitales::find($id);
-        $usuarios = User::where('rol','subcoordinador')->get();
+        $usuarios = User::where('rol','coordinador')->get();
         return view ('admin.hospital.edit',compact('hospital','usuarios'));
     }
     public function updateHospital(Request $request,$id){
-        $usuario = Auth::User();
+        $usuario = User::where('rol','coordinador')->get();
         $hospital = Hospitales::find($id);
         $hospital->nombre = $request->nombre;
         $hospital->status = $request->status;
@@ -478,5 +478,19 @@ class AdminController extends Controller
         return redirect()->route('enlacesIndex');
 
 
+    }
+
+    public function deleteEnlace($id){
+        $enlace= User::find($id);
+        $enlace->delete();
+        echo '<script language="javascript">alert("Usuario Eliminado");</script>';
+        return redirect()->route('enlacesIndex');
+    }
+
+    public function deleteHospital($id){
+        $hospital= Hospitales::find($id);
+        $hospital->delete();
+        echo '<script language="javascript">alert("Hospital Eliminado");</script>';
+        return redirect()->route('hospitalesIndex');
     }
 }

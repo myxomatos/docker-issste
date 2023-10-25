@@ -99,8 +99,9 @@ Route::post('/home/admin/hospitales/store', [AdminController::class, 'storehospi
 //Edit Hospital
 Route::get('/home/admin/hospital/{id}/edit', [AdminController::class, 'editHospital'])->middleware('auth')->name('editHospital');
 //Update Hospital
-Route::post('/home/admin/hospita/{id}/update/', [AdminController::class, 'updateHospital'])->middleware('auth')->name('updateHospital');
-
+Route::post('/home/admin/hospital/{id}/update/', [AdminController::class, 'updateHospital'])->middleware('auth')->name('updateHospital');
+//Delete Hospital
+Route::get('/home/admin/hospital/{id}/delete/', [AdminController::class, 'deleteHospital'])->middleware('auth')->name('deleteHospital');
 
 //Crear Colaborador
 Route::get('/home/admin/colaborador/create', [AdminController::class, 'createColaborador'])->middleware('auth')->name('createColaborador');
@@ -116,6 +117,8 @@ Route::get('/home/admin/enlaces', [AdminController::class, 'enlaces'])->middlewa
 Route::get('/home/admin/enlace/{id}/edit', [AdminController::class, 'editEnlace'])->middleware('auth')->name('editEnlace');
 //Update Enlaces
 Route::post('/home/admin/enlace/{id}/update/', [AdminController::class, 'updateEnlace'])->middleware('auth')->name('updateEnlace');
+//Delete Enlace
+Route::get('/home/admin/enlace/{id}/delete/', [AdminController::class, 'deleteEnlace'])->middleware('auth')->name('deleteEnlace');
 //Show Censos
 Route::get('/home/admin/censos', [AdminController::class, 'indexCensos'])->middleware('auth')->name('indexCensos');
 //Sistema Aeropuerto

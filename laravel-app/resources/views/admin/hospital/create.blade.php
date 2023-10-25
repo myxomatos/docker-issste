@@ -3,16 +3,19 @@
 @section('content')
 
     <div uk-grid>
+        
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebar')
         </div>
+        
         <div class="uk-width-expand@m padd_style">
             <div class="uk-text-center">
                 <h2>
-                    Inserta un Hospital nuevo
+                    Agrega un Nuevo Hospital
                 </h2>
-
+                
             </div>
+            
             <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
 
                 <form  method="POST" action="{{ route('storeHospital') }}" class="uk-form-stacked">
@@ -52,6 +55,11 @@
             </div>
 
         </div>
+        <a href="{{ route('hospitalesIndex') }}">
+                        <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
+                            Volver
+                        </button>
+                </a>
     </div>
 
 
