@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 28, 2023 at 03:31 AM
--- Server version: 5.7.36
--- PHP Version: 7.4.26
+-- Host: mysql_db
+-- Generation Time: Oct 25, 2023 at 03:06 AM
+-- Server version: 8.1.0
+-- PHP Version: 8.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,24 +27,20 @@ SET time_zone = "+00:00";
 -- Table structure for table `actividades`
 --
 
-DROP TABLE IF EXISTS `actividades`;
-CREATE TABLE IF NOT EXISTS `actividades` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text COLLATE utf8_unicode_ci,
-  `status` enum('pendiente','resuelto') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `descripcion_actividad` text COLLATE utf8_unicode_ci,
-  `descripcion_subactividad` text COLLATE utf8_unicode_ci,
-  `notas` text COLLATE utf8_unicode_ci,
-  `user_id` int(11) NOT NULL,
-  `cantidad` int(11) DEFAULT NULL,
-  `hospital_id` int(11) NOT NULL,
+CREATE TABLE `actividades` (
+  `id` int NOT NULL,
+  `nombre` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `status` enum('pendiente','resuelto') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `descripcion_actividad` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `descripcion_subactividad` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `notas` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `user_id` int NOT NULL,
+  `cantidad` int DEFAULT NULL,
+  `hospital_id` int NOT NULL,
   `fecha` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `hospital_id` (`hospital_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -52,26 +48,23 @@ CREATE TABLE IF NOT EXISTS `actividades` (
 -- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admins`;
-CREATE TABLE IF NOT EXISTS `admins` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `unidad_medica` text COLLATE utf8mb4_unicode_ci,
-  `nombre_subcoordinador` text COLLATE utf8mb4_unicode_ci,
-  `role` text COLLATE utf8mb4_unicode_ci,
-  `enlace` text COLLATE utf8mb4_unicode_ci,
-  `horario_servicio` text COLLATE utf8mb4_unicode_ci,
-  `turno` text COLLATE utf8mb4_unicode_ci,
-  `recibe` text COLLATE utf8mb4_unicode_ci,
-  `entrega` text COLLATE utf8mb4_unicode_ci,
-  `telefono` int(11) DEFAULT NULL,
-  `email` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `admins` (
+  `id` int UNSIGNED NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `unidad_medica` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `nombre_subcoordinador` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `role` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `enlace` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `horario_servicio` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `turno` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `recibe` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `entrega` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `telefono` int DEFAULT NULL,
+  `email` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `enlace_2` text COLLATE utf8mb4_unicode_ci,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `admins_email_unique` (`email`)
+  `enlace_2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -80,32 +73,28 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Table structure for table `censos`
 --
 
-DROP TABLE IF EXISTS `censos`;
-CREATE TABLE IF NOT EXISTS `censos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text COLLATE utf8_unicode_ci,
-  `apellidos` text COLLATE utf8_unicode_ci,
-  `genero` enum('hombre','mujer') COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `censos` (
+  `id` int NOT NULL,
+  `nombre` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `apellidos` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `genero` enum('hombre','mujer') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `edad` date DEFAULT NULL,
-  `rfc` text COLLATE utf8_unicode_ci,
-  `cama` text COLLATE utf8_unicode_ci,
-  `diagnostico` text COLLATE utf8_unicode_ci,
-  `doctor` text COLLATE utf8_unicode_ci,
-  `tipo_derechohabiente` text COLLATE utf8_unicode_ci,
-  `tipo_hospitalizacion` text COLLATE utf8_unicode_ci,
-  `tipo_egreso` enum('Pase a piso','Alta por mejoría','Alta voluntaria','Alta por máximo beneficio','Quirófano','Traslado','Defunción','Terapia') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefono` text COLLATE utf8_unicode_ci,
-  `creado_por` int(11) NOT NULL,
-  `hospital_id` int(11) NOT NULL,
-  `folio` text COLLATE utf8_unicode_ci,
-  `dato_salud` enum('Valoración','Internamiento','Egreso a Domicilio','Quirófano') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` enum('delicado','muy delicado','grave','alta') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rfc` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `cama` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `diagnostico` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `doctor` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `tipo_derechohabiente` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `tipo_hospitalizacion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `tipo_egreso` enum('Pase a piso','Alta por mejoría','Alta voluntaria','Alta por máximo beneficio','Quirófano','Traslado','Defunción','Terapia') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `telefono` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `creado_por` int NOT NULL,
+  `hospital_id` int NOT NULL,
+  `folio` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `dato_salud` enum('Valoración','Internamiento','Egreso a Domicilio','Quirófano') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `status` enum('delicado','muy delicado','grave','alta') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `hospital_id` (`hospital_id`),
-  KEY `creado_por` (`creado_por`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -113,11 +102,9 @@ CREATE TABLE IF NOT EXISTS `censos` (
 -- Table structure for table `diagnostico`
 --
 
-DROP TABLE IF EXISTS `diagnostico`;
-CREATE TABLE IF NOT EXISTS `diagnostico` (
-  `id` int(11) NOT NULL,
-  `nombre` text NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `diagnostico` (
+  `id` int NOT NULL,
+  `nombre` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1123,12 +1110,12 @@ INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
 (1001, 'Nefropatía hereditaria, no clasificada en otra parte'),
 (1002, 'Trastornos glomerulares en enfermedades clasificadas en otra parte'),
 (1003, 'Nefritis tubulointersticial aguda '),
-(1004, 'Nefritis tubulointersticial crónica');
-INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
+(1004, 'Nefritis tubulointersticial crónica'),
 (1005, 'Nefritis tubulointersticial, no especificada como aguda o crónica '),
 (1006, 'Uropatía obstructiva y por reflujo'),
 (1007, 'Afecciones tubulares y tubulointersticiales inducidas por drogas y por metales pesados'),
-(1008, 'Otras enfermedades renales tubulointersticiales'),
+(1008, 'Otras enfermedades renales tubulointersticiales');
+INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
 (1009, 'Trastornos renales tubulointersticiales en enfermedades clasificadas en otra parte'),
 (1010, 'Insuficiencia renal aguda '),
 (1011, 'Insuficiencia renal crónica'),
@@ -1900,13 +1887,13 @@ INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
 (1777, 'Contacto con bebidas, alimentos, grasas y aceites para cocinar, calientes'),
 (1778, 'Contacto con agua caliente corriente '),
 (1779, 'Contacto con otros líquidos calientes'),
-(1780, 'Contacto con vapor de agua y otros vapores calientes ');
-INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
+(1780, 'Contacto con vapor de agua y otros vapores calientes '),
 (1781, 'Contacto con aire y gases calientes'),
 (1782, 'Contacto con utensilios domésticos calientes'),
 (1783, 'Contacto con radiadores, cañerías y artefactos para calefacción, calientes'),
 (1784, 'Contacto con máquinas, motores y herramientas calientes '),
-(1785, 'Contacto con otros metales calientes'),
+(1785, 'Contacto con otros metales calientes');
+INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
 (1786, 'Contacto con otras sustancias calientes, y las no especificadas'),
 (1787, 'Contacto traumático con serpientes y lagartos venenosos '),
 (1788, 'Contacto traumático con arañas venenosas'),
@@ -2168,17 +2155,14 @@ INSERT INTO `diagnostico` (`id`, `nombre`) VALUES
 -- Table structure for table `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-CREATE TABLE IF NOT EXISTS `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `uuid` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+CREATE TABLE `failed_jobs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `uuid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2187,18 +2171,14 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- Table structure for table `historico_censo`
 --
 
-DROP TABLE IF EXISTS `historico_censo`;
-CREATE TABLE IF NOT EXISTS `historico_censo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `censo_id` int(11) NOT NULL,
-  `creado_por` int(11) NOT NULL,
-  `comentario` text COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `historico_censo` (
+  `id` int NOT NULL,
+  `censo_id` int NOT NULL,
+  `creado_por` int NOT NULL,
+  `comentario` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `censo_id` (`censo_id`),
-  KEY `creado_por` (`creado_por`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2206,18 +2186,15 @@ CREATE TABLE IF NOT EXISTS `historico_censo` (
 -- Table structure for table `hospitales`
 --
 
-DROP TABLE IF EXISTS `hospitales`;
-CREATE TABLE IF NOT EXISTS `hospitales` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text COLLATE utf8_unicode_ci NOT NULL,
-  `descripcion` text COLLATE utf8_unicode_ci,
-  `status` enum('activo','inactivo') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'activo',
-  `subcordinador_id` int(11) DEFAULT NULL,
+CREATE TABLE `hospitales` (
+  `id` int NOT NULL,
+  `nombre` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `status` enum('activo','inactivo') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT 'activo',
+  `subcordinador_id` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `subcordinador_id` (`subcordinador_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Dumping data for table `hospitales`
@@ -2250,63 +2227,50 @@ INSERT INTO `hospitales` (`id`, `nombre`, `descripcion`, `status`, `subcordinado
 -- Table structure for table `incidencias`
 --
 
-DROP TABLE IF EXISTS `incidencias`;
-CREATE TABLE IF NOT EXISTS `incidencias` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cargar_evidencia` varchar(70) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nombre` text COLLATE utf8_unicode_ci,
-  `notas` text COLLATE utf8_unicode_ci,
-  `user_id` int(11) NOT NULL,
-  `hospital_id` int(11) NOT NULL,
-  `actividad_id` int(11) NOT NULL,
-  `status` enum('pendiente','resuelto') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'pendiente',
+CREATE TABLE `incidencias` (
+  `id` int NOT NULL,
+  `cargar_evidencia` varchar(70) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `nombre` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `notas` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `user_id` int NOT NULL,
+  `hospital_id` int NOT NULL,
+  `actividad_id` int NOT NULL,
+  `status` enum('pendiente','resuelto') CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT 'pendiente',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `user_id_2` (`user_id`),
-  KEY `hospital_id` (`hospital_id`),
-  KEY `actividad_id` (`actividad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `incidencias_imagenes`
+-- Table structure for table `incidencias_imagenes`
 --
 
-DROP TABLE IF EXISTS `incidencias_imagenes`;
-CREATE TABLE IF NOT EXISTS `incidencias_imagenes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `actividad_id` int(11) DEFAULT NULL,
-  `incidencia_id` int(11) DEFAULT NULL,
-  `incidencia_historico_id` int(11) DEFAULT NULL,
-  `img` text COLLATE utf8_unicode_ci,
+CREATE TABLE `incidencias_imagenes` (
+  `id` int NOT NULL,
+  `actividad_id` int DEFAULT NULL,
+  `incidencia_id` int DEFAULT NULL,
+  `incidencia_historico_id` int DEFAULT NULL,
+  `img` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `created_at` timestamp NOT NULL,
-  `updated_at` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `incidencia_historico`
 --
 
-DROP TABLE IF EXISTS `incidencia_historico`;
-CREATE TABLE IF NOT EXISTS `incidencia_historico` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `incidencia_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `comentario` text COLLATE utf8_unicode_ci NOT NULL,
-  `asignacion` text COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `incidencia_historico` (
+  `id` int NOT NULL,
+  `incidencia_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `comentario` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `asignacion` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `incidencia_id` (`incidencia_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2314,13 +2278,11 @@ CREATE TABLE IF NOT EXISTS `incidencia_historico` (
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `migrations` (
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -2340,12 +2302,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE IF NOT EXISTS `password_resets` (
-  `email` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+CREATE TABLE `password_resets` (
+  `email` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2354,17 +2314,14 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Table structure for table `personal_access_tokens`
 --
 
-DROP TABLE IF EXISTS `personal_access_tokens`;
-CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `personal_access_tokens_token_unique` (`token`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -2373,23 +2330,19 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
 -- Table structure for table `reportes`
 --
 
-DROP TABLE IF EXISTS `reportes`;
-CREATE TABLE IF NOT EXISTS `reportes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text COLLATE utf8_unicode_ci,
-  `status` text COLLATE utf8_unicode_ci,
-  `descripcion_actividad` text COLLATE utf8_unicode_ci,
-  `descripcion_subactividad` text COLLATE utf8_unicode_ci,
-  `user_id` int(11) DEFAULT NULL,
-  `hospital_id` int(11) DEFAULT NULL,
+CREATE TABLE `reportes` (
+  `id` int NOT NULL,
+  `nombre` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `status` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `descripcion_actividad` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `descripcion_subactividad` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
+  `user_id` int DEFAULT NULL,
+  `hospital_id` int DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `cantidad` int(11) DEFAULT NULL,
+  `cantidad` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `hospital_id` (`hospital_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2397,50 +2350,45 @@ CREATE TABLE IF NOT EXISTS `reportes` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text COLLATE utf8mb4_unicode_ci,
-  `apellido` text COLLATE utf8mb4_unicode_ci,
-  `email` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `apellido` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `email` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_login` datetime DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hospital_id` int(11) DEFAULT NULL,
-  `rol` enum('coordinador','subcoordinador','enlace','general') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `turno` text COLLATE utf8mb4_unicode_ci,
-  `dias_laborales` text COLLATE utf8mb4_unicode_ci,
-  `horario_entrada` text COLLATE utf8mb4_unicode_ci,
-  `horario_salida` text COLLATE utf8mb4_unicode_ci,
-  `telefono` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hospital_id` int DEFAULT NULL,
+  `rol` enum('coordinador','subcoordinador','enlace','general') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `turno` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `dias_laborales` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `horario_entrada` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `horario_salida` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `telefono` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci,
   `entrada` timestamp NULL DEFAULT NULL,
   `salida` timestamp NULL DEFAULT NULL,
   `check_in` tinyint(1) NOT NULL DEFAULT '0',
-  `subcordinador_id` int(11) DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subcordinador_id` int DEFAULT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`),
-  KEY `hospital_id` (`hospital_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `apellido`, `email`, `last_login`, `email_verified_at`, `password`, `hospital_id`, `rol`, `turno`, `dias_laborales`, `horario_entrada`, `horario_salida`, `telefono`, `entrada`, `salida`, `check_in`, `subcordinador_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Aldo Sanchez', NULL, 'myxomatos46@gmail.com', '2023-08-14 20:31:48', NULL, '$2y$10$ENZZysbzctqLwTL4EUWl4eA5I4FnC6sHCCAZY02e8UmDPt9/FbcWu', 2, 'coordinador', NULL, NULL, NULL, NULL, NULL, '2023-08-01 17:58:57', NULL, 1, 2, NULL, '2022-10-25 06:36:44', '2023-08-15 02:31:48'),
+(1, 'Aldo Sanchez', NULL, 'myxomatos46@gmail.com', '2023-10-24 21:53:11', NULL, '$2y$10$ENZZysbzctqLwTL4EUWl4eA5I4FnC6sHCCAZY02e8UmDPt9/FbcWu', 2, 'coordinador', NULL, NULL, NULL, NULL, NULL, '2023-10-24 21:53:13', '2023-10-24 21:53:36', 0, 2, NULL, '2022-10-25 06:36:44', '2023-10-24 21:53:11'),
 (2, 'Alan', NULL, 'sedykc@hotmail.com', '2022-12-09 23:55:30', NULL, '$2y$10$OXx0Qc4H09OM0bEPuyQ9MOTuV1vSKNSzCH23qdG/W/A3Rxk4udDk.', 2, 'coordinador', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, '2022-10-25 09:26:55', '2022-12-10 11:55:30'),
-(7, 'MÓNICA ALEJANDRA', 'PELÁEZ ROMERO', 'monica@gmail.com', '2023-08-09 10:36:26', NULL, '$2y$10$lyipEKHAMmciLvMWmevlxOVcjC3DpkwgzdUVU9v1rKUrKpTUklnyS', 2, 'subcoordinador', NULL, NULL, NULL, NULL, NULL, '2023-08-09 16:36:46', '2023-08-09 17:11:12', 0, NULL, NULL, '2022-11-25 12:36:04', '2023-08-09 16:36:26'),
-(8, 'MIRIAM', 'FLORENCIO GONZÁLEZ', 'mayrim.83.mg@gmail.com', '2023-08-14 14:02:53', NULL, '$2y$10$x28SjZyvC9PRF474QycJQeQ/.8uAjCODYq20jyzskCo.v47qArAle', 1, 'enlace', 'MATUTINO', 'LUNES A VIERNES', '07:00hrs', '15:00hrs', '55-2546-3165', '2023-08-14 18:47:18', '2023-08-14 21:03:17', 0, 7, NULL, '2022-11-25 12:49:27', '2023-08-14 20:02:53'),
+(7, 'MÓNICA ALEJANDRA', 'PELÁEZ ROMERO', 'monica@gmail.com', '2023-10-06 12:34:10', NULL, '$2y$10$lyipEKHAMmciLvMWmevlxOVcjC3DpkwgzdUVU9v1rKUrKpTUklnyS', 2, 'subcoordinador', NULL, NULL, NULL, NULL, NULL, '2023-10-06 12:34:13', '2023-10-06 15:25:21', 0, NULL, NULL, '2022-11-25 12:36:04', '2023-10-06 12:34:10'),
+(8, 'MIRIAM', 'FLORENCIO GONZÁLEZ', 'mayrim.83.mg@gmail.com', '2023-10-06 15:25:35', NULL, '$2y$10$x28SjZyvC9PRF474QycJQeQ/.8uAjCODYq20jyzskCo.v47qArAle', 1, 'enlace', 'MATUTINO', 'LUNES A VIERNES', '07:00hrs', '15:00hrs', '55-2546-3165', '2023-10-06 15:25:38', '2023-10-06 12:16:59', 1, 7, NULL, '2022-11-25 12:49:27', '2023-10-06 15:25:35'),
 (9, 'KAREN', 'HERNÁNDEZ MARTÍNEZ', 'kahema766@gmail.com', '2023-08-14 20:31:07', NULL, '$2y$10$c11BJ5XNebzBG7ilkgK1x.Hff2VBvx.WnlIji58nSYuCbZQguP93C', 1, 'enlace', 'VESPERTINO', 'LUNES A VIERNES', '14:00 hrs', '22:00 hrs', '55-3545-9651', '2023-08-14 20:02:20', '2023-08-12 04:02:11', 1, 7, NULL, '2022-11-25 12:54:34', '2023-08-15 02:31:07'),
 (10, 'TANIA NAHEILI', 'ROJO ARCE', 'nahearce@gmail.com', '2023-08-14 06:04:28', NULL, '$2y$10$xcrD4HyGS.dANl3Ym/oDuOlQkU0B.rvYkU4U9AcSfjpa5Kh/Tgi..', 1, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', '21:00 hrs', '8:00 hrs', '55-3545-9651', '2023-08-14 03:22:26', '2023-08-14 14:10:49', 0, 7, NULL, '2022-11-25 12:57:21', '2023-08-14 12:04:28'),
 (13, 'NANCY ROSARIO', 'ARREGUÍN ROSAS', 'nancyarre1@hotmail.com', '2023-08-11 09:07:25', NULL, '$2y$10$voHd6sZDat2S5IRlaje0UOcFXlijkXxYGF2DdAI7wBSsOAqBO38Gi', 2, 'enlace', 'MATUTINO', 'LUNES A VIERNES', '07:00 hrs', '15:00 hrs', '55-2959-9066', '2023-08-11 13:23:45', '2023-08-11 13:23:11', 1, 7, NULL, '2022-11-25 13:08:34', '2023-08-11 15:07:25'),
 (15, 'ANA LILIA', 'GUTIÉRREZ GALINDO', 'gutierrez.anita@hotmail.com', '2023-08-14 10:54:52', NULL, '$2y$10$xB0.RWEswGd6gGyp//U7xu9.SDYmeYkhRNlExwmUlYil98jJE93m2', 2, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', '21:00 hrs', '8:00 hrs', '55-4140-0338', '2023-08-14 03:42:30', '2023-08-14 20:36:32', 0, 7, NULL, '2022-11-25 13:16:28', '2023-08-14 16:54:52'),
 (16, 'URIEL', 'PÉREZ RAMÍREZ', 'uriel0118@gmail.com', '2023-08-13 06:18:15', NULL, '$2y$10$K.hHlfA9yN30mT6yrNKKsumDKgRenOMxK.gmCQjxc0F.rVfpriUc.', 6, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', '21:00 hrs', '8:00 hrs', '55-3271-5632', '2023-08-11 03:08:03', '2023-08-13 13:14:48', 0, 7, NULL, '2022-11-25 13:18:48', '2023-08-13 12:18:15'),
 (18, 'CECILIA', 'SALAZAR MIRANDA', 'ceeci222@gmail.com', '2023-08-04 06:56:31', NULL, '$2y$10$Sr0gmAtKQDEIWIU5LMdj9eSnbjsR3goqucJEhVnET2tjljEIPjYWi', 3, 'enlace', 'MATUTINO', 'LUNES A VIERNES', '07:00 hrs', '15:00 hrs', '55-2070-7619', '2023-08-04 12:57:09', '2023-08-03 21:07:07', 1, 7, NULL, '2022-11-25 13:26:23', '2023-08-04 12:56:31'),
-(20, 'MARÍA FERNANDA', 'DEL MORAL SALAZAR', 'ma_fer.96@hotmail.com', '2023-08-04 06:42:44', NULL, '$2y$10$Y3xNCx.aJ0XNqAfNddrJ0uu3T/ZBjwA.i2M/fCbxZgYUWfSgGYeSy', 3, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', '21:00 hrs', '8:00 hrs', '55-2329-1371', '2023-08-04 03:13:29', '2023-08-02 15:14:31', 1, 7, NULL, '2022-11-25 13:31:44', '2023-08-04 12:42:44'),
 (21, 'ÓSCAR ALONSO', 'REYES JUÁREZ', 'oreyesjuarez@gmail.com', '2023-08-03 05:48:33', NULL, '$2y$10$yyjhPa.XQtDDR3QRkH0eceCUmGs.jJxS8qnKsZfrwDkDI9qzcX/xG', 3, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', '21:00 hrs', '8:00 hrs', '55-3231-7673', '2023-08-03 03:00:26', '2023-08-03 14:33:06', 0, 7, NULL, '2022-11-25 13:33:54', '2023-08-03 11:48:33'),
 (22, 'DANIELA KAREN', 'PAREDES ARISTA', 'dparedesarista@gmail.com', NULL, NULL, '$2y$10$f3HbPuG0E3cvNVM3urUFVu8Zdf/2H.oaW/jBnuyyQpkkmvwMFZZx2', 3, 'enlace', NULL, 'SAB, DOM Y FEST.', '07:00 hrs', '22:00 hrs', '55-6621-4666', NULL, NULL, 0, 7, NULL, '2022-11-25 13:35:48', '2023-08-01 18:03:13'),
 (25, 'EDITH GUADALUPE', 'BOLAÑOS GALAVIZ', 'edithpeke02@gmail.com', '2023-08-14 13:59:58', NULL, '$2y$10$zL2awThPF2mIWgVTD2mja.KjbS/FLx2JLFBI4P4Yk5isbJWYIDENK', 4, 'enlace', 'MATUTINO', 'LUNES A VIERNES', '07:00 hrs', '15:00 hrs', '55-5187-5537', '2023-08-14 12:59:28', '2023-08-14 21:07:11', 0, 7, NULL, '2022-11-25 14:02:45', '2023-08-14 19:59:58'),
@@ -2536,6 +2484,202 @@ INSERT INTO `users` (`id`, `name`, `apellido`, `email`, `last_login`, `email_ver
 (136, 'JENIFER', 'GIL RAMIREZ', 'jennifergil1127@gmail.com', '2023-08-14 20:52:37', NULL, '$2y$10$U3OIa2nkNsOZSW8..UKAPOPRlte3HO9jOdGh6VUOTlc0KW.nvDYU2', 5, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', NULL, NULL, NULL, '2023-08-15 02:52:41', NULL, 1, 7, NULL, '2023-08-08 04:12:34', '2023-08-15 02:52:37'),
 (137, 'EDIT', 'SORIANO MARTINEZ', 'edit.smar@hotmail.com', '2023-08-14 21:05:03', NULL, '$2y$10$tqGqp9Nk89E7vkgD9CSYjewExsZ4zWl54s0Q7EzkOZyXYPVl0sc2a', 1, 'enlace', 'NOCTURNO', 'LUNES A DOMINGO', NULL, NULL, NULL, '2023-08-15 03:05:09', '2023-08-13 14:12:17', 1, 7, NULL, '2023-08-08 04:16:51', '2023-08-15 03:05:03'),
 (138, 'JESUS GEOVANI', 'ALCANTARA', 'coordinaciondeeducacionmo@outlook.com', NULL, NULL, '$2y$10$VcOaJHjooE1W0rBzULmse.4l94iOtLzJlsc8ePsa6.YKrfC6Mfs7e', 1, 'enlace', 'MATUTINO', 'SABADOS, DOMINGOS Y DIAS FESTIVOS', NULL, NULL, NULL, NULL, NULL, 0, 7, NULL, '2023-08-15 03:11:32', '2023-08-15 03:11:32');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `actividades`
+--
+ALTER TABLE `actividades`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `hospital_id` (`hospital_id`);
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Indexes for table `censos`
+--
+ALTER TABLE `censos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hospital_id` (`hospital_id`),
+  ADD KEY `creado_por` (`creado_por`);
+
+--
+-- Indexes for table `diagnostico`
+--
+ALTER TABLE `diagnostico`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `historico_censo`
+--
+ALTER TABLE `historico_censo`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `censo_id` (`censo_id`),
+  ADD KEY `creado_por` (`creado_por`);
+
+--
+-- Indexes for table `hospitales`
+--
+ALTER TABLE `hospitales`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `subcordinador_id` (`subcordinador_id`);
+
+--
+-- Indexes for table `incidencias`
+--
+ALTER TABLE `incidencias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_id_2` (`user_id`),
+  ADD KEY `hospital_id` (`hospital_id`),
+  ADD KEY `actividad_id` (`actividad_id`);
+
+--
+-- Indexes for table `incidencias_imagenes`
+--
+ALTER TABLE `incidencias_imagenes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `incidencia_historico`
+--
+ALTER TABLE `incidencia_historico`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `incidencia_id` (`incidencia_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`);
+
+--
+-- Indexes for table `reportes`
+--
+ALTER TABLE `reportes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `hospital_id` (`hospital_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `hospital_id` (`hospital_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `actividades`
+--
+ALTER TABLE `actividades`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `censos`
+--
+ALTER TABLE `censos`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `historico_censo`
+--
+ALTER TABLE `historico_censo`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `hospitales`
+--
+ALTER TABLE `hospitales`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `incidencias`
+--
+ALTER TABLE `incidencias`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `incidencias_imagenes`
+--
+ALTER TABLE `incidencias_imagenes`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `incidencia_historico`
+--
+ALTER TABLE `incidencia_historico`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `reportes`
+--
+ALTER TABLE `reportes`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- Constraints for dumped tables
