@@ -143,7 +143,7 @@ Route::post('/home/admin/censo/update/{id}', [AdminController::class, 'updateCen
 //Perfil
 Route::get('/home/user', [AdminController::class, 'perfil'])->middleware('auth')->name('perfil');
 
-//Admin General por Hospital
+//Admin General por Hospitalf
 Route::view('/admin/general', "admin.indexGeneral")->middleware('auth')->name('indexGeneral');
 
 //Show Historico Censo

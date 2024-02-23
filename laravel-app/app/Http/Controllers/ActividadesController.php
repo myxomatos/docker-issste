@@ -85,7 +85,7 @@ class ActividadesController extends Controller
         $now = Carbon::now()->format('Y-m-d');
         if ($usuario->rol== 'enlace'){
         $actividades = DB::table('reportes')
-            ->select('reportes.nombre','reportes.fecha','reportes.cantidad','reportes.descripcion_actividad')
+            ->select('reportes.nombre','reportes.fecha','reportes.cantidad','reportes.descripcion_actividad', 'reportes.descripcion_subactividad')
             ->where('fecha','>=',$inicio)
             ->where('fecha','<=',$fin)
             ->where('user_id',$usuario->id)
