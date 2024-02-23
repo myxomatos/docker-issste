@@ -31,7 +31,7 @@
                     
                     <table border="1" id="reportesOLD" style="width: 100%">
                         
-                            <caption style="margin: 30px">Reporte de Actividades</caption><br>
+                            <caption style="margin: 30px; color: black; font-weight: bold;">Reporte de Actividades</caption><br>
                                 <tr>
                                     <td style='color: black; font-weight: bold;'>Nombre del Programa:</td>
                                     <td>Trato Digno y de Calidad en las Salas de Espera de Urgencias en las Unidades de Segundo y Tercer Nivel de Atención</td>
