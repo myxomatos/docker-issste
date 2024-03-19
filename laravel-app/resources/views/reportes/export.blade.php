@@ -16,11 +16,11 @@
                     </a>
             <div class="uk-text-center">
                 <h2>
-                    Report
+                    Reporte
                 </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-card uk-card-default uk-card-body" id="invoice">
                 <form onsubmit="return changeDate()">
                     <th>Fecha inicio:<input type="date" placeholder="Inicio" id="inicio" name="inicio" value="{{ $inicio }}" min="2018-10-08"></th>
                     <th>Fecha fin:<input type="date" placeholder="Fin" id="fin" name="fin" value="{{ $fin }}" max="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"></th>
@@ -172,12 +172,22 @@
                 @endif
                 
                 <div class="uk-text-center uk-margin-top">
-                    <button class="button_back" onclick="exportTableToExcel('reportes')">Descargar</button>
+                    <!-- <button class="button_back" onclick="exportTableToExcel('reportes')">Descargar</button> -->
+                    <button class="button_back" id="download">Descargar</button>
                 </div>
 
 
-
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
                 <script>
+
+                    window.onload = function(){
+                        document.getElementById("download").addEventListener("click", ()=>{
+                            const invoice = this.document.getElementById("invoice");
+                            // console.log(invoice);
+                            // console.log(window);
+                            html2pdf().from(invoice).save();
+                        })
+                    }
 
                     const enlace = document.getElementById("enlace").innerHTML;
 
