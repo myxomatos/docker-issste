@@ -38,7 +38,7 @@
                                 </tr>
                                 <tr>
                                     <td style='color: black; font-weight: bold;'>Nombre de Prestador de Servicio:</td>
-                                    <td>{{Auth::user()->name}} {{Auth::user()->apellido}}</td>
+                                    <td id="enlace">{{Auth::user()->name}} {{Auth::user()->apellido}}</td>
                                     <td style='color: black; font-weight: bold;'>Número Telefónico</td>
                                     <td>{{Auth::user()->telefono}}</td>
 
@@ -170,165 +170,7 @@
                     </div>
 
                 @endif
-                @if(Auth::User()->rol === 'subcoordinador')
-                    <div id="reportes">
-                        <table border="1" id="reportesOLD" style="width: 100%">
-                            Reporte del {{ $inicio }} al {{ $fin }} <br>
-
-                            Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
-
-                            <thead>
-                            <tr class="uk-hidden">
-                                <th style="border: 1px solid black">Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}</th>
-                            </tr>
-                            <tr class="uk-hidden">
-                                <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
-                            </tr>
-                            <tr>
-                                <th style="border: 1px solid black">Actividad</th>
-                                <th style="border: 1px solid black">Subactividad</th>
-                                <th style="border: 1px solid black">Tipo Subactividad</th>
-                                <th style="border: 1px solid black">Cantidad</th>
-                                <th style="border: 1px solid black">Fecha</th>
-                                <th style="border: 1px solid black">Nombre</th>
-                                <th style="border: 1px solid black">Hospital</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            @foreach($actividades as $invoice)
-                                <tr style="border: 1px solid black">
-                                    <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->descripcion_subactividad }}</td>
-                                    <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->enlace }} {{ $invoice->apellidoEnlace }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->hospital }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-
-                        <table border="1" id="reportesa" style="width: 100%">
-
-
-                            <thead>
-                            <tr>
-                                <th style="border: 1px solid black">
-                                    Incidencias
-                                </th>
-                            </tr>
-                            <tr>
-                                <th style="border: 1px solid black">Incidencia</th>
-                                <th style="border: 1px solid black">Status</th>
-                                <th style="border: 1px solid black">Creado por</th>
-                                <th style="border: 1px solid black">Asignacion</th>
-                                <th style="border: 1px solid black">Hospital</th>
-                                <th style="border: 1px solid black">Comentarios</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            @foreach($incidencias as $in)
-                                <tr style="border: 1px solid black">
-                                    <td style="border: 1px solid black">{{ $in->nombre }}</td>
-                                    <td style="border: 1px solid black">{{ $in->status }}</td>
-                                    <td style="border: 1px solid black"> {{ $in->name }}</td>
-                                    <td style="border: 1px solid black">{{ $in->asignacion }}</td>
-                                    <td style="border: 1px solid black">{{ $in->hospital }}</td>
-                                    <td style="border: 1px solid black">{{ $in->comentario }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-
-                        </table>
-                    </div>
-
-                @endif
-                @if(Auth::User()->rol === 'coordinador')
-                <div id="reportes">
-                    <table border="1" id="reportesa" style="width: 100%">
-                        Actividades<br>
-                        Reporte del {{ $inicio }} al {{ $fin }} <br>
-
-                        Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}
-
-                        <thead>
-                        <tr class="uk-hidden">
-                            <th style="border: 1px solid black">Nombre: {{Auth::user()->name}} {{Auth::user()->apellido}}</th>
-                        </tr>
-                        <tr class="uk-hidden">
-                            <th style="border: 1px solid black">Reporte del {{ $inicio }} al {{ $fin }} <br></th>
-                        </tr>
-                        <tr>
-                            <th style="border: 1px solid black">
-                                Actividades
-                            </th>
-                        </tr>
-                        <tr>
-                            <th style="border: 1px solid black">Actividad</th>
-                            <th style="border: 1px solid black">Subactividad</th>
-                            <th style="border: 1px solid black">Cantidad</th>
-                            <th style="border: 1px solid black">Fecha</th>
-                            <th style="border: 1px solid black">Hospital</th>
-                            <th style="border: 1px solid black">Nombre</th>
-                            <th style="border: 1px solid black">Rol</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($actividades as $invoice)
-                            <tr style="border: 1px solid black">
-                                <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
-                                <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->hospital }}</td>
-                                <td style="border: 1px solid black">{{ $invoice->enlace }} {{ $invoice->apellidoEnlace }}</td>
-                                <td style="border: 1px solid black;text-transform: capitalize">{{ $invoice->rol }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-
-                    </table>
-
-                    <table border="1" id="reportesa" style="width: 100%">
-
-
-                        <thead>
-                            <tr>
-                                <th style="border: 1px solid black">
-                                    Incidencias
-                                </th>
-                            </tr>
-                        <tr>
-                            <th style="border: 1px solid black">Incidencia</th>
-                            <th style="border: 1px solid black">Status</th>
-                            <th style="border: 1px solid black">Creado por</th>
-                            <th style="border: 1px solid black">Asignacion</th>
-                            <th style="border: 1px solid black">Hospital</th>
-                            <th style="border: 1px solid black">Comentarios</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($incidencias as $in)
-                            <tr style="border: 1px solid black">
-                                <td style="border: 1px solid black">{{ $in->nombre }}</td>
-                                <td style="border: 1px solid black">{{ $in->status }}</td>
-                                <td style="border: 1px solid black"> {{ $in->name }}</td>
-                                <td style="border: 1px solid black">{{ $in->asignacion }}</td>
-                                <td style="border: 1px solid black">{{ $in->hospital }}</td>
-                                <td style="border: 1px solid black">{{ $in->comentario }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-
-                    </table>
-                </div>
-
-                @endif
+                
                 <div class="uk-text-center uk-margin-top">
                     <button class="button_back" onclick="exportTableToExcel('reportes')">Descargar</button>
                 </div>
@@ -336,6 +178,9 @@
 
 
                 <script>
+
+                    const enlace = document.getElementById("enlace").innerHTML;
+
                     function changeDate() {
                         var value1 =  document.getElementById("inicio").value,
                             value2 =  document.getElementById("fin").value,
@@ -346,7 +191,7 @@
                         return false;
                     }
 
-                    function exportTableToExcel(tableID, filename = 'Reportes'){
+                    function exportTableToExcel(tableID, filename = `${enlace}`){
                         var downloadLink;
                         var dataType = 'application/vnd.ms-excel; charset=UTF-8';
                         var tableSelect = document.getElementById(tableID);
