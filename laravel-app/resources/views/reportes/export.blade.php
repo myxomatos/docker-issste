@@ -179,17 +179,24 @@
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
                 <script>
+                    const enlace = document.getElementById("enlace").innerHTML;
 
                     window.onload = function(){
                         document.getElementById("download").addEventListener("click", ()=>{
                             const invoice = this.document.getElementById("invoice");
                             // console.log(invoice);
                             // console.log(window);
-                            html2pdf().from(invoice).save();
+                            let opt = {
+                                margin: 1,
+                                filename: `${enlace}`,
+                                image: { type: 'jpeg', quality: 0.98 },
+                                html2canvas: { scale: 2 },
+                                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                            };
+                            html2pdf().from(invoice).set(opt).save();
                         })
                     }
 
-                    const enlace = document.getElementById("enlace").innerHTML;
 
                     function changeDate() {
                         var value1 =  document.getElementById("inicio").value,
