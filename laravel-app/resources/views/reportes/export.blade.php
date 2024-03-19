@@ -16,7 +16,7 @@
                     </a>
             <div class="uk-text-center">
                 <h2>
-                    Reporte
+                    Report
                 </h2>
 
             </div>
