@@ -128,6 +128,8 @@ Route::get('/home/admin/directorio', [AdminController::class, 'directorio'])->mi
 //AJAX Search
 Route::get('/search', [AdminController::class, 'search'])->name('search');
 
+Route::get('/searchDirectorio', [AdminController::class, 'searchDirectorio'])->name('searchDirectorio');
+
 //Create Censos
 Route::get('/home/admin/censo/create', [AdminController::class, 'createCenso'])->middleware('auth')->name('createCenso');
 

@@ -252,6 +252,21 @@ class AdminController extends Controller
     
             return view ('admin.search',compact('censos'));
         }
+
+        public function searchDirectorio(Request $query){
+            $search_text = $_GET['query'];
+            $usuario = User::where('name','LIKE','%'.$search_text.'%')
+                ->orWhere('email','LIKE','%'.$search_text.'%')
+                ->orWhere('rol','LIKE','%'.$search_text.'%')
+                ->orWhere('hospital_id','LIKE','%'.$search_text.'%')
+                ->get();
+    
+    //        $censos = Censos::where('status','alta')->search($query->q, null, true, true)->get();
+    //        $search = $query->q;
+    
+    
+            return view ('admin.searchDirectorio',compact('usuario'));
+        }
     
         public function createCenso(){
             $censos = Censos::all();

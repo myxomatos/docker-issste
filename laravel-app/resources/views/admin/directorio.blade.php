@@ -1,6 +1,13 @@
 @extends('layout.home')
 
 @section('content')
+    <style>
+        .scroll {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space:nowrap;
+        }
+    </style>
     <div>
         <div class="uk-padding">
         <a href="{{ route('homeIndexPanel') }}">
@@ -12,8 +19,14 @@
 
                 <h2 class="uk-article-title color_1 uk-text-center"><a class="uk-link-reset" href="">Directorio ISSSTE</a></h2>
             </article>
+            <form style="width: 300px" class="uk-search uk-search-default" type="get" action="{{ url('/searchDirectorio') }}">
+                            <div class="">
+                                <a href="" class="uk-search-icon-flip" uk-search-icon></a>
+                                <input class="uk-search-input color_7" name="query" type="searchDirectorio" placeholder="Búsqueda" aria-label="Search" aria-label="Search">
+                            </div>
+            </form>
         </div>
-        <div class=""style="padding: 0px 20px 0px 20px">
+        <div class="scroll" style="padding: 0px 20px 0px 20px">
             <table class="uk-table uk-table-striped">
                 <thead>
                     <tr>

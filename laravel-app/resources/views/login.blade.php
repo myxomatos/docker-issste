@@ -2,12 +2,10 @@
 
 @section('content')
 
-    <x-guest-layout>
+    <div class="container">
         <x-auth-card>
             <x-slot name="logo">
-                <a href="/">
-                    <img style="width: 500px;" src="{{asset("img/issste.png")}}" alt="logo">
-                </a>
+                    <img class="rounded mx-auto d-block" style="width:40%" src="{{asset("img/issste.png")}}" alt="logo">
             </x-slot>
 
             <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -45,10 +43,10 @@
 {{--                    @endif--}}
 
                     <x-button class="button_login">
-                        {{ __('Inicir Sesión') }}
+                        {{ __('Iniciar Sesión') }}
                     </x-button>
                 </div>
             </form>
         </x-auth-card>
-    </x-guest-layout>
+    </div class="container">
 @endsection
