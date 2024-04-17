@@ -258,9 +258,8 @@ class AdminController extends Controller
             $usuario = User::where('name','LIKE','%'.$search_text.'%')
                 ->orWhere('email','LIKE','%'.$search_text.'%')
                 ->orWhere('rol','LIKE','%'.$search_text.'%')
-                ->orWhere('hospital_id','LIKE','%'.$search_text.'%')
+                ->orWhere('turno','LIKE','%'.$search_text.'%')
                 ->get();
-    
     //        $censos = Censos::where('status','alta')->search($query->q, null, true, true)->get();
     //        $search = $query->q;
     
@@ -269,10 +268,10 @@ class AdminController extends Controller
         }
     
         public function createCenso(){
+            $user = Auth::User();
             $censos = Censos::all();
             $hospitales = Hospitales::where('status','activo')->get();
-            $diagnosticos = Diagnostico::orderBy('nombre', 'ASC')->get();
-            return view ('admin.createCenso',compact('censos','hospitales','diagnosticos'));
+            return view ('admin.createCenso',compact('censos','user','hospitales'));
         }
     
         public function storeCenso(Request $request){

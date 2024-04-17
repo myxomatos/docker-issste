@@ -20,21 +20,34 @@
                 <thead>
                 <tr>
                     <th>Nombre</th>
-                    <!-- <th>Apellidos</th>
-                    <th>Genero</th>
-                    <th>Edad</th>
-                    <th>RFC</th>
-                    <th>Acciones</th> -->
-
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Hospital</th>
+                    <th>Turno</th>
+                    <th>Teléfono</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($usuario as $u)
                     <tr>
-                        <td>
-                            {{ $u->name }}
+                    <td class="textTransform">
+                            {{ $u->name }} {{ $u->apellido }}
                         </td>
-                        
+                        <td >
+                            {{ $u->email }}
+                        </td>
+                        <td class="textTransform">
+                            {{ $u->rol }}
+                        </td>
+                        <td>
+                            {{ $u->hospitales->nombre }}
+                        </td>
+                        <td>
+                            {{ $u->turno }}
+                        </td>
+                        <td>
+                            {{ $u->telefono }}
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

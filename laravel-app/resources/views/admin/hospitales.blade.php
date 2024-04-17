@@ -11,7 +11,7 @@
             Hospitales
         </h2>
     @if(Auth::User()->rol === 'coordinador')
-            <div class="uk-text-center">
+            <div class="uk-text">
                 <a href="{{ route('createHospital') }}">
                     <button class="button_back">Agregar</button>
                 </a>

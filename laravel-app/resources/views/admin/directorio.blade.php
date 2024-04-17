@@ -21,9 +21,12 @@
             </article>
             <form style="width: 300px" class="uk-search uk-search-default" type="get" action="{{ url('/searchDirectorio') }}">
                             <div class="">
-                                <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-                                <input class="uk-search-input color_7" name="query" type="searchDirectorio" placeholder="Búsqueda" aria-label="Search" aria-label="Search">
+                                <input class="uk-search-input color_7" name="query" type="searchDirectorio" placeholder="Buscar en el Directorio" aria-label="Search" aria-label="Search">
+                                    <button class="button_back" style="margin-top: 4px;" type="submit">
+                                        Buscar
+                                    </button>
                             </div>
+                            
             </form>
         </div>
         <div class="scroll" style="padding: 0px 20px 0px 20px">
@@ -34,6 +37,8 @@
                         <th>Email</th>
                         <th>Rol</th>
                         <th>Hospital</th>
+                        <th>Turno</th>
+                        <th>Teléfono</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,14 +47,20 @@
                         <td class="textTransform">
                             {{ $u->name }} {{ $u->apellido }}
                         </td>
-                        <td class="textTransform">
+                        <td >
                             {{ $u->email }}
                         </td>
-                        <td>
+                        <td class="textTransform">
                             {{ $u->rol }}
                         </td>
-                        <td class="textTransform">
+                        <td>
                             {{ $u->hospitales->nombre }}
+                        </td>
+                        <td>
+                            {{ $u->turno }}
+                        </td>
+                        <td>
+                            {{ $u->telefono }}
                         </td>
                     </tr>
                 @endforeach

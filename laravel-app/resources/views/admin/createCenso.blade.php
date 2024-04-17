@@ -9,13 +9,13 @@
         <div class="uk-width-expand@m padd_style">
             <div class="uk-text-center">
                <h2>
-                   Inserta un registro nuevo
+                   Ingresa un paciente nuevo
                </h2>
 
             </div>
             <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
             <div class="uk-text-center uk-margin-medium">
-                    <a href="{{ route('homeIndexPanel') }}">
+                    <a href="{{ route('indexCensos') }}">
                         <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
                             Volver
                         </button>
@@ -113,25 +113,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <!-- <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-select">Diagnóstico *</label>
-                                <div class="uk-form-controls">
-                                    <input class="uk-input" name="diagnostico" list="diagnostico-list" placeholder="Escribe un diagnóstico">
-                                    <datalist id="diagnostico-list">
-                                        @foreach($diagnosticos as $item)
-                                            <option>{{ $item->nombre }}</option>
-                                        @endforeach
-                                    </datalist>
-
-{{--                                    <input required name="diagnostico" class="uk-input" id="form-stacked-text" type="text" placeholder="Diagnóstico">--}}
-                                </div>
-                            </div>
-                            <div class="uk-margin">
-                             <label class="uk-form-label" for="form-stacked-text">Notas de Diagnóstico</label>
-                              <div class="uk-form-controls">
-                                  <input maxlength="100" name="notas_diagnostico" class="uk-input" id="form-stacked-text" type="text" placeholder="Notas de Diagnóstico">
-                              </div>
-                            </div> -->
+                            
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">RFC *</label>
                                 <div class="uk-form-controls">
@@ -144,16 +126,19 @@
                                 </div>
                             </div>
 
-                            <div class="uk-margin">
+
+                            <div class="uk-margin" style="display: none;">
                                 <label class="uk-form-label" for="form-stacked-select">Hospital *</label>
                                 <div class="uk-form-controls">
                                     <select required name="hospital" class="uk-select" id="form-stacked-select">
-                                        @foreach($hospitales as $h)
-                                            <option value="{{ $h->id }}">{{ $h->nombre }}</option>
-                                        @endforeach
+                                        
+                                            <option value="{{ $user->hospitales->id }}">{{ $user->hospitales->id }}</option>
+                                        
                                     </select>
                                 </div>
                             </div>
+
+
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">Cama *</label>
                                 <div class="uk-form-controls">
@@ -190,7 +175,12 @@
                                 </div>
                             </div>
                             <div class="uk-margin uk-text-center uk-margin-medium-top">
-                                <button type="submit" class="button_back"style="width: 150px;height: 30px">
+                                <a href="{{ route('indexCensos') }}" class="button_back" style="padding: 2px 20px 2px 20px; margin: 20px; text-decoration: none;y">
+                                
+                                        Cancelar
+                                    
+                                 </a>
+                                <button type="submit" class="button_back">
                                     Guardar
                                 </button>
                             </div>
@@ -294,7 +284,7 @@ privacidad, a través de la liga <a style="color: blue;"href="#">http://www.isss
 
         <div class="uk-modal-footer uk-text-right">
             <img src="../../../public/img/Screenshot 2023-05-17 at 22.14.22.png" alt="">
-            <a href="{{ route('homeIndexPanel') }}">
+            <a href="{{ route('indexCensos') }}">
                 <button class="button_back_2" type="button">Cancelar</button>
             </a>
 

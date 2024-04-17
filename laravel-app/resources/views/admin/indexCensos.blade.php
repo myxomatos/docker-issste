@@ -13,31 +13,34 @@
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebarsub')
         </div>
+
         <div class="uk-width-expand@m">
-            <nav class="uk-navbar-container" uk-navbar>
-                <div class="uk-navbar-right">
-                    <div class="uk-navbar-item">
-                        <form style="width: 300px" class="uk-search uk-search-default" type="get" action="{{ url('/search') }}">
-                            <div class="">
-                                <a href="" class="uk-search-icon-flip" uk-search-icon></a>
-                                <input class="uk-search-input color_7" name="query" type="search" placeholder="Búsqueda" aria-label="Search" aria-label="Search">
-                            </div>
-                        </form>
-                        <a href="{{ route('createCenso') }}">
-                            <button class="uk-margin-medium-left button_add"style="float: right">
-                               Agregar
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="uk-text-center uk-margin-medium">
+            <nav class="navbar">
+                <div class="d-block" >
                     <a href="{{ route('homeIndexPanel') }}">
-                        <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
+                        <button class="button_back" style="float: right; margin: 10px;">
                             Volver
                         </button>
                     </a>
 
                 </div>
+                <div class="d-block" style="margin-top: 10px;">
+                        <form style="width: 300px" class="uk-search uk-search-default" type="get" action="{{ url('/search') }}">
+                            <div class="">
+                                <input class="d-inline uk-search-input color_7" name="query" type="search" placeholder="Buscar paciente" aria-label="Search" aria-label="Search">
+                                <button type="submit" class="button_back_2">
+                                    Buscar
+                                </button>
+                            </div>
+                        </form>
+                </div>
+                <div class="d-block" style="margin-top: 50px;">
+                <a href="{{ route('createCenso') }}">        
+                    <button class="button_back" style="float: center;">
+                        Nuevo Censo
+                    </button>
+                </a>
+            </div>
             </nav>
             <div class="scroll">
                 <table class="uk-table uk-table-striped">

@@ -19,42 +19,67 @@
             <table class="uk-table uk-table-striped">
                 <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Genero</th>
-                    <th>Edad</th>
-                    <th>RFC</th>
-                    <th>Acciones</th>
-
+                <tr>
+                        <th>Acciones</th>
+                        <th>Nombre</th>
+                        <th>Cama</th>
+                        <th>RFC</th>
+                        <th>Genero</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Tipo Derechohabiente</th>
+                        <th>Tipo Hospitalizacion</th>
+                        <!-- <th>Diagnostico</th> -->
+                        <th>Hospital</th>
+                        <!-- <th>Doctor</th> -->
+                        <th>Estado</th>
+                    </tr>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($censos as $i)
                     <tr>
-                        <td>
-                            {{ $i->nombre }}
-                        </td>
+                    <td>
+                                <a href="{{ route('editCenso',[$i->id]) }}">
+                                    Editar
+                                </a><br>
+                                <a href="{{ route('showHistoricoCenso',[$i->id]) }}">
+                                    Ver Historial
+                                </a>
 
-                        <td>
-                            {{ $i->apellidos }}
-                        </td>
-                        <td>
-                            {{ $i->genero }}
-                        </td>
-                        <td>
-                            {{ $i->edad }}
-                        </td>
-                        <td>
-                            {{ $i->rfc }}
-                        </td>
-                        <td>
-                        <a href="{{ route('editCenso',[$i->id]) }}">
-                                Editar
-                            </a><br>
-                            <a href="{{ route('showHistoricoCenso',[$i->id]) }}">
-                                Ver Historial
-                            </a>
-                        </td>
+                            </td>
+                            <td class="textTransform">
+                                {{ $i->nombre }} {{ $i->apellidos }}
+                            </td>
+                            <td>
+                                {{ $i->cama }}
+                            </td>
+                            <td>
+                                {{ $i->rfc }}
+                            </td>
+                            <td class="textTransform">
+                                {{ $i->genero }}
+                            </td>
+                            <td>
+                                {{ $i->edad }}
+                            </td>
+                            <td>
+                                {{ $i->tipo_derechohabiente }}
+                            </td>
+                            <td>
+                                {{ $i->tipo_hospitalizacion }}
+                            </td>
+                            <!-- <td class="textTransform">
+                                {{ $i->diagnostico }}
+                            </td> -->
+                            <td class="textTransform">
+                                {{ $i->hospitales->nombre }}
+                            </td>
+                            <!-- <td class="textTransform">
+                                {{ $i->doctor }}
+                            </td> -->
+                            <td class="textTransform">
+                                {{ $i->status }}
+                            </td>
                     </tr>
                 @endforeach
                 </tbody>
