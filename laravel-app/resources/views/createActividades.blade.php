@@ -74,7 +74,10 @@
                             "Reportar Pláticas": ["Presentación", "Función de Enlace", "Triage" , "Telefonía" , "Internet" , "Estacion de Carga" , "Reglamento" , "Medidas de Seguridad e Higiene"],
                         },
                         "Personal en Turno": {
-                            "Personal": ["Médicos en Consulta", "Médico Triage", "Trabajo Social" , "Admisión"],
+                            "Médicos en Consulta": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Médico Triage": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Trabajo Social": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Admisión": [1,2,3,4,5,6,7,8,9,10,11,12],
                         },
                         "Supervisiones": {
                             "Limpieza": ["Consultorio", "Sala de Urgencias", "Sala de Espera", "Sanitarios"],

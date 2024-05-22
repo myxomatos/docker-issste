@@ -422,9 +422,14 @@ class AdminController extends Controller
         $hospital->status = $request->status;
         $hospital->save();
         return redirect()->route('hospitalesIndex');
-
-
     }
+    public function verHospital($id){
+        $hospital = Hospitales::find($id);
+        $usuarios = User::where('rol','coordinador')->get();
+        return view ('admin.hospital.ver',compact('hospital','usuarios'));
+    }
+
+
     public function createColaborador(){
         $usuario = Auth::User();
         if ($usuario->rol== 'coordinador'){

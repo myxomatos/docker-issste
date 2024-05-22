@@ -43,10 +43,11 @@
             </div>
             </nav>
             <div class="scroll">
-                <table class="uk-table uk-table-striped">
+                <table class="uk-table uk-table-striped" >
                     <thead>
                     <tr>
                         <th>Acciones</th>
+                        <th>Ingreso</th>
                         <th>Nombre</th>
                         <th>Cama</th>
                         <th>RFC</th>
@@ -72,6 +73,9 @@
                                     Ver Historial
                                 </a>
 
+                            </td>
+                            <td class="textTransform">
+                                {{ $i->created_at }}
                             </td>
                             <td class="textTransform">
                                 {{ $i->nombre }} {{ $i->apellidos }}

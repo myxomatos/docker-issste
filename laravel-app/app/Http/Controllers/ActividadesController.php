@@ -79,8 +79,8 @@ class ActividadesController extends Controller
         $usuario = Auth::User();
         $now = Carbon::now();
         if ($inicio == null){
-            $fin = $now->subDay()->format('Y-m-d');
-            $inicio = $now->subDays(14)->format('Y-m-d');
+            $fin = $now->subDays(-1)->format('Y-m-d');
+            $inicio = $now->subDays()->format('Y-m-d');
         }
         $now = Carbon::now()->format('Y-m-d');
         if ($usuario->rol== 'enlace'){

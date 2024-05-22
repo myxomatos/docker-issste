@@ -172,7 +172,6 @@
                 @endif
                 
                 <div class="uk-text-center uk-margin-top">
-                    <!-- <button class="button_back" onclick="exportTableToExcel('reportes')">Descargar</button> -->
                     <button class="button_back" id="download">Descargar</button>
                 </div>
 
@@ -187,7 +186,7 @@
                             // console.log(invoice);
                             // console.log(window);
                             let opt = {
-                                margin: 1,
+                                margin: .2,
                                 filename: `${enlace}`,
                                 image: { type: 'jpeg', quality: 0.98 },
                                 html2canvas: { scale: 2 },
@@ -208,36 +207,7 @@
                         return false;
                     }
 
-                    function exportTableToExcel(tableID, filename = `${enlace}`){
-                        var downloadLink;
-                        var dataType = 'application/vnd.ms-excel; charset=UTF-8';
-                        var tableSelect = document.getElementById(tableID);
-                        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-
-                        // Specify file name
-                        filename = filename?filename+'.xls':'excel_data.xls';
-
-                        // Create download link element
-                        downloadLink = document.createElement("a");
-
-                        document.body.appendChild(downloadLink);
-
-                        if(navigator.msSaveOrOpenBlob){
-                            var blob = new Blob(['\ufeff', tableHTML], {
-                                type: dataType
-                            });
-                            navigator.msSaveOrOpenBlob( blob, filename);
-                        }else{
-                            // Create a link to the file
-                            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-                            // Setting the file name
-                            downloadLink.download = filename;
-
-                            //triggering the function
-                            downloadLink.click();
-                        }
-                    }
+                    
                 </script>
             </div>
 

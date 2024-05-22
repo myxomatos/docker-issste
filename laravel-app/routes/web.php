@@ -96,6 +96,8 @@ Route::get('/home/admin/hospitales', [AdminController::class, 'hospitales'])->mi
 Route::get('/home/admin/hospital/create', [AdminController::class, 'createHospital'])->middleware('auth')->name('createHospital');
 //Store Hospitales
 Route::post('/home/admin/hospitales/store', [AdminController::class, 'storehospital'])->middleware('auth')->name('storeHospital');
+//Ver Hospital
+Route::get('/home/admin/hospital/{id}/ver', [AdminController::class, 'verHospital'])->middleware('auth')->name('verHospital');
 //Edit Hospital
 Route::get('/home/admin/hospital/{id}/edit', [AdminController::class, 'editHospital'])->middleware('auth')->name('editHospital');
 //Update Hospital

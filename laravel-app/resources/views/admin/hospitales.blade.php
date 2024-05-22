@@ -33,7 +33,7 @@
                 @foreach($hospitales as $hospital)
                     <tr>
                         <td class="textTransform">
-                            {{ $hospital->nombre }}
+                            <a href="{{ route('verHospital',[$hospital->id]) }}">{{ $hospital->nombre }}</a>
                         </td class="textTransform">
 
                         <td class="textTransform">
