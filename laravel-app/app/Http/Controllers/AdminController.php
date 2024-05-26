@@ -176,7 +176,7 @@ class AdminController extends Controller
              if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador'){
                  if ($usuario->rol== 'coordinador'){
                      $enlaces = DB::table('users as enlace')
-                         ->select('subcoordinador.name as subcoordinador','enlace.name as enlace','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in')
+                         ->select('subcoordinador.name as subcoordinador','enlace.name as nombre','enlace.apellido as apellido','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno')
                          ->join('users AS subcoordinador', 'subcoordinador.id', '=', 'enlace.subcordinador_id')
                          ->where('subcoordinador.id', '<>', 'enlace.id')
                          ->where('enlace.rol', '=', 'enlace')
@@ -184,7 +184,7 @@ class AdminController extends Controller
 
                  }elseif($usuario->rol== 'subcoordinador')
                      $enlaces = DB::table('users as enlace')
-                         ->select('subcoordinador.name as subcoordinador','enlace.name as enlace','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in')
+                         ->select('subcoordinador.name as subcoordinador','enlace.name as enlace','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno')
                          ->join('users AS subcoordinador', 'subcoordinador.id', '=', 'enlace.subcordinador_id')
                          ->where('subcoordinador.id', '<>', 'enlace.id')
                          ->where('enlace.subcordinador_id',$usuario->id)
@@ -423,10 +423,27 @@ class AdminController extends Controller
         $hospital->save();
         return redirect()->route('hospitalesIndex');
     }
-    public function verHospital($id){
-        $hospital = Hospitales::find($id);
-        $usuarios = User::where('rol','coordinador')->get();
-        return view ('admin.hospital.ver',compact('hospital','usuarios'));
+    public function verHospital(Request $request){
+        $hospId = $request->id;
+        $hospital = Hospitales::find($hospId);
+        $subId = $hospital->subcordinador_id;
+        $sub = User::find($subId);
+        $enlaces = User::where('hospital_id', $hospId)->get();
+        $total_actividades = Actividades::where('status','pendiente')
+        ->where('hospital_id', $hospId)
+        ->whereMonth('created_at', '=', Carbon::today()->month)
+        ->count();
+        return view ('admin.hospital.ver',compact('hospital','sub', 'enlaces', 'total_actividades'));
+    }
+
+    public function hospEnlaceActividades($id){
+        $actividades = Actividades::where('user_id',$id)->where('status','pendiente')
+                ->whereMonth('created_at', '=', Carbon::today()->month)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        $enlace = User::find($id);
+        return view ('admin.hospital.actividadesEnlace',compact('actividades', 'enlace'));
+        
     }
 
 
@@ -489,8 +506,9 @@ class AdminController extends Controller
         $enlace= User::find($id);
         $enlace->name = $request->nombre;
         $enlace->apellido = $request->apellidos;
-        $enlace->email = $request->email;
         $enlace->rol = $request->rol;
+        $enlace->email = $request->email;
+        $enlace->turno = $request->turno;
         $enlace->hospital_id = $request->hospital;
         $enlace->subcordinador_id = $request->subcoordinador;
         $enlace->save();

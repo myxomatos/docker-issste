@@ -25,18 +25,18 @@
         </li>
         <li>
             @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace')
-                <a href="{{ route('indexCensos') }}"><span class="uk-margin-small-right" uk-icon="icon: trash"></span>
+                <a href="{{ route('indexCensos') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span>
                     Censos
                 </a>
             @endif
         </li>
         <li>
-            <a href="{{ route('aeropuerto') }}"target="_blank"><span class="uk-margin-small-right" uk-icon="icon: trash"></span>
+            <a href="{{ route('aeropuerto') }}"target="_blank"><span class="uk-margin-small-right" uk-icon="icon: settings"></span>
                 Sistema Aeropuerto
             </a>
         </li>
         <li>
-            <a href="{{ route('directorio') }}"target="_blank"><span class="uk-margin-small-right" uk-icon="icon: trash"></span>
+            <a href="{{ route('directorio') }}"target="_blank"><span class="uk-margin-small-right" uk-icon="icon: file-text"></span>
                 Directorio
             </a>
         </li>

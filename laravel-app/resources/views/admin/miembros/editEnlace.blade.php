@@ -45,15 +45,26 @@
                                     </select>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div>
-
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">Email *</label>
                                 <div class="uk-form-controls">
                                     <input value="{{ $enlace->email }}" required name="email" class="uk-input" id="form-stacked-text" type="text" placeholder="correo@ejemplo">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+
+                        <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-select">Turno *</label>
+                                <div class="uk-form-controls">
+                                    <select required name="turno" class="uk-select" id="search">
+                                        <option value="{{ $enlace->turno }}" style="text-transform: capitalize;">{{ $enlace->turno }}</option>
+
+                                        <option value="MATUTINO">MATUTINO</option>
+                                        <option value="VESPERTINO">VESPERTINO</option>
+                                        <option value="SABADOS,DOMINGOS Y DIAS FESTIVOS">SABADOS,DOMINGOS Y DIAS FESTIVOS</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="uk-margin">

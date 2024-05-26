@@ -98,6 +98,8 @@ Route::get('/home/admin/hospital/create', [AdminController::class, 'createHospit
 Route::post('/home/admin/hospitales/store', [AdminController::class, 'storehospital'])->middleware('auth')->name('storeHospital');
 //Ver Hospital
 Route::get('/home/admin/hospital/{id}/ver', [AdminController::class, 'verHospital'])->middleware('auth')->name('verHospital');
+//Ver Hospital Actividad Enlaces
+Route::get('/home/admin/hospital/{id}/enlaceActividad', [AdminController::class, 'hospEnlaceActividades'])->middleware('auth')->name('hospEnlaceActividades');
 //Edit Hospital
 Route::get('/home/admin/hospital/{id}/edit', [AdminController::class, 'editHospital'])->middleware('auth')->name('editHospital');
 //Update Hospital

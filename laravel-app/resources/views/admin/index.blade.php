@@ -9,10 +9,8 @@
     <div class="uk-width-expand@m uk-margin-top uk-margin-right uk-margin-bottom">
         <div>
             <div class="uk-card uk-card-default uk-card-body card_counter uk-text-center">
-                <p class="color_7" style="font-size: 24px; margin: 0px;">Actividades</p>
-                <p class="color_7" style="margin-top: 2px; font-size: 26px">
-                   {{ $total_actividades }}
-                </p>
+                <p class="color_7" style="font-size: 22px;">Total de Actividades {{ $total_actividades }}</p>
+                
             </div>
 
             <table class="uk-table uk-table-striped">
@@ -100,10 +98,8 @@
         <div>
             <div>
                 <div class="uk-card uk-card-default uk-card-body card_counter uk-text-center">
-                  <p class="color_7" style="font-size: 24px; margin: 0px;">Incidencias</p>
-                    <h2 class="color_7" style="margin-top: 2px; font-size: 26px">
-                        {{ $total_incidencias }}
-                    </h2>
+                  <p class="color_7" style="font-size: 22px;">Total de Incidencias {{ $total_incidencias }}</p>
+                    
                 </div>
                 <table class="uk-table uk-table-striped">
                     <thead>

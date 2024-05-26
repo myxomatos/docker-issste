@@ -915,7 +915,7 @@ a.uk-link-reset,
     width: 100%;
     /* 3 */
     margin-bottom: 20px;
-    overflow: scroll;
+    overflow: auto;
 }
 /* Add margin if adjacent element */
 * + .uk-table {
@@ -931,7 +931,7 @@ a.uk-link-reset,
     text-align: right;
     vertical-align: bottom;
     /* 1 */
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: normal;
     color: #999;
     text-transform: uppercase;
@@ -984,6 +984,7 @@ a.uk-link-reset,
     background: #f8f8f8;
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
+    
 }
 /*
  * Hover

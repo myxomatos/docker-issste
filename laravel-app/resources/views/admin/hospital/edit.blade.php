@@ -57,7 +57,14 @@
 
                         </div>
                         <div class="uk-margin uk-text-center uk-margin-medium-top">
-                            <button type="submit" class="button_back"style="width: 150px;height: 30px">
+
+                                <a href="{{ route('hospitalesIndex') }}" style="margin: 10px;">
+                                    <span class="button_back" style="padding: 5px 38px 5px 38px;">
+                                        Cancelar
+                                    </span>
+                                </a>
+
+                            <button type="submit" class="button_back_2" style="width: 150px;height: 30px">
                                 Guardar
                             </button>
                         </div>

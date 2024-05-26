@@ -14,7 +14,7 @@
             <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Horarios</th>
+                <th>Turno</th>
                 <th>Hora de entrada</th>
                 <th>Hora de salida</th>
                 <th>Subcoordinador</th>
@@ -28,11 +28,10 @@
             @foreach($enlaces as $enlace)
                 <tr>
                     <td>
-                        {{ $enlace->enlace }}
+                        {{ $enlace->nombre }} {{ $enlace->apellido }}
                     </td>
                     <td>
-                    {{ $enlace->dias_laborales }}
-{{--                        de {{ $enlace->horario_entrada }} a {{ $enlace->horario_salida }}--}}
+                        {{ $enlace->turno }}
                     </td>
                     <td>
                         {{ $enlace->entrada }}

@@ -4,15 +4,13 @@
     <style>
         .scroll {
             overflow-x: scroll;
-            overflow-y: hidden;
+            overflow-y: scroll;
             white-space:nowrap;
         }
     </style>
 
-    <div uk-grid>
-        <div class="uk-visible@m uk-width-1-6@m">
-            @include('partials.sidebarsub')
-        </div>
+    <div uk-grid style="padding: 18px;">
+        
 
         <div class="uk-width-expand@m">
             <nav class="navbar">
@@ -22,6 +20,12 @@
                             Volver
                         </button>
                     </a>
+
+                </div>
+                <div class="uk-text-center">
+                    <h2 class="color_7">
+                        Censos
+                    </h2>
 
                 </div>
                 <div class="d-block" style="margin-top: 10px;">
@@ -43,7 +47,7 @@
             </div>
             </nav>
             <div class="scroll">
-                <table class="uk-table uk-table-striped" >
+                <table class="uk-table uk-table-striped">
                     <thead>
                     <tr>
                         <th>Acciones</th>
