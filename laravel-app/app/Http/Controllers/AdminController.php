@@ -176,20 +176,27 @@ class AdminController extends Controller
              if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador'){
                  if ($usuario->rol== 'coordinador'){
                      $enlaces = DB::table('users as enlace')
-                         ->select('subcoordinador.name as subcoordinador','enlace.name as nombre','enlace.apellido as apellido','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno')
+                         ->select('subcoordinador.name as subcoordinadorNombre','subcoordinador.apellido as subcoordinadorApellido','enlace.name as nombre','enlace.apellido as apellido','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno','enlace.hospital_id')
                          ->join('users AS subcoordinador', 'subcoordinador.id', '=', 'enlace.subcordinador_id')
                          ->where('subcoordinador.id', '<>', 'enlace.id')
                          ->where('enlace.rol', '=', 'enlace')
                          ->get();
+             
+             
+                     
 
                  }elseif($usuario->rol== 'subcoordinador')
                      $enlaces = DB::table('users as enlace')
-                         ->select('subcoordinador.name as subcoordinador','enlace.name as enlace','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno')
+                         ->select('subcoordinador.name as subcoordinadorNombre','subcoordinador.apellido as subcoordinadorApellido','enlace.name as nombre','enlace.apellido as apellido','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno','enlace.hospital_id')
                          ->join('users AS subcoordinador', 'subcoordinador.id', '=', 'enlace.subcordinador_id')
                          ->where('subcoordinador.id', '<>', 'enlace.id')
                          ->where('enlace.subcordinador_id',$usuario->id)
                          ->where('enlace.rol', '=', 'enlace')
                          ->get();
+
+             
+                     
+
 
                  return view ('admin.enlaces',compact('enlaces'));
              }else{
@@ -380,7 +387,7 @@ class AdminController extends Controller
         $usuario = Auth::User();
         $censo = Censos::find($id);
         $historial = DB::table('historico_censo')
-            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','users.name','historico_censo.created_at as fecha_coment')
+            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','users.name', 'users.apellido','historico_censo.created_at as fecha_coment')
             ->join('users', 'users.id', '=', 'historico_censo.creado_por')
             ->join('censos', 'censos.id', '=', 'historico_censo.censo_id')
             ->where('historico_censo.censo_id',$id)
@@ -511,6 +518,8 @@ class AdminController extends Controller
         $enlace->turno = $request->turno;
         $enlace->hospital_id = $request->hospital;
         $enlace->subcordinador_id = $request->subcoordinador;
+        $newPass = Hash::make($request->password);
+        $enlace->password = $newPass;
         $enlace->save();
         return redirect()->route('enlacesIndex');
 

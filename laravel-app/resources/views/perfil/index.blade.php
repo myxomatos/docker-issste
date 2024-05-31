@@ -35,7 +35,6 @@
                          @endif
                         <li>{{ $usuario->turno}}</li>
                         <li>{{ $usuario->dias_laborales}}</li>
-                        <li>{{ $usuario->horario_entrada}} a {{ $usuario->horario_salida}}</li>
                     </ul>
 
                 </div>

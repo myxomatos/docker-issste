@@ -92,7 +92,12 @@
                                     </select>
                                 </div>
                             </div>
-
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Cambiar Contraseña *</label>
+                                <div class="uk-form-controls">
+                                    <input required name="password" class="uk-input" id="form-stacked-text" type="password" placeholder="Contraseña">
+                                </div>
+                            </div>
 
 
                         </div>
