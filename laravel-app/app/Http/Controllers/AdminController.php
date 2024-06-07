@@ -52,49 +52,46 @@ class AdminController extends Controller
 
         if ($usuario->rol== 'coordinador'){
             $total_incidencias = Incidencias::where('status','pendiente')
-                ->whereMonth('created_at', '=', Carbon::today()->month)
                 ->count();
             $total_actividades = Actividades::where('status','pendiente')
-                ->whereMonth('created_at', '=', Carbon::today()->month)
                 ->count();
             $incidencias= DB::table('incidencias')
-                ->select('incidencias.nombre','incidencias.cargar_evidencia','incidencias.hospital_id','incidencias.id','incidencias.status','incidencias.notas','enlace.name as enlace','incidencias.user_id','incidencias.created_at','incidencia_historico.asignacion')
+                ->select('incidencias.nombre','incidencias.cargar_evidencia','incidencias.hospital_id','incidencias.id','incidencias.status','incidencias.notas','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','incidencias.user_id','incidencias.created_at','incidencia_historico.asignacion')
                 ->join('hospitales', 'hospitales.id', '=', 'incidencias.hospital_id')
                 ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
                 ->join('users as enlace', 'enlace.id', '=', 'incidencias.user_id')
                 ->leftjoin('incidencia_historico','incidencia_id', '=','incidencias.id')
                 ->where('incidencias.status','pendiente')
-                ->where(\DB::raw('MONTH(incidencias.created_at)'), Carbon::today()->month)
                 ->orderBy('incidencias.created_at', 'DESC')
-                ->get();
+                ->paginate(5);
 
             $actividades= DB::table('actividades')
-                ->select('actividades.nombre','actividades.hospital_id','actividades.id','actividades.status','actividades.descripcion_subactividad','enlace.name as enlace','actividades.descripcion_actividad','actividades.notas','actividades.created_at')
+                ->select('actividades.nombre','actividades.hospital_id','actividades.id','actividades.status','actividades.descripcion_subactividad','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','actividades.descripcion_actividad','actividades.notas','actividades.created_at')
+                ->join('hospitales', 'hospitales.id', '=', 'actividades.hospital_id')
+                ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
+                ->join('users as enlace', 'enlace.id', '=', 'actividades.user_id')
+                ->where('actividades.status','pendiente')
+                ->orderBy('actividades.created_at', 'DESC')
+                ->paginate(5);
+        }elseif($usuario->rol== 'subcoordinador'){
+
+            $hospitalesSubCoordinador = Hospitales::where('subcordinador_id',$usuario->id)->pluck('id')->toArray();
+            $total_incidencias = Incidencias::whereIn('hospital_id',$hospitalesSubCoordinador)->where('status','pendiente')->count();
+            $total_actividades = Actividades::whereIn('hospital_id',$hospitalesSubCoordinador)->where('status','pendiente')->whereMonth('created_at', '=', Carbon::today()->month)->count();
+
+            $actividades= DB::table('actividades')
+            ->select('actividades.nombre','actividades.hospital_id','actividades.id','actividades.status','actividades.descripcion_subactividad','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','actividades.descripcion_actividad','actividades.notas','actividades.created_at')
                 ->join('hospitales', 'hospitales.id', '=', 'actividades.hospital_id')
                 ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
                 ->join('users as enlace', 'enlace.id', '=', 'actividades.user_id')
                 ->where('actividades.status','pendiente')
                 ->where(\DB::raw('MONTH(actividades.created_at)'), Carbon::today()->month)
-                ->orderBy('actividades.created_at', 'DESC')
-                ->get();
-        }elseif($usuario->rol== 'subcoordinador'){
-
-            $hospitalesSubCoordinador = Hospitales::where('subcordinador_id',$usuario->id)->pluck('id')->toArray();
-            $total_incidencias = Incidencias::whereIn('hospital_id',$hospitalesSubCoordinador)->where('status','pendiente')->count();
-            $total_actividades = Actividades::whereIn('hospital_id',$hospitalesSubCoordinador)->count();
-            $hospitales = Hospitales::where('subcordinador_id',$usuario->id)->get();
-
-            $actividades= DB::table('actividades')
-            ->select('actividades.nombre','actividades.hospital_id','actividades.id','actividades.status','actividades.descripcion_subactividad','enlace.name as enlace','actividades.descripcion_actividad','actividades.notas','actividades.created_at')
-                ->join('hospitales', 'hospitales.id', '=', 'actividades.hospital_id')
-                ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
-                ->join('users as enlace', 'enlace.id', '=', 'actividades.user_id')
                 ->where('hospitales.subcordinador_id',$usuario->id)
                 ->orderBy('actividades.created_at', 'DESC')
-                ->get();
+                ->paginate(5);
 
             $incidencias= DB::table('incidencias')
-                ->select('incidencias.nombre','incidencias.cargar_evidencia','incidencias.hospital_id','incidencias.id','incidencias.status','incidencias.notas','enlace.name as enlace','incidencias.user_id','incidencias.created_at','incidencia_historico.asignacion')
+                ->select('incidencias.nombre','incidencias.cargar_evidencia','incidencias.hospital_id','incidencias.id','incidencias.status','incidencias.notas','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','incidencias.user_id','incidencias.created_at','incidencia_historico.asignacion')
                 ->join('hospitales', 'hospitales.id', '=', 'incidencias.hospital_id')
                 ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
                 ->join('users as enlace', 'enlace.id', '=', 'incidencias.user_id')
@@ -102,7 +99,7 @@ class AdminController extends Controller
                 ->where('hospitales.subcordinador_id',$usuario->id)
                 ->where('incidencias.status','pendiente')
                 ->orderBy('incidencias.created_at', 'DESC')
-                ->get();
+                ->paginate(5);
                 //            $incidencias = Incidencias::where('hospital_id',$usuario->hospital_id)->get();
 //            $actividades = Actividades::whereIn('hospital_id',$hospitales->user->id)->get();
 
@@ -116,28 +113,14 @@ class AdminController extends Controller
             $incidencias = Incidencias::where('hospital_id',$usuario->hospital_id)->where('status','pendiente')
                 ->whereMonth('created_at', '=', Carbon::today()->month)
                 ->orderBy('created_at', 'DESC')
-                ->get();
+                ->paginate(5);
             $actividades = Actividades::where('user_id',$usuario->id)->where('status','pendiente')
                 ->whereMonth('created_at', '=', Carbon::today()->month)
                 ->orderBy('created_at', 'DESC')
-                ->get();
+                ->paginate(5);
 
 
-            }elseif($usuario->rol== 'general'){
-        $total_incidencias = Incidencias::where('hospital_id',$usuario->hospital_id)->where('status','pendiente')
-            ->whereMonth('created_at', '=', Carbon::today()->month)
-            ->count();
-        $total_actividades = Actividades::where('hospital_id',$usuario->hospital_id)
-            ->whereMonth('created_at', '=', Carbon::today()->month)
-            ->count();
-        $incidencias = Incidencias::where('hospital_id',$usuario->hospital_id)
-            ->whereMonth('created_at', '=', Carbon::today()->month)
-            ->get();
-        $actividades = Actividades::where('hospital_id',$usuario->hospital_id)
-            ->whereMonth('created_at', '=', Carbon::today()->month)
-            ->get();
-
-        }
+            }
 
         return view ('admin.index',compact( 'total_incidencias','total_actividades','incidencias','actividades'));
 
@@ -216,17 +199,17 @@ class AdminController extends Controller
         }
         public function indexCensos(){
             $usuario = Auth::User();
-            if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
+            $hospitales = Hospitales::where('status','activo')
+            ->where('subcordinador_id',$usuario->id)
+            ->get();
                 if ($usuario->rol== 'coordinador'){
-                    $censos = Censos::paginate(25);
-                }elseif($usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
-                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(25);
+                    $censos = Censos::paginate(20);
+                }elseif($usuario->rol== 'subcoordinador'){
+                    $censos = Censos::paginate(20);
+                }elseif($usuario->rol== 'enlace'){
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(20);
                 }
-            }
-    
-    
-    //        $censos = Censos::paginate(25);
-            return view ('admin.indexCensos',compact('censos'));
+            return view ('admin.indexCensos',compact('censos', 'hospitales'));
         }
         public function aeropuerto(){
             $usuario = Auth::User();

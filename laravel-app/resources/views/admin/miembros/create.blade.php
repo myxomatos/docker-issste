@@ -89,7 +89,8 @@
                                     <select required name="turno" class="uk-select" id="search">
                                         <option value="MATUTINO">Matutino</option>
                                         <option value="VESPERTINO">Vespertino</option>
-                                        <option value="NOCTURNO">Nocturno</option>
+                                        <option value="NOCTURNO A">Nocturno A</option>
+                                        <option value="NOCTURNO B">Nocturno B</option>
                                     </select>
                                 </div>
                             </div>

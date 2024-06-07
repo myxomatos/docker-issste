@@ -17,7 +17,7 @@
                     </a>
             <article class="uk-article">
 
-                <h2 class="uk-article-title color_1 uk-text-center"><a class="uk-link-reset" href="">Directorio ISSSTE</a></h2>
+                <h2 class="uk-article-title color_1 uk-text-center"><a class="uk-link-reset" href="">Directorio SIRAESU</a></h2>
             </article>
             <form style="width: 300px" class="uk-search uk-search-default" type="get" action="{{ url('/searchDirectorio') }}">
                             <div class="">
@@ -30,7 +30,7 @@
             </form>
         </div>
         <div class="scroll" style="padding: 0px 20px 0px 20px">
-            <table class="uk-table uk-table-striped">
+            <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
                 <thead>
                     <tr>
                         <th>Nombre</th>

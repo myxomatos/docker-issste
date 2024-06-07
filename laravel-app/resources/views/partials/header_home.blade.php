@@ -67,7 +67,7 @@
                     <li><a href="{{ route('homeIndexPanel') }}">Panel</a></li>
                     <li><a href="{{ route('perfil') }}">Mi Perfil</a></li>
                         <li><a href="{{ route('reporteDate') }}">Reporte Quincenal</a></li>
-                        <li><a href="{{ route('reporteDate') }}">Reporte Diario</a></li>
+                        <!-- <li><a href="{{ route('reporteDate') }}">Reporte Diario</a></li> -->
                     @if(Auth::User()->rol == 'coordinador')
                         <li><a href="{{ route('createColaborador') }}">Agregar un nuevo Colaborador</a></li>
                     @endif

@@ -10,7 +10,7 @@
         <h2 class="color_7">
             Enlaces
         </h2>
-        <table class="uk-table uk-table-striped">
+        <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
             <thead>
             <tr>
                 <th>Nombre</th>
@@ -30,7 +30,7 @@
                 <tr>
                     <td>
                         {{ $enlace->nombre }} {{ $enlace->apellido }}
-                    </td>
+                    </td>                    
                     @if ($enlace->hospital_id == 1)
                                 <td class="textTransform">H.R. 1° DE OCTUBRE</td>
                             @elseif ($enlace->hospital_id == 2)

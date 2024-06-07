@@ -47,10 +47,11 @@
             </div>
             </nav>
             <div class="scroll">
-                <table class="uk-table uk-table-striped">
+                <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
                     <thead>
                     <tr>
                         <th>Acciones</th>
+                        <th>Test</th>
                         <th>Ingreso</th>
                         <th>Nombre</th>
                         <th>Cama</th>
@@ -78,6 +79,7 @@
                                 </a>
 
                             </td>
+                            <td>{{ $hospitales }}</td>
                             <td class="textTransform">
                                 {{ $i->created_at }}
                             </td>
