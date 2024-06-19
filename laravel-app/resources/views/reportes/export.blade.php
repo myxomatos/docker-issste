@@ -29,7 +29,7 @@
                 @if(Auth::User()->rol === 'enlace')
                 <div id="reportes">
                     
-                    <table border="1" id="reportesOLD" style="width: 100%">
+                    <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.7vw;">
                         
                             <caption style="margin: 30px; color: black; font-weight: bold;">Reporte de Actividades</caption><br>
                                 <tr>
@@ -111,8 +111,8 @@
                             
                             <tr>
                                 <th style="border: 1px solid black">Actividad</th>
-                                <th style="border: 1px solid black">Subactividad</th>
-                                <th style="border: 1px solid black">Subactividad</th>
+                                <th style="border: 1px solid black">Tarea</th>
+                                <th style="border: 1px solid black">Tipo de Actividad</th>
                                 <th style="border: 1px solid black">Cantidad</th>
                                 <th style="border: 1px solid black">Fecha</th>
                             </tr>
@@ -121,11 +121,11 @@
 
                             @foreach($actividades as $invoice)
                                 <tr style="border: 1px solid black">
-                                    <td style="border: 1px solid black">{{ $invoice->nombre }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->descripcion_actividad }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->descripcion_subactividad }}</td>
-                                    <td style="border: 1px solid black"> {{ $invoice->cantidad }}</td>
-                                    <td style="border: 1px solid black">{{ $invoice->fecha }}</td>
+                                    <td style="border: 1px solid black; width:220px"">{{ $invoice->nombre }}</td>
+                                    <td style="border: 1px solid black; width:250px">{{ $invoice->descripcion_actividad }}</td>
+                                    <td style="border: 1px solid black; width:280px">{{ $invoice->descripcion_subactividad }}</td>
+                                    <td style="border: 1px solid black; width:120px"> {{ $invoice->cantidad }}</td>
+                                    <td style="border: 1px solid black; width:200px">{{ $invoice->fecha }}</td>
 
 
 
@@ -134,7 +134,7 @@
                             </tbody>
                         </table>
 
-                        <table border="1" id="reportesOLD" style="width: 100%">
+                        <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.7vw;">
 
 
                             <thead>
@@ -188,9 +188,9 @@
                             let opt = {
                                 margin: .2,
                                 filename: `${enlace}`,
-                                image: { type: 'jpeg', quality: 0.98 },
+                                image: { type: 'jpeg', quality: 1 },
                                 html2canvas: { scale: 2 },
-                                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                                jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
                             };
                             html2pdf().from(invoice).set(opt).save();
                         })
