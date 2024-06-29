@@ -31,7 +31,7 @@
                 @foreach($actividades as $i)
                     <tr>
                         <td class="textTransform">{{ $i->created_at }}</td>
-                        @if(Auth::User()->rol === 'subcoordinador')
+                        @if(Auth::User()->rol === 'subcoordinador' or 'coordinador')
                             @if ($i->hospital_id == 1)
                                 <td class="textTransform">H.R. 1° DE OCTUBRE</td>
                             @elseif ($i->hospital_id == 2)
