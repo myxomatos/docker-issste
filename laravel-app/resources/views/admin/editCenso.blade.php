@@ -148,7 +148,7 @@
                                 </div>
                             </div>
 
-                            <div class="uk-margin">
+                            <div class="uk-margin" style="display: none;">
                                 <label class="uk-form-label" for="form-stacked-select">Hospital *</label>
                                 <div class="uk-form-controls">
                                     <select required name="hospital" class="uk-select" id="form-stacked-select">
@@ -159,6 +159,7 @@
                                     </select>
                                 </div>
                             </div>
+                            
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">Cama *</label>
                                 <div class="uk-form-controls">

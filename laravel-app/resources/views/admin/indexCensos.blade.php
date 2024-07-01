@@ -59,9 +59,8 @@
                         <th>Fecha de nacimiento</th>
                         <th>Tipo Derechohabiente</th>
                         <th>Tipo Hospitalizacion</th>
-                        <!-- <th>Diagnostico</th> -->
                         <th>Hospital</th>
-                        <!-- <th>Doctor</th> -->
+                        <th>Dato de Salud</th>
                         <th>Estado</th>
 
                     </tr>
@@ -141,6 +140,9 @@
                             @elseif ($i->hospital_id == 19)
                                 <td class="textTransform">H.R. MERIDA</td>
                             @endif
+                            <td class="textTransform">
+                                {{ $i->dato_salud }}
+                            </td>
                             <td class="textTransform">
                                 {{ $i->status }}
                             </td>
