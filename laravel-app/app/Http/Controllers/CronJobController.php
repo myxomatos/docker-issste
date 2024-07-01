@@ -39,7 +39,10 @@ class CronJobController extends Controller
             DB::table('actividades')->whereMonth(
                 'created_at', '=', Carbon::now()->subMonth()->month
             )->delete();
-            DB::table('incidencias_imagenes')->whereMonth(
+            DB::table('historico_censo')->whereMonth(
+                'created_at', '=', Carbon::now()->subMonth()->month
+            )->delete();
+            DB::table('censos')->whereMonth(
                 'created_at', '=', Carbon::now()->subMonth()->month
             )->delete();
 

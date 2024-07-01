@@ -47,7 +47,7 @@
             </div>
             </nav>
             <div class="scroll">
-                <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
+                <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
                     <thead>
                     <tr>
                         <th>Acciones</th>
@@ -70,19 +70,19 @@
                     @foreach($censos as $i)
                         <tr>
                             <td>
-                                <a href="{{ route('editCenso',[$i->id]) }}">
+                                <a style="color: red;" href="{{ route('editCenso',[$i->id]) }}">
                                     Editar
                                 </a><br>
-                                <a href="{{ route('showHistoricoCenso',[$i->id]) }}">
+                                <a style="color: #0FA4AF;" href="{{ route('showHistoricoCenso',[$i->id]) }}">
                                     Ver Historial
                                 </a>
 
                             </td>
                             <td class="textTransform">
-                                {{ $i->created_at }}
+                                {{ date('d-m-Y H:i:s', strtotime($i->created_at)) }}
                             </td>
                             <td class="textTransform">
-                                {{ $i->enlaceNombre }} {{ $i->enlaceApellido }}
+                                {{ $i->nombre }} {{ $i->apellidos }}
                             </td>
                             <td>
                                 {{ $i->cama }}

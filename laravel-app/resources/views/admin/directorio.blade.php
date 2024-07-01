@@ -30,7 +30,7 @@
             </form>
         </div>
         <div class="scroll" style="padding: 0px 20px 0px 20px">
-            <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
+            <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
                 <thead>
                     <tr>
                         <th>Nombre</th>

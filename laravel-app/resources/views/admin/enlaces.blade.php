@@ -10,7 +10,7 @@
         <h2 class="color_7">
             Enlaces
         </h2>
-        <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
+        <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
             <thead>
             <tr>
                 <th>Nombre</th>
@@ -75,7 +75,7 @@
                         {{ $enlace->turno }}
                     </td>
                     <td>
-                        {{ $enlace->entrada }}
+                        {{ date('d-m-Y H:i:s', strtotime($enlace->entrada)) }}
                     </td>
                     
                     
@@ -84,7 +84,7 @@
                      @if($enlace->check_in === 1)
                            En turno
                         @else
-                            {{ $enlace->salida }}
+                            {{ date('d-m-Y H:i:s', strtotime($enlace->salida)) }}
                          @endif
 
 
@@ -94,17 +94,20 @@
                     </td>
                     @if(Auth::User()->rol === 'coordinador')
                         <td>
-                            <a href="{{ route('editEnlace',[$enlace->idEnlace]) }}">
+                            <a style="color: #0FA4AF;" href="{{ route('editEnlace',[$enlace->idEnlace]) }}">
                                 Editar
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('deleteEnlace',[$enlace->idEnlace]) }}">
-                                
-                                    <span style="color: red;" class="uk-margin-small-right" style="font-size: 16px" uk-icon="icon: trash"></span>
-                                
-                                
-                            </a>
+                            
+                        <a href="{{ route('deleteEnlace',[$enlace->idEnlace]) }}">
+                                    <span type='button' style="color: red;" class="uk-margin-small-right" style="font-size: 16px" uk-icon="icon: trash"></span>
+                                    </a> 
+
+
+                            <!-- This is the modal -->
+                            
+                        </div>
                         </td>
                     @endif
                 </tr>
@@ -112,6 +115,10 @@
             </tbody>
 
         </table>
+        <div class="uk-text-center">
+                {{ $enlaces->links() }}
+{{--                    {!! $enlaces->links("partials.paginate") !!}--}}
+                </div>
         @endsection
     </div>
 

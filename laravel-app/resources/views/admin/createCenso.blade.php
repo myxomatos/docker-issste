@@ -109,6 +109,7 @@
                                         <option value="Valoración">Valoración</option>
                                         <option value="Internamiento">Internamiento</option>
                                         <option value="Egreso a Domicilio">Egreso a Domicilio</option>
+                                        <option value="Pasa a Piso">Pasa a Piso</option>
                                         <option value="Quirófano">Quirófano</option>
                                     </select>
                                 </div>

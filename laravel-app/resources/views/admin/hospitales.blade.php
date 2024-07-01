@@ -42,7 +42,7 @@
                         </td>
                         @if(Auth::User()->rol === 'coordinador')
                         <td>
-                            <a href="{{ route('editHospital',[$hospital->id]) }}">
+                            <a style="color: #0FA4AF;" href="{{ route('editHospital',[$hospital->id]) }}">
                                 Editar
                             </a>
                         </td>

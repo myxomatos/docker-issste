@@ -53,7 +53,7 @@
             <div class="uk-text-left" style="margin-top: 40px">
                 <a href="{{ route('createCheckOut') }}">
                     <button type="submit" class="button_back_2" style="width: 170px; height: 30px; font-size: 14px;">
-                        Check Out
+                        Cerrar Sesión
                     </button>
                 </a>
             </div>

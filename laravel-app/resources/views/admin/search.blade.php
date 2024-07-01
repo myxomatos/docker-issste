@@ -39,10 +39,10 @@
                 @foreach($censos as $i)
                     <tr>
                     <td>
-                                <a href="{{ route('editCenso',[$i->id]) }}">
+                                <a style="color: #0FA4AF;" href="{{ route('editCenso',[$i->id]) }}">
                                     Editar
                                 </a><br>
-                                <a href="{{ route('showHistoricoCenso',[$i->id]) }}">
+                                <a style="color: red;" href="{{ route('showHistoricoCenso',[$i->id]) }}">
                                     Ver Historial
                                 </a>
 

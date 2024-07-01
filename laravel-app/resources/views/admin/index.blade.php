@@ -13,7 +13,7 @@
                 
             </div>
 
-            <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
+            <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
                 <thead>
                 <tr>
                     <th>Fecha / Hora</th>
@@ -30,7 +30,7 @@
 
                 @foreach($actividades as $i)
                     <tr>
-                        <td class="textTransform">{{ $i->created_at }}</td>
+                        <td class="textTransform">{{ date('d-m-Y H:i:s', strtotime($i->created_at)) }}</td>
                         @if(Auth::User()->rol === 'subcoordinador' or 'coordinador')
                             @if ($i->hospital_id == 1)
                                 <td class="textTransform">H.R. 1° DE OCTUBRE</td>
@@ -109,7 +109,7 @@
                   <p class="color_7" style="font-size: 22px;">Total de Incidencias {{ $total_incidencias }}</p>
                     
                 </div>
-                <table class="uk-table uk-table-striped" style="font-size: 0.7vw;">
+                <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
                     <thead>
                     <tr>
                         <th>Fecha / Hora</th>
@@ -126,7 +126,7 @@
                     <tbody>
                     @foreach($incidencias as $i)
                         <tr>
-                            <td class="textTransform">{{ $i->created_at }}</td>
+                            <td class="textTransform">{{ date('d-m-Y H:i:s', strtotime($i->created_at)) }}</td>
                             @if(Auth::User()->rol === 'enlace')
                             <td class="textTransform">{{ $i->user->name }} {{ $i->user->apellido }}</td>
                             @else

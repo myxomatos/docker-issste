@@ -23,13 +23,13 @@
             <div class="uk-card uk-card-default uk-card-body" id="invoice">
                 <form onsubmit="return changeDate()">
                     <th>Fecha inicio:<input type="date" placeholder="Inicio" id="inicio" name="inicio" value="{{ $inicio }}" min="2018-10-08"></th>
-                    <th>Fecha fin:<input type="date" placeholder="Fin" id="fin" name="fin" value="{{ $fin }}" max="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"></th>
+                    <th>Fecha fin:<input type="date" placeholder="Fin" id="fin" name="fin" value="{{ $fin }}" max="{{ \Carbon\Carbon::now()->format('d-m-Y') }}"></th>
                     <th><button type="submit" id="send" name="send" class="button_back">Filtrar</button></th>
                 </form>
                 @if(Auth::User()->rol === 'enlace')
                 <div id="reportes">
                     
-                    <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.7vw;">
+                    <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.75vw;">
                         
                             <caption style="margin: 30px; color: black; font-weight: bold;">Reporte de Actividades</caption><br>
                                 <tr>
@@ -134,7 +134,7 @@
                             </tbody>
                         </table>
 
-                        <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.7vw;">
+                        <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.75vw;">
 
 
                             <thead>

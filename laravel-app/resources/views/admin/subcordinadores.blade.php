@@ -30,10 +30,10 @@
                             {{ $subcordinador->apellido }}
                         </td>
                         <td>
-                            {{ $subcordinador->entrada }}
+                            {{ date('d-m-Y H:i:s', strtotime($subcordinador->entrada)) }}
                         </td>
                         <td>
-                            {{ $subcordinador->salida }}
+                            {{ date('d-m-Y H:i:s', strtotime($subcordinador->salida)) }}
                         </td>
                         <td>
                             {{ $subcordinador->hospitales->nombre }}

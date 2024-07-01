@@ -51,7 +51,7 @@
                     Bienvenido(a) {{Auth::user()->name}} {{Auth::user()->apellido}}<br>
                     <span style="font-size: 18px; color: gold">
                         
-                        Hora de Entrada {{Auth::user()->entrada}}
+                        Hora de Entrada {{ date('d-m-Y H:i:s', strtotime(Auth::user()->entrada))}}
                     </span>
                         
                     </p>
