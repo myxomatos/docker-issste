@@ -200,7 +200,7 @@ class AdminController extends Controller
         public function indexCensos(){
             $usuario = Auth::User();
             $test= DB::table('censos')
-            ->select('censos.id','censos.created_at','censos.nombre','censos.apellidos','censos.diagnostico','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','censos.cama','censos.rfc','censos.genero','censos.edad','censos.tipo_derechohabiente','censos.tipo_hospitalizacion','censos.hospital_id','censos.status',)
+            ->select('censos.id','censos.created_at','censos.nombre','censos.apellidos','censos.diagnostico','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','censos.cama','censos.rfc','censos.genero','censos.edad','censos.tipo_derechohabiente','censos.tipo_hospitalizacion','censos.hospital_id','censos.status','censos.dato_salud')
             ->join('hospitales', 'hospitales.id', '=', 'censos.hospital_id')
             ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
             ->join('users as enlace', 'enlace.id', '=', 'censos.creado_por')

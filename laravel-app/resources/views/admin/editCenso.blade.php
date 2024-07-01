@@ -207,7 +207,7 @@
                                 <div class="uk-margin">
                                     <label class="uk-form-label" for="form-stacked-select">Ingresa un comentario *</label>
                                     <div class="uk-form-controls">
-                                        <textarea required name="comentario" class="uk-input" id="form-stacked-text" type="text"></textarea>
+                                        <textarea required minlength="12" name="comentario" class="uk-input" id="form-stacked-text" type="text"></textarea>
                                     </div>
                                 </div>
                             </div>
