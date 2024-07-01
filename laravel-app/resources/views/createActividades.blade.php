@@ -62,8 +62,10 @@
                         <script>
                         let subjectObject = {
                         "MOVU":{
-                           "Enlaces":["Otro"],
                            "Coordinador AD":["Otro"],
+                           "Enlaces":["Otro"],
+                           "Jefatura":["Otro"],
+
                         },
                         "Otra Actividad":{
                            "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],

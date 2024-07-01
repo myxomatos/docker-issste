@@ -84,6 +84,8 @@ class IncidenciasController extends Controller
             $usuarios = User::where('hospital_id',$incidencia->hospital_id)
                 ->where('rol','enlace')
                 ->get();
+            $coordinador = User::where('rol','coordinador')->where('name', 'Abacu')
+            ->get();
         }else{
             $usuarios = User::where('hospital_id',$usuario->hospital_id)
                 ->where('rol','enlace')
@@ -99,7 +101,7 @@ class IncidenciasController extends Controller
         if ($usuario->rol == 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
             $incidencia = Incidencias::find($id);
             $imagenes = ImagenesIncidencias::where('incidencia_id',$id)->get();
-            return view('admin.editIncidencia', compact('incidencia','usuarios','subcordinador','imagenes'));
+            return view('admin.editIncidencia', compact('incidencia','usuarios','subcordinador','imagenes','coordinador'));
         }else{
             return redirect()->route('homeIndexPanel');
         }
