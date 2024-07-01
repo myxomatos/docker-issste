@@ -30,7 +30,7 @@
                         <th>Tipo Hospitalizacion</th>
                         <!-- <th>Diagnostico</th> -->
                         <th>Hospital</th>
-                        <!-- <th>Doctor</th> -->
+                        <th>Dato de Salud</th>
                         <th>Estado</th>
                     </tr>
                 </tr>
@@ -74,9 +74,9 @@
                             <td class="textTransform">
                                 {{ $i->hospitales->nombre }}
                             </td>
-                            <!-- <td class="textTransform">
-                                {{ $i->doctor }}
-                            </td> -->
+                            <td class="textTransform">
+                                {{ $i->dato_salud }}
+                            </td>
                             <td class="textTransform">
                                 {{ $i->status }}
                             </td>

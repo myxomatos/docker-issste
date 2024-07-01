@@ -221,9 +221,9 @@ class AdminController extends Controller
             $usuario = Auth::User();
             if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
                 if ($usuario->rol== 'coordinador'){
-                    $censos = Censos::paginate(25);
+                    $censos = Censos::paginate(10);
                 }elseif($usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
-                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(25);
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(10);
                 }
             }
     
