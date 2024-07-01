@@ -64,6 +64,9 @@
                             "Otra Actividad":{
                            "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],
                         },
+                        "Otra Actividad":{
+                           "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],
+                        },
                         "ISSSTE Tel": {
                             "Reportar": ["Folio", "Registro de Queja", "Oficios de Solicitud", "Orientación", "Informe de Solicitudes"],
                         },
