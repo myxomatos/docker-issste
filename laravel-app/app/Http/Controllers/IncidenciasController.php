@@ -84,7 +84,7 @@ class IncidenciasController extends Controller
             $usuarios = User::where('hospital_id',$incidencia->hospital_id)
                 ->where('rol','enlace')
                 ->get();
-            $coordinador = User::where('rol','coordinador')->where('name', 'Abacu')
+            $coordinador = User::where('rol','coordinador')->where('name', 'Abacu') 
             ->get();
         }else{
             $usuarios = User::where('hospital_id',$usuario->hospital_id)
