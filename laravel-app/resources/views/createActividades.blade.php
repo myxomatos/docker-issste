@@ -61,8 +61,9 @@
                         </div>
                         <script>
                         let subjectObject = {
-                        "Otra Actividad":{
-                           "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],
+                        "MOVU":{
+                           "Enlaces":["Otro"],
+                           "Coordinador AD":["Otro"],
                         },
                         "Otra Actividad":{
                            "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],
