@@ -61,7 +61,7 @@
                         </div>
                         <script>
                         let subjectObject = {
-                            "Otra Actividad":{
+                        "Otra Actividad":{
                            "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],
                         },
                         "Otra Actividad":{
