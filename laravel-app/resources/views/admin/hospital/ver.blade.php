@@ -11,13 +11,13 @@
          </a>
         
             
-            <div class="uk-text-center" style="margin-top: 8vh;">
+            <div class="uk-text-center" style="margin-top: 4vh;">
                 <h2>
                     {{ $hospital->nombre }}
                 </h2>
 
             </div>
-        <h2 style="margin-top: 8vh;" class="color_7">Subcoordinadores</h2>
+        <h2 style="margin-top: 4vh;" class="color_7">Subcoordinador</h2>
         <table class="uk-table uk-table-striped">
                 <thead>
                 <tr>
@@ -32,6 +32,25 @@
                         </td>
                     </tr>
 
+                
+                </tbody>
+
+        </table>
+        <h2 style="margin-top: 4vh;" class="color_7">Coordinador AD</h2>
+        <table class="uk-table uk-table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($coordinadorad as $c)
+                    <tr>
+                        <td class="textTransform">
+                            {{ $c->name }} {{ $c->apellido }}
+                        </td>
+                    </tr>
+                @endforeach
                 
                 </tbody>
 

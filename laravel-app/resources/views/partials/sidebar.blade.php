@@ -16,7 +16,7 @@
             @endif
         </li>
         <li>
-            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'administrador')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'administrador' or Auth::User()->rol === 'coordinadorad')
                 <a href="{{ route('hospitalesIndex') }}">
                     <span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span>
                     Hospitales
@@ -24,14 +24,14 @@
             @endif
         </li>
         <li>
-            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'administrador')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'administrador' or Auth::User()->rol === 'coordinadorad')
                 <a href="{{ route('enlacesIndex') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>
                     Enlaces
                 </a>
             @endif
         </li>
         <li>
-            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace' or Auth::User()->rol === 'administrador')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace' or Auth::User()->rol === 'administrador' or Auth::User()->rol === 'coordinadorad')
                 <a href="{{ route('indexCensos') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span>
                     Censos
                 </a>

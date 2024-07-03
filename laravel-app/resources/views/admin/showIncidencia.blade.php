@@ -119,10 +119,13 @@
             @endforeach
 
             <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                
-                <div>
-                    <a class="uk-button uk-button-text" style="color: darkred;" href="{{ route('editIncidencia',[$incidencia->id]) }}">Editar Incidencia</a>
-                </div>
+                @if(Auth::User()->rol === 'coordinadorad')
+                    <div></div>
+                @else
+                    <div>
+                        <a class="uk-button uk-button-text" style="color: darkred;" href="{{ route('editIncidencia',[$incidencia->id]) }}">Editar Incidencia</a>
+                    </div>
+                @endif
             </div>
 
         </article>
