@@ -13,7 +13,7 @@
                 </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
+            <div class="uk-card uk-card-default uk-card-body "style="margin: 14px;">
 
                 <form  method="POST" action="{{ route('updateEnlace',[$enlace->id]) }}" class="uk-form-stacked">
                     @csrf

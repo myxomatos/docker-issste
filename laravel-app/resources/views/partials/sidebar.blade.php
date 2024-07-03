@@ -2,14 +2,21 @@
     <ul class="uk-nav uk-nav-default" style="font-size: 16px">
 
         <li>
-            @if(Auth::User()->rol === 'coordinador')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'administrador')
                 <a href="{{ route('subcoordinadoresIndex') }}"><span class="uk-margin-small-right" style="font-size: 16px" uk-icon="icon: users"></span>
                     Subcoordinadores
                 </a>
             @endif
         </li>
         <li>
-            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'administrador')
+                <a href="{{ route('coordinadoresAdIndex') }}"><span class="uk-margin-small-right" style="font-size: 16px" uk-icon="icon: users"></span>
+                    Coordinadores AD
+                </a>
+            @endif
+        </li>
+        <li>
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'administrador')
                 <a href="{{ route('hospitalesIndex') }}">
                     <span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span>
                     Hospitales
@@ -17,14 +24,14 @@
             @endif
         </li>
         <li>
-            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'administrador')
                 <a href="{{ route('enlacesIndex') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>
                     Enlaces
                 </a>
             @endif
         </li>
         <li>
-            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace')
+            @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace' or Auth::User()->rol === 'administrador')
                 <a href="{{ route('indexCensos') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span>
                     Censos
                 </a>

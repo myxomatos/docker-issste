@@ -49,8 +49,30 @@ class AdminController extends Controller
             
         }
         $usuario = Auth::User();
+        if ($usuario->rol== 'administrador'){
+            $total_incidencias = Incidencias::where('status','pendiente')
+                ->count();
+            $total_actividades = Actividades::where('status','pendiente')
+                ->count();
+            $incidencias= DB::table('incidencias')
+                ->select('incidencias.nombre','incidencias.cargar_evidencia','incidencias.hospital_id','incidencias.id','incidencias.status','incidencias.notas','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','incidencias.user_id','incidencias.created_at','incidencia_historico.asignacion')
+                ->join('hospitales', 'hospitales.id', '=', 'incidencias.hospital_id')
+                ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
+                ->join('users as enlace', 'enlace.id', '=', 'incidencias.user_id')
+                ->leftjoin('incidencia_historico','incidencia_id', '=','incidencias.id')
+                ->where('incidencias.status','pendiente')
+                ->orderBy('incidencias.created_at', 'DESC')
+                ->paginate(5);
 
-        if ($usuario->rol== 'coordinador'){
+            $actividades= DB::table('actividades')
+                ->select('actividades.nombre','actividades.hospital_id','actividades.id','actividades.status','actividades.descripcion_subactividad','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','actividades.descripcion_actividad','actividades.notas','actividades.created_at')
+                ->join('hospitales', 'hospitales.id', '=', 'actividades.hospital_id')
+                ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
+                ->join('users as enlace', 'enlace.id', '=', 'actividades.user_id')
+                ->where('actividades.status','pendiente')
+                ->orderBy('actividades.created_at', 'DESC')
+                ->paginate(5);
+        }elseif ($usuario->rol== 'coordinador'){
             $total_incidencias = Incidencias::where('status','pendiente')
                 ->count();
             $total_actividades = Actividades::where('status','pendiente')
@@ -129,11 +151,11 @@ class AdminController extends Controller
     public function hospitales (){
         $usuario = Auth::User();
 
-        if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador'){
-            if ($usuario->rol== 'coordinador'){
-                $hospitales = Hospitales::where('status','activo')->get();
-
-            }elseif($usuario->rol== 'subcoordinador')
+        if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
+            
+            $hospitales = Hospitales::where('status','activo')->get();
+            return view ('admin.hospitales',compact('hospitales'));
+        }elseif($usuario->rol== 'subcoordinador'){
                 $hospitales = Hospitales::where('status','activo')
                     ->where('subcordinador_id',$usuario->id)
                     ->get();
@@ -146,7 +168,7 @@ class AdminController extends Controller
 
          public function subcoordinadores (){
              $usuario = Auth::User();
-             if ($usuario->rol== 'coordinador'){
+             if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
                 $subcordinadores = User::where('rol','subcoordinador')->get();
                  return view ('admin.subcordinadores',compact('subcordinadores'));
          }else{
@@ -154,10 +176,20 @@ class AdminController extends Controller
              }
          }
 
+         public function coordinadoresAd (){
+             $usuario = Auth::User();
+             if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
+                $coordinadoresAd = User::where('rol','coordinadorad')->get();
+                 return view ('admin.coordinadoresAd',compact('coordinadoresAd'));
+         }else{
+                 return redirect()->route('homeIndexPanel');
+             }
+         }
+
          public function enlaces(){
              $usuario = Auth::User();
-             if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador'){
-                 if ($usuario->rol== 'coordinador'){
+             if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'administrador'){
+                 if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
                      $enlaces = DB::table('users as enlace')
                          ->select('subcoordinador.name as subcoordinadorNombre','subcoordinador.apellido as subcoordinadorApellido','enlace.name as nombre','enlace.apellido as apellido','enlace.id as idEnlace','enlace.dias_laborales','enlace.horario_entrada','enlace.horario_salida','enlace.entrada','enlace.salida','enlace.check_in','enlace.turno','enlace.hospital_id')
                          ->join('users AS subcoordinador', 'subcoordinador.id', '=', 'enlace.subcordinador_id')
@@ -208,7 +240,7 @@ class AdminController extends Controller
             ->where('hospitales.subcordinador_id',$usuario->id)
             ->orderBy('censos.created_at', 'DESC')
             ->paginate(10);
-            if ($usuario->rol== 'coordinador'){
+            if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
                     $censos = Censos::orderBy('censos.created_at', 'DESC')->paginate(10);
                 }elseif($usuario->rol== 'subcoordinador'){
                     $censos = $test;
@@ -219,8 +251,8 @@ class AdminController extends Controller
         }
         public function aeropuerto(){
             $usuario = Auth::User();
-            if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
-                if ($usuario->rol== 'coordinador'){
+            if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace' or $usuario->rol== 'administrador'){
+                if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
                     $censos = Censos::paginate(10);
                 }elseif($usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
                     $censos = Censos::where('hospital_id',$usuario->hospital_id)->paginate(10);
@@ -361,7 +393,7 @@ class AdminController extends Controller
 
     public function perfil(){
         $usuario = Auth::User();
-        if ($usuario->rol== 'subcoordinador' or $usuario->rol== 'coordinador' or $usuario->rol== 'enlace' ){
+        if ($usuario->rol== 'subcoordinador' or $usuario->rol== 'coordinador' or $usuario->rol== 'enlace' or $usuario->rol== 'administrador'){
             $hospitales = Hospitales::where('subcordinador_id',$usuario->id)->get();
 
         }
@@ -387,7 +419,7 @@ class AdminController extends Controller
 
     public function createHospital(){
         $usuario = Auth::User();
-        if ($usuario->rol== 'coordinador'){
+        if ($usuario->rol== 'administrador'){
         $usuarios = User::where('rol','subcoordinador')->get();
 
         return view ('admin.hospital.create',compact('usuarios'));
@@ -408,7 +440,7 @@ class AdminController extends Controller
     }
     public function editHospital($id){
         $hospital = Hospitales::find($id);
-        $usuarios = User::where('rol','coordinador')->get();
+        $usuarios = User::where('rol','subcoordinador')->get();
         return view ('admin.hospital.edit',compact('hospital','usuarios'));
     }
     public function updateHospital(Request $request,$id){
@@ -424,7 +456,7 @@ class AdminController extends Controller
         $hospital = Hospitales::find($hospId);
         $subId = $hospital->subcordinador_id;
         $sub = User::find($subId);
-        $enlaces = User::where('hospital_id', $hospId)->get();
+        $enlaces = User::where('hospital_id', $hospId)->where('rol', 'enlace')->get();
         $total_actividades = Actividades::where('status','pendiente')
         ->where('hospital_id', $hospId)
         ->whereMonth('created_at', '=', Carbon::today()->month)
@@ -445,7 +477,7 @@ class AdminController extends Controller
 
     public function createColaborador(){
         $usuario = Auth::User();
-        if ($usuario->rol== 'coordinador'){
+        if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
             $hospitales = Hospitales::where('status','activo')->get();
             $subcoordinador = User::where('rol','subcoordinador')->get();
 

@@ -19,7 +19,7 @@
                 <th>Hora de entrada</th>
                 <th>Hora de salida</th>
                 <th>Subcoordinador</th>
-                @if(Auth::User()->rol === 'coordinador')
+                @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'administrador')
                     <th>Acciones</th>
                     <th></th>
                 @endif
@@ -92,12 +92,14 @@
                     <td>
                         {{ $enlace->subcoordinadorNombre }} {{ $enlace->subcoordinadorApellido }}
                     </td>
-                    @if(Auth::User()->rol === 'coordinador')
+                    @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'administrador')
                         <td>
                             <a style="color: #0FA4AF;" href="{{ route('editEnlace',[$enlace->idEnlace]) }}">
                                 Editar
                             </a>
                         </td>
+                    @endif
+                    @if(Auth::User()->rol === 'administrador')
                         <td>
                             
                         <a href="{{ route('deleteEnlace',[$enlace->idEnlace]) }}">

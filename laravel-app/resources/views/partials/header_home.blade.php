@@ -8,7 +8,7 @@
 
     @else
         <div id="notify" class="uk-navbar-right welcome" style="color: white">
-            @if(Auth::User()->rol === 'subcoordinador')
+            @if(Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'coordinador')
                 <script>
                     $(document).ready(function(){
                         var counter = 9;
@@ -47,9 +47,9 @@
 
             @else
                 @auth
-                    <p style="color: white;margin: 0">
+                    <p style="color: white; margin: 0; font-size: 1vw;">
                     Bienvenido(a) {{Auth::user()->name}} {{Auth::user()->apellido}}<br>
-                    <span style="font-size: 18px; color: gold">
+                    <span style="font-size: 0.8vw; color: gold">
                         
                         Hora de Entrada {{ date('d-m-Y H:i:s', strtotime(Auth::user()->entrada))}}
                     </span>
@@ -66,9 +66,10 @@
                 <ul class="uk-nav uk-dropdown-nav">
                     <li><a href="{{ route('homeIndexPanel') }}">Panel</a></li>
                     <li><a href="{{ route('perfil') }}">Mi Perfil</a></li>
+                    @if(Auth::User()->rol == 'enlace')
                         <li><a href="{{ route('reporteDate') }}">Reporte Quincenal</a></li>
-                        <!-- <li><a href="{{ route('reporteDate') }}">Reporte Diario</a></li> -->
-                    @if(Auth::User()->rol == 'coordinador')
+                    @endif
+                    @if(Auth::User()->rol == 'coordinador' or Auth::User()->rol === 'administrador')
                         <li><a href="{{ route('createColaborador') }}">Agregar un nuevo Colaborador</a></li>
                     @endif
                 </ul>
