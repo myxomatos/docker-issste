@@ -18,8 +18,12 @@
                 <th>Turno</th>
                 <th>Hora de entrada</th>
                 <th>Hora de salida</th>
+                @if(Auth::User()->rol === 'coordinadorad')
+                <div></div>
+                @else
                 <th>Subcoordinador</th>
-                @if(Auth::User()->rol === 'coordinador')
+                @endif
+                @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'administrador')
                     <th>Acciones</th>
                     <th></th>
                 @endif
@@ -28,9 +32,15 @@
             <tbody>
             @foreach($enlaces as $enlace)
                 <tr>
+                    @if(Auth::User()->rol === 'coordinadorad')
+                    <td>
+                        {{ $enlace->name }} {{ $enlace->apellido }}
+                    </td>
+                    @else
                     <td>
                         {{ $enlace->nombre }} {{ $enlace->apellido }}
-                    </td>                    
+                    </td>
+                    @endif              
                     @if ($enlace->hospital_id == 1)
                                 <td class="textTransform">H.R. 1° DE OCTUBRE</td>
                             @elseif ($enlace->hospital_id == 2)
@@ -92,12 +102,14 @@
                     <td>
                         {{ $enlace->subcoordinadorNombre }} {{ $enlace->subcoordinadorApellido }}
                     </td>
-                    @if(Auth::User()->rol === 'coordinador')
+                    @if(Auth::User()->rol === 'coordinador' or Auth::User()->rol === 'administrador')
                         <td>
                             <a style="color: #0FA4AF;" href="{{ route('editEnlace',[$enlace->idEnlace]) }}">
                                 Editar
                             </a>
                         </td>
+                    @endif
+                    @if(Auth::User()->rol === 'administrador')
                         <td>
                             
                         <a href="{{ route('deleteEnlace',[$enlace->idEnlace]) }}">

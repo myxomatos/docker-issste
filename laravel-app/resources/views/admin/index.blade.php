@@ -23,7 +23,11 @@
                     <th>Tarea</th>
                     <th>Tipo de Actividad</th>
                     <th>Notas</th>
+                    @if(Auth::User()->rol === 'coordinadorad')
+                        <div></div>
+                    @else
                     <th>Crear Incidencia</th>
+                    @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -31,7 +35,7 @@
                 @foreach($actividades as $i)
                     <tr>
                         <td class="textTransform">{{ date('d-m-Y H:i:s', strtotime($i->created_at)) }}</td>
-                        @if(Auth::User()->rol === 'subcoordinador' or 'coordinador')
+                        @if(Auth::User()->rol === 'subcoordinador' or 'coordinador' or 'coordinadorad')
                             @if ($i->hospital_id == 1)
                                 <td class="textTransform">H.R. 1° DE OCTUBRE</td>
                             @elseif ($i->hospital_id == 2)
@@ -83,12 +87,15 @@
                         <td class="textTransform">{{ $i->descripcion_actividad }}</td>
                         <td class="textTransform">{{ $i->descripcion_subactividad }}</td>
                         <td class="textTransform">{{ $i->notas }}</td>
-                        
-                        <td>
-                            <li class="uk-text-center">
-                                <a href="{{ route('createIncidencias', $i->id) }}" uk-icon="icon: file-edit"></a>
-                            </li>
-                        </td>
+                        @if(Auth::User()->rol === 'coordinadorad')
+                        <div></div>
+                        @else
+                            <td>
+                                <li class="uk-text-center">
+                                    <a href="{{ route('createIncidencias', $i->id) }}" uk-icon="icon: file-edit"></a>
+                                </li>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
@@ -175,7 +182,7 @@
                             <td class="textTransform">{{ $i->cargar_evidencia }}</td>
                             <td class="textTransform">{{ $i->notas }}</td>
                             <td class="textTransform">{{ $i->asignacion }}</td>
-                                <td class="textTransform">
+                            <td class="textTransform">
                                 <a href="{{ route('showIncidencia', $i->id) }}">
                                     {{ $i->status }}
                                 </a>

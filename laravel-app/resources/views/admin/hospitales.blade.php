@@ -10,7 +10,7 @@
         <h2 class="color_7">
             Hospitales
         </h2>
-    @if(Auth::User()->rol === 'coordinador')
+    @if(Auth::User()->rol === 'administrador')
             <div class="uk-text">
                 <a href="{{ route('createHospital') }}">
                     <button class="button_back">Agregar</button>
@@ -22,7 +22,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Status</th>
-                    @if(Auth::User()->rol === 'coordinador')
+                    @if(Auth::User()->rol === 'administrador')
                     <th>Acciones</th>
                     <th></th>
                     @endif
@@ -40,7 +40,7 @@
                             
                             {{ $hospital->status }}
                         </td>
-                        @if(Auth::User()->rol === 'coordinador')
+                        @if(Auth::User()->rol === 'administrador')
                         <td>
                             <a style="color: #0FA4AF;" href="{{ route('editHospital',[$hospital->id]) }}">
                                 Editar

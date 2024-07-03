@@ -115,6 +115,9 @@ Route::post('/home/admin/colaborador/store', [AdminController::class, 'storeCola
 //Index Subcoordinadores
 Route::get('/home/admin/subcoordinadores', [AdminController::class, 'subcoordinadores'])->middleware('auth')->name('subcoordinadoresIndex');
 
+//Index Coordinadores AD
+Route::get('/home/admin/coordinadoresAd', [AdminController::class, 'coordinadoresAd'])->middleware('auth')->name('coordinadoresAdIndex');
+
 //Index Enlaces
 Route::get('/home/admin/enlaces', [AdminController::class, 'enlaces'])->middleware('auth')->name('enlacesIndex');
 //Edit Enlaces

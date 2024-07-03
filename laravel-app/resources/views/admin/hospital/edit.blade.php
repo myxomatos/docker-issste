@@ -18,7 +18,7 @@
                 </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
+            <div class="uk-card uk-card-default uk-card-body "style="margin: 14px; border: solid #D0D0D0 1px;">
 
                 <form  method="POST" action="{{ route('updateHospital',[$hospital->id]) }}" class="uk-form-stacked">
                     @csrf

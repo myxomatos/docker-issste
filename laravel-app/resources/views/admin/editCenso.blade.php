@@ -13,7 +13,7 @@
                 </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
+            <div class="uk-card uk-card-default uk-card-body "style="margin: 14px;">
             <div class="uk-text-center uk-margin-medium">
                     <a href="{{ route('indexCensos') }}">
                         <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">

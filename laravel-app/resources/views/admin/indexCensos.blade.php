@@ -38,13 +38,17 @@
                             </div>
                         </form>
                 </div>
+                @if(Auth::User()->rol === 'coordinadorad')
+                <div></div>
+                @else
                 <div class="d-block" style="margin-top: 50px;">
-                <a href="{{ route('createCenso') }}">        
-                    <button class="button_back" style="float: center;">
-                        Nuevo Censo
-                    </button>
-                </a>
-            </div>
+                    <a href="{{ route('createCenso') }}">        
+                        <button class="button_back" style="float: center;">
+                            Nuevo Censo
+                        </button>
+                    </a>
+                </div>
+                @endif
             </nav>
             <div class="scroll">
                 <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
@@ -69,9 +73,13 @@
                     @foreach($censos as $i)
                         <tr>
                             <td>
+                            @if(Auth::User()->rol === 'coordinadorad')
+                                <div></div>
+                            @else
                                 <a style="color: red;" href="{{ route('editCenso',[$i->id]) }}">
                                     Editar
                                 </a><br>
+                            @endif
                                 <a style="color: #0FA4AF;" href="{{ route('showHistoricoCenso',[$i->id]) }}">
                                     Ver Historial
                                 </a>

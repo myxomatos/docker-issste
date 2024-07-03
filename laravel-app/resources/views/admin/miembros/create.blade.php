@@ -49,6 +49,8 @@
                                         <option value="enlace">Enlace</option>
                                         <option value="subcoordinador">Subcoordinador</option>
                                         <option value="coordinador">Coordinador</option>
+                                        <option value="coordinador">Coordinador AD</option>
+                                        <option value="coordinador">Administrador</option>
                                     </select>
                                 </div>
                             </div>
