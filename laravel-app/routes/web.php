@@ -66,6 +66,8 @@ Route::post('/actividades/{id}/update', [ActividadesController::class, 'updateAc
 Route::get('/incidencias/create/{id}', [IncidenciasController::class, 'createIncidencias'])->middleware('auth')->name('createIncidencias');
 //Store Incidencias CON SOLO IMAGENES
 Route::post('/incidencias/store/{id}', [IncidenciasController::class, 'storeIncidencias'])->middleware('auth')->name('storeIncidencias');
+//Cancel Incidencias Process
+Route::get('/incidencias/cancel/{id}', [IncidenciasController::class, 'cancelIncidencias'])->middleware('auth')->name('cancelIncidencias');
 //Store Incidencias SIN IMAGENES (Solo datos)
 Route::post('/incidencias/store/datos/{id}', [IncidenciasController::class, 'storeIncidenciasCont'])->middleware('auth')->name('storeIncidenciasCont');
 //Show Incidencia

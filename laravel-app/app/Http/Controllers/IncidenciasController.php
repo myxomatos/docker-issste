@@ -53,6 +53,12 @@ class IncidenciasController extends Controller
         return redirect()->route("homeIndexPanel")->with("success");
     }
 
+    public function cancelIncidencias(Request $request, $actividad_id){
+        $imagenes = ImagenesIncidencias::where('actividad_id',$actividad_id)->get()->each->delete();
+
+        return redirect()->route("homeIndexPanel")->with("success");
+    }
+
     public function storeIncidenciasCont(Request $request, $actividad_id){
 
         $usuario = Auth::User();
@@ -79,26 +85,23 @@ class IncidenciasController extends Controller
     public function editIncidencia($id){
 
         $usuario = Auth::User();
-        if ($usuario->rol== 'subcoordinador'){
+        $subcordinador = DB::table('hospitales')
+            ->select('users.name','users.apellido')
+            ->join ('users','users.id','=','hospitales.subcordinador_id' )
+            ->where('hospitales.id',$usuario->hospital_id)->first();
+        $coordinador = User::where('rol','coordinador')->where('name', 'Abacu') ->get();
+        if ($usuario->rol == 'coordinador' or $usuario->rol== 'subcoordinador'){
             $incidencia = Incidencias::find($id);
             $usuarios = User::where('hospital_id',$incidencia->hospital_id)
                 ->where('rol','enlace')
                 ->get();
-            $coordinador = User::where('rol','coordinador')->where('name', 'Abacu') 
-            ->get();
         }else{
             $usuarios = User::where('hospital_id',$usuario->hospital_id)
                 ->where('rol','enlace')
                 ->get();
         }
 
-
-        $subcordinador = DB::table('hospitales')
-            ->select('users.name','users.apellido')
-            ->join ('users','users.id','=','hospitales.subcordinador_id' )
-            ->where('hospitales.id',$usuario->hospital_id)->first();
-
-        if ($usuario->rol == 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace'){
+        if ($usuario->rol == 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace' or $usuario->rol== 'administrador' or $usuario->rol== 'coordinadorad'){
             $incidencia = Incidencias::find($id);
             $imagenes = ImagenesIncidencias::where('incidencia_id',$id)->get();
             return view('admin.editIncidencia', compact('incidencia','usuarios','subcordinador','imagenes','coordinador'));
