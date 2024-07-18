@@ -2,9 +2,9 @@
 
 @section('content')
     @php
-        setlocale(LC_TIME, 'Spanish');
+        setlocale(LC_TIME, "es_MX.UTF-8");
         $fecha = new Carbon\Carbon($actividades->created_at);
-        $days = $fecha->formatLocalized('%d %B %Y');
+        $days = $fecha->formatLocalized('%d %m %Y');
     @endphp
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" media="all">
     <div uk-grid>
@@ -231,7 +231,7 @@
                                 </div>
                             @endif
 
-                            <a href="{{ route('homeIndexPanel') }}">
+                            <a href="{{route('cancelIncidencias',[$actividades->id])}}"">
                                 <button type="button" class="button_back"style="width: 150px;height: 30px">
                                     Cancelar
                                 </button>

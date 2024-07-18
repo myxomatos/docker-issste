@@ -62,9 +62,8 @@
                         <script>
                         let subjectObject = {
                         "MOVU":{
-                           "Coordinador AD":["Otro"],
-                           "Enlaces":["Otro"],
-                           "Jefatura":["Otro"],
+                           "Supervisiones":["Coordinador AD","Enlaces","Jefatura"],
+                           "Encidencias en el MOVU":["Otro"],
 
                         },
                         "Otra Actividad":{
@@ -77,7 +76,7 @@
                             "Tipo de Orientación": ["Ubicación de Servicios", "Prestaciones", "Trámites", "Procesos"],
                         },
                         "Pláticas": {
-                            "Reportar Pláticas": ["Presentación", "Función de Enlace", "Triage" , "Telefonía" , "Internet" , "Estacion de Carga" , "Reglamento" , "Medidas de Seguridad e Higiene"],
+                            "Reportar Pláticas": ["Otro"],
                         },
                         "Personal en Turno": {
                             "Médicos en Consulta": [1,2,3,4,5,6,7,8,9,10,11,12],
