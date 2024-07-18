@@ -252,8 +252,8 @@
         Dropzone.autoDiscover = false;
 
         var dropzone = new Dropzone('#image-upload', {
-            thumbnailWidth: 800,
-            maxFilesize: 4,
+            thumbnailWidth: 1200,
+            maxFilesize: 100Mb,
             acceptedFiles: ".jpeg,.jpg,.png,.gif",
             dictDefaultMessage: "Arrastra aquí tus imagenes",
 
