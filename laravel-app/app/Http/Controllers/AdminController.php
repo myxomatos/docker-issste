@@ -266,13 +266,13 @@ class AdminController extends Controller
             ->join('users as enlace', 'enlace.id', '=', 'censos.creado_por')
             ->where('hospitales.subcordinador_id',$usuario->id)
             ->orderBy('censos.created_at', 'DESC')
-            ->paginate(10);
+            ->get();
             if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
-                    $censos = Censos::orderBy('censos.created_at', 'DESC')->paginate(10);
+                    $censos = Censos::orderBy('censos.created_at', 'DESC')->get();
                 }elseif($usuario->rol== 'subcoordinador'){
                     $censos = $test;
                 }elseif($usuario->rol== 'enlace' or $usuario->rol== 'coordinadorad'){
-                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->paginate(10);
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->get();
                 }
             return view ('admin.indexCensos',compact('censos'));
         }
