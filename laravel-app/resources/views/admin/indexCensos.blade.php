@@ -219,8 +219,12 @@
                     </a>
                 </div>
                 @endif
-            
+                
             <section class="table__body">
+                <div class="uk-text-center">
+                {{ $censos->links() }}
+{{--                    {!! $censos->links("partials.paginate") !!}--}}
+                </div>
                 <table>
                     <thead>
                     <tr>
