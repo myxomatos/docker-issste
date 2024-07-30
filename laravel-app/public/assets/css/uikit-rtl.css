@@ -933,7 +933,7 @@ a.uk-link-reset,
     /* 1 */
     font-size: 0.75rem;
     font-weight: normal;
-    color: #999;
+    color: #ffffff;
     text-transform: uppercase;
 }
 /* Cell
@@ -941,6 +941,7 @@ a.uk-link-reset,
 .uk-table td {
     padding: 16px 12px;
     vertical-align: top;
+    
 }
 /*
  * Remove margin from the last-child
@@ -958,7 +959,7 @@ a.uk-link-reset,
 .uk-table caption {
     font-size: 0.875rem;
     text-align: right;
-    color: #999;
+    color: white;
 }
 /* Alignment modifier
  ========================================================================== */
@@ -3567,7 +3568,7 @@ select.uk-form-width-xsmall {
  * Adopts `uk-nav`
  ========================================================================== */
 .uk-dropdown-nav {
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 /*
  * Items
