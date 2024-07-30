@@ -1,32 +1,40 @@
 @extends('layout.home')
 
 @section('content')
-
+<style>
+    thead th {
+            top: 0;
+            left: 0;
+            background-color: #36304a;
+            cursor: pointer;
+            color: white;
+        }
+</style>
 <div uk-grid>
     <div class="uk-visible@m uk-width-1-6@m">
         @include('partials.sidebar')
     </div>
     <div class="uk-width-expand@m uk-margin-top uk-margin-right uk-margin-bottom">
         <div>
-            <div class="uk-card uk-card-default uk-card-body card_counter uk-text-center">
-                <p class="color_7" style="font-size: 22px;">Total de Actividades {{ $total_actividades }}</p>
+            <div class="uk-text-center">
+                <p class="color_7" style="font-size: 2.5vh;">Total de Actividades {{ $total_actividades }}</p>
                 
             </div>
 
-            <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
+            <table class="uk-table uk-table-striped" style="font-size: 1.4vh;">
                 <thead>
                 <tr>
-                    <th>Fecha / Hora</th>
-                    <th>Hospital</th>
-                    <th>Nombre</th>
-                    <th>Actividad</th>
-                    <th>Tarea</th>
-                    <th>Tipo de Actividad</th>
-                    <th>Notas</th>
+                    <th style="color: white;">Fecha / Hora</th>
+                    <th style="color: white;">Hospital</th>
+                    <th style="color: white;">Nombre</th>
+                    <th style="color: white;">Actividad</th>
+                    <th style="color: white;">Tarea</th>
+                    <th style="color: white;">Tipo de Actividad</th>
+                    <th style="color: white;">Notas</th>
                     @if(Auth::User()->rol === 'coordinadorad')
                         <div></div>
                     @else
-                    <th>Crear Incidencia</th>
+                    <th style="color: white;">Crear Incidencia</th>
                     @endif
                 </tr>
                 </thead>
@@ -110,23 +118,24 @@
             <div></div>
             @endif
         </div>
+        <hr>
         <div>
             <div>
-                <div class="uk-card uk-card-default uk-card-body card_counter uk-text-center">
-                  <p class="color_7" style="font-size: 22px;">Total de Incidencias {{ $total_incidencias }}</p>
+                <div class="uk-text-center">
+                  <p class="color_7" style="font-size: 2.5vh;">Total de Incidencias {{ $total_incidencias }}</p>
                     
                 </div>
-                <table class="uk-table uk-table-striped" style="font-size: 0.75vw;">
+                <table class="uk-table uk-table-striped" style="font-size: 1.4vh;">
                     <thead>
                     <tr>
-                        <th>Fecha / Hora</th>
-                        <th>Usuario</th>
-                        <th>Hospital</th>
-                        <th>Nombre Evidencia</th>
-                        <th>Archivo Evidencia</th>
-                        <th>Notas</th>
-                        <th>Asignado a</th>
-                        <th>Status</th>
+                        <th style="color: white;">Fecha / Hora</th>
+                        <th style="color: white;">Usuario</th>
+                        <th style="color: white;">Hospital</th>
+                        <th style="color: white;">Nombre Evidencia</th>
+                        <th style="color: white;">Archivo Evidencia</th>
+                        <th style="color: white;">Notas</th>
+                        <th style="color: white;">Asignado</th>
+                        <th style="color: white;">Status</th>
 
                     </tr>
                     </thead>

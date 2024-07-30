@@ -154,6 +154,9 @@ Route::post('/home/admin/censo/update/{id}', [AdminController::class, 'updateCen
 //Perfil
 Route::get('/home/user', [AdminController::class, 'perfil'])->middleware('auth')->name('perfil');
 
+//Busqueda de Pacientes
+Route::get('/home/admin/pacientes', [AdminController::class, 'indexPacientes'])->middleware('auth')->name('indexPacientes');
+
 //Admin General por Hospitalf
 Route::view('/admin/general', "admin.indexGeneral")->middleware('auth')->name('indexGeneral');
 

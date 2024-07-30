@@ -217,7 +217,7 @@ class AdminController extends Controller
                          ->join('users AS subcoordinador', 'subcoordinador.id', '=', 'enlace.subcordinador_id')
                          ->where('subcoordinador.id', '<>', 'enlace.id')
                          ->where('enlace.rol', '=', 'enlace')
-                         ->paginate(12);
+                         ->get();
              
              
                      
@@ -229,13 +229,13 @@ class AdminController extends Controller
                          ->where('subcoordinador.id', '<>', 'enlace.id')
                          ->where('enlace.subcordinador_id',$usuario->id)
                          ->where('enlace.rol', '=', 'enlace')
-                         ->paginate(12);
+                         ->get();
 
                  }elseif($usuario->rol== 'coordinadorad'){
                     $coordinadorad = Auth::User();
                     $enlaces = User::where('rol','enlace')
                         ->where('hospital_id',$coordinadorad->hospital_id)
-                        ->paginate(12);
+                        ->get();
                  }
 
                      
@@ -266,16 +266,22 @@ class AdminController extends Controller
             ->join('users as enlace', 'enlace.id', '=', 'censos.creado_por')
             ->where('hospitales.subcordinador_id',$usuario->id)
             ->orderBy('censos.created_at', 'DESC')
-            ->paginate(50);
+            ->get();
             if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
-                    $censos = Censos::orderBy('censos.created_at', 'DESC')->paginate(50);
+                    $censos = Censos::orderBy('censos.created_at', 'DESC')->get();
                 }elseif($usuario->rol== 'subcoordinador'){
                     $censos = $test;
                 }elseif($usuario->rol== 'enlace' or $usuario->rol== 'coordinadorad'){
-                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->paginate(50);
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->get();
                 }
             return view ('admin.indexCensos',compact('censos'));
         }
+
+        public function indexPacientes(){
+            $pacientes = Censos::orderBy('censos.created_at', 'DESC')->get();
+            return view ('admin.indexPacientes',compact('pacientes'));
+        }
+
         public function aeropuerto(){
             $usuario = Auth::User();
             if ($usuario->rol== 'coordinador' or $usuario->rol== 'subcoordinador' or $usuario->rol== 'enlace' or $usuario->rol== 'administrador' or $usuario->rol== 'coordinadorad'){
