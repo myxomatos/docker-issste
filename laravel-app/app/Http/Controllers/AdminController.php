@@ -260,19 +260,20 @@ class AdminController extends Controller
         public function indexCensos(){
             $usuario = Auth::User();
             $test= DB::table('censos')
-            ->select('censos.id','censos.created_at','censos.nombre','censos.apellidos','censos.diagnostico','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','censos.cama','censos.rfc','censos.genero','censos.edad','censos.tipo_derechohabiente','censos.tipo_hospitalizacion','censos.hospital_id','censos.status','censos.dato_salud')
+            ->select('censos.id','censos.created_at','censos.nombre','censos.apellidos','censos.diagnostico','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','censos.cama','censos.rfc','censos.genero','censos.edad','censos.tipo_derechohabiente','censos.tipo_hospitalizacion','censos.hospital_id','censos.tipo_egreso','censos.status','censos.dato_salud')
             ->join('hospitales', 'hospitales.id', '=', 'censos.hospital_id')
             ->join('users as subcordinador', 'subcordinador.id', '=', 'hospitales.subcordinador_id')
             ->join('users as enlace', 'enlace.id', '=', 'censos.creado_por')
             ->where('hospitales.subcordinador_id',$usuario->id)
             ->orderBy('censos.created_at', 'DESC')
-            ->get();
+            ->whereNull('censos.tipo_egreso')
+            ->paginate(150);
             if ($usuario->rol== 'coordinador' or $usuario->rol== 'administrador'){
-                    $censos = Censos::orderBy('censos.created_at', 'DESC')->get();
+                    $censos = Censos::orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(150);
                 }elseif($usuario->rol== 'subcoordinador'){
                     $censos = $test;
                 }elseif($usuario->rol== 'enlace' or $usuario->rol== 'coordinadorad'){
-                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->get();
+                    $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(150);
                 }
             return view ('admin.indexCensos',compact('censos'));
         }
@@ -392,29 +393,23 @@ class AdminController extends Controller
         public function updateCenso(Request $request, $id){
             $usuario = Auth::User();
             $censos = Censos::find($id);
-            if($request->tipo_egreso != ''){
-                $historico = HistoricoCenso::where('censo_id',$id)->delete();
-                $censos = Censos::find($id);
-                $censos->delete();
-
-            }else{
-                $censos->nombre = $request->nombre;
-                $censos->apellidos = $request->apellidos;
-                $censos->genero = $request->genero;
-                $censos->edad = $request->edad;
-                $censos->hospital_id = $request->hospital;
-                $censos->rfc = $request->rfc;
-                $censos->telefono = $request->telefono;
-                $censos->tipo_derechohabiente = $request->tipo_derechohabiente;
-                $censos->diagnostico = $request->diagnostico;
-                $censos->status = $request->status;
-                $censos->cama = $request->cama;
-                $censos->doctor = $request->doctor;
-                $censos->folio = $request->folio;
-                $censos->dato_salud = $request->dato_salud;
-                $censos->created_at = $request->fecha_ingreso;
-                $censos->tipo_egreso = $request->tipo_egreso;
-                $censos->tipo_hospitalizacion = $request->tipo_hospitalizacion;
+            $censos->nombre = $request->nombre;
+            $censos->apellidos = $request->apellidos;
+            $censos->genero = $request->genero;
+            $censos->edad = $request->edad;
+            $censos->hospital_id = $request->hospital;
+            $censos->rfc = $request->rfc;
+            $censos->telefono = $request->telefono;
+            $censos->tipo_derechohabiente = $request->tipo_derechohabiente;
+            $censos->diagnostico = $request->diagnostico;
+            $censos->status = $request->status;
+            $censos->cama = $request->cama;
+            $censos->doctor = $request->doctor;
+            $censos->folio = $request->folio;
+            $censos->dato_salud = $request->dato_salud;
+            $censos->created_at = $request->fecha_ingreso;
+            $censos->tipo_egreso = $request->tipo_egreso;
+            $censos->tipo_hospitalizacion = $request->tipo_hospitalizacion;
 
             DB::table('historico_censo')
                 ->insert(array("censo_id" => $id,
@@ -426,7 +421,6 @@ class AdminController extends Controller
                 $censos->updated_at = $current_date_time = Carbon::now()->toDateTimeString();
 
             $censos->save();
-        }
 
         return redirect()->route('indexCensos');
     }

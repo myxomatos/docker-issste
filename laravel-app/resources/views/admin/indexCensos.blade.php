@@ -218,7 +218,14 @@
                 @endif
                 
             <section class="table__body">
-                
+                @if(count($censos) !== 0)
+                <div class="uk-text-center">
+                {{ $censos->links() }}
+    {{--                    {!! $censos->links("partials.paginate") !!}--}}
+                </div>
+                @else
+                <div></div>
+                @endif
                 <table>
                     <thead>
                     <tr>
