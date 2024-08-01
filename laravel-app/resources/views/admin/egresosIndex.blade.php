@@ -193,32 +193,46 @@
                     </a>
                 
                 <section class="table__header">
-                    <h1 class="color_7">
-                            Búsqueda de pacientes en Hospitales
-                    </h1>
-                    
-                    <div class="input-group">
-                        <input type="search" placeholder="Buscar paciente...">
-                        <img src="../../public/img/search.png" alt="">
-                    </div>
-                </section>
-            @if(count($pacientes) !== 0)
-            <div class="uk-text-center">
-            {{ $pacientes->links() }}
-    {{--                   {!! $pacientes->links("partials.paginate") !!}--}}
-            </div>
-            @else
-            <div></div>
-            @endif
-            <section class="table__body">
+                <h1 class="color_7">
+                        Egresos
+                </h1>
                 
+                <div class="input-group">
+                    <input type="search" placeholder="Buscar censo...">
+                    <img src="../../public/img/search.png" alt="">
+                </div>
+                </section>
+                @if(Auth::User()->rol === 'coordinadorad')
+                <div></div>
+                @else
+                <div>
+                    <a href="{{ route('createCenso') }}">        
+                        <button class="button_back" style="margin-left: 20px;">
+                            Nuevo Censo
+                        </button>
+                    </a>
+                </div>
+                @endif
+                
+            <section class="table__body">
+                @if(count($egresos) !== 0)
+                <div class="uk-text-center">
+                {{ $egresos->links() }}
+    {{--                    {!! $egresos->links("partials.paginate") !!}--}}
+                </div>
+                @else
+                <div></div>
+                @endif
                 <table>
                     <thead>
                     <tr>
+                        <th></th>
                         <th>Ingreso <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Nombre <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Cama <span class="icon-arrow">&UpArrow;</span></th>
                         <th>RFC <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Genero <span class="icon-arrow">&UpArrow;</span></th>
+                        <th>Fecha de nacimiento <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Tipo Derechohabiente <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Tipo Hospitalizacion <span class="icon-arrow">&UpArrow;</span></th>
                         <th>Hospital <span class="icon-arrow">&UpArrow;</span></th>
@@ -228,8 +242,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($pacientes as $i)
+                    @foreach($egresos as $i)
                         <tr>
+                            <td>
+                                <a style="color: #0FA4AF;" href="{{ route('showHistoricoEgreso',[$i->id]) }}">
+                                    Ver Historial
+                                </a>
+
+                            </td>
                             <td class="textTransform">
                                 {{ date('d-m-Y H:i:s', strtotime($i->created_at)) }}
                             </td>
@@ -237,10 +257,16 @@
                                 {{ $i->nombre }} {{ $i->apellidos }}
                             </td>
                             <td>
+                                {{ $i->cama }}
+                            </td>
+                            <td>
                                 {{ $i->rfc }}
                             </td>
                             <td class="textTransform">
                                 {{ $i->genero }}
+                            </td>
+                            <td>
+                                {{ $i->edad }}
                             </td>
                             <td>
                                 {{ $i->tipo_derechohabiente }}
@@ -357,3 +383,4 @@
 
 
 @endsection
+

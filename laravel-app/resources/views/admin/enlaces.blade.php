@@ -81,28 +81,30 @@
             visibility: visible;
         }
 
-
         table {
-            width: 100%;
-        }
-
-        td img {
-            width: 36px;
-            height: 36px;
-            margin-right: .5rem;
-            border-radius: 50%;
-
-            vertical-align: middle;
-        }
-
-        table, th, td {
             border-collapse: collapse;
             padding: .5rem;
             text-align: left;
+            width: 100%;
         }
 
+        th {
+            border-collapse: collapse;
+            padding: .4rem;
+            text-align: left;
+            font-size: .85vw;
+        }
+
+        td {
+            border-collapse: collapse;
+            padding: .2rem;
+            text-align: left;
+            font-size: .8vw;
+        }
+
+
+        
         thead th {
-            position: sticky;
             top: 0;
             left: 0;
             background-color: #36304a;
@@ -116,7 +118,7 @@
 
         tbody tr {
             --delay: .1s;
-            transition: .5s ease-in-out var(--delay), background-color 0s;
+            transition: .1s ease-in-out var(--delay), background-color 0s;
         }
 
         tbody tr.hide {
@@ -131,20 +133,20 @@
         tbody tr td,
         tbody tr td p,
         tbody tr td img {
-            transition: .2s ease-in-out;
+            transition: .1s ease-in-out;
         }
 
         tbody tr.hide td,
         tbody tr.hide td p {
             padding: 0;
             font: 0 / 0 sans-serif;
-            transition: .2s ease-in-out .5s;
+            transition: .1s ease-in-out .1s;
         }
 
         tbody tr.hide td img {
             width: 0;
             height: 0;
-            transition: .2s ease-in-out .5s;
+            transition: .1s ease-in-out .1s;
         }
         @media (max-width: 1000px) {
             td:not(:first-of-type) {
@@ -160,7 +162,7 @@
             font-size: 1.3rem;
             
             margin-left: .5rem;
-            transition: .2s ease-in-out;
+            transition: .1s ease-in-out;
         }
 
 

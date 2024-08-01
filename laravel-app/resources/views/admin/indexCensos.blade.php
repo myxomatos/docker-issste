@@ -1,7 +1,7 @@
 @extends('layout.home')
 
 @section('content')
-    <style>
+<style>
         main.table {
             width: 100%;
             height: 90vh;
@@ -80,32 +80,29 @@
             visibility: visible;
         }
 
-
-        table {
-            width: 100%;
-        }
-
         table {
             border-collapse: collapse;
             padding: .5rem;
             text-align: left;
+            width: 100%;
         }
 
         th {
             border-collapse: collapse;
             padding: .4rem;
             text-align: left;
-            font-size: 1.6vh;
+            font-size: .85vw;
         }
 
         td {
             border-collapse: collapse;
             padding: .2rem;
             text-align: left;
-            font-size: 1.4vh;
+            font-size: .8vw;
         }
 
 
+        
         thead th {
             top: 0;
             left: 0;

@@ -279,8 +279,13 @@ class AdminController extends Controller
         }
 
         public function indexPacientes(){
-            $pacientes = Censos::orderBy('censos.created_at', 'DESC')->get();
+            $pacientes = Censos::orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(150);
             return view ('admin.indexPacientes',compact('pacientes'));
+        }
+
+        public function egresosIndex(){
+            $egresos = Censos::orderBy('censos.created_at', 'DESC')->where('censos.tipo_egreso', '!=', '')->paginate(150);
+            return view ('admin.egresosIndex',compact('egresos'));
         }
 
         public function aeropuerto(){
@@ -449,6 +454,19 @@ class AdminController extends Controller
             ->get();
 
         return view ('admin.historicoCenso',compact('censo','historial'));
+    }
+
+    public function historicoEgreso($id){
+        $usuario = Auth::User();
+        $censo = Censos::find($id);
+        $historial = DB::table('historico_censo')
+            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','users.name', 'users.apellido','historico_censo.created_at as fecha_coment')
+            ->join('users', 'users.id', '=', 'historico_censo.creado_por')
+            ->join('censos', 'censos.id', '=', 'historico_censo.censo_id')
+            ->where('historico_censo.censo_id',$id)
+            ->get();
+
+        return view ('admin.historicoEgreso',compact('censo','historial'));
     }
 
     public function createHospital(){

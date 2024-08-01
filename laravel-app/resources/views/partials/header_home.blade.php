@@ -1,7 +1,5 @@
 <nav class="uk-navbar-container" uk-navbar>
-    <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo logo" href="{{ route('homeIndexPanel') }}"></a>
-    </div>
+    <img style ="width: 40vw; " src="../../../public/img/Screenshot2024.png" alt="">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
     @if(\Request::is('home/admin/aeropuerto') )

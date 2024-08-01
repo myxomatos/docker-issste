@@ -284,7 +284,7 @@ privacidad, a través de la liga <a style="color: blue;"href="#">http://www.isss
         </div>
 
         <div class="uk-modal-footer uk-text-right">
-            <img src="../../../public/img/Screenshot 2023-05-17 at 22.14.22.png" alt="">
+            <img src="../../../public/img/Screenshot2024.png" alt="">
             <a href="{{ route('indexCensos') }}">
                 <button class="button_back_2" type="button">Cancelar</button>
             </a>

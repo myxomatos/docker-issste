@@ -157,13 +157,22 @@ Route::get('/home/user', [AdminController::class, 'perfil'])->middleware('auth')
 //Busqueda de Pacientes
 Route::get('/home/admin/pacientes', [AdminController::class, 'indexPacientes'])->middleware('auth')->name('indexPacientes');
 
+//Egresos
+Route::get('/home/admin/egresos', [AdminController::class, 'egresosIndex'])->middleware('auth')->name('egresosIndex');
+
+//Show Historico Egreso
+Route::get('/home/admin/egresos/{id}/historico', [AdminController::class, 'historicoEgreso'])->middleware('auth')->name('showHistoricoEgreso');
+
 //Admin General por Hospitalf
 Route::view('/admin/general', "admin.indexGeneral")->middleware('auth')->name('indexGeneral');
 
 //Show Historico Censo
 Route::get('/home/admin/censo/{id}/historico', [AdminController::class, 'historicoCenso'])->middleware('auth')->name('showHistoricoCenso');
+
+
 //INDEX TRUNCATE
 Route::get('/home/admin/admin', [\App\Http\Controllers\CronJobController::class, 'Indextruncate'])->middleware('auth')->name('IndexTruncateAdmin');
+
 //TRUNCATE
 Route::get('/home/admin/truncate', [\App\Http\Controllers\CronJobController::class, 'truncate'])->middleware('auth')->name('TruncateAdmin');
 
