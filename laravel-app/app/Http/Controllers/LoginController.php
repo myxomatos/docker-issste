@@ -38,11 +38,8 @@ class LoginController extends Controller
 
            $request->session()->regenerate();
 
-           if (Auth::user()->rol == 'general'){
-               return redirect()->intended(route('indexGeneral'));
-           }else{
-               return redirect()->intended(route('homeIndexPanel'));
-           }
+           return redirect()->intended(route('homeIndexPanel'));
+           
 
 
        }else{

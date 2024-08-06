@@ -9,7 +9,6 @@
 
 {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
     <title>@yield('title', 'SIRAESU')</title>
-    <link rel="icon" type="image/x-icon" href="../public/img/icon/siraesu.ico">
     <meta name="description" content="@yield('description', '')" />
     <meta name="keywords" content="@yield('keywords', '')">
 
