@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class ActividadesController extends Controller
 {
-    public function index(){
-        $actividad = Actividades::where('status','activo')->get();
-
-        return view('actividades', compact('actividad'));
-    }
-
     public function showActividades($id){
         $user = Auth::User();
         $actividades = Actividades::find($id);
@@ -29,10 +23,8 @@ class ActividadesController extends Controller
 
     public function createActividades(){
         $user = Auth::User();
-        $usuarios = User::where('hospital_id',$user->hospital_id)->where('rol','!=','general')->get();
-        $actividad = Actividades::all();
 
-        return view ('createActividades',compact('actividad','usuarios','user'));
+        return view ('createActividades',compact('user'));
     }
 
     public function storeActividades(Request $request){

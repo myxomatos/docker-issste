@@ -159,23 +159,11 @@
                                     <option value="pendiente">Pendiente</option>
                                 </select>
                             </div>
-                            @if(Auth::User()->rol === 'general')
-                                <div class="uk-margin">
-                                    <label class="uk-form-label" for="form-stacked-select" style="font-size: 18px">Nombre del Usuario</label>
-                                    <div class="uk-form-controls">
-                                        <select required name="nombre_usuario" class="uk-select" id="nombre">
-                                            @foreach($usuarios as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }} {{ $user->apellido }}</option>
-                                            @endforeach
-
-                                        </select>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="uk-margin uk-form-width-large uk-hidden">
-                                    <input value="{{ $user->id }}" name="nombre_usuario" class="uk-textarea" rows="5" placeholder="Escribir notas"></input>
-                                </div>
-                            @endif
+                            
+                            <div class="uk-margin uk-form-width-large uk-hidden">
+                                <input value="{{ $user->id }}" name="nombre_usuario" class="uk-textarea" rows="5" placeholder="Escribir notas"></input>
+                            </div>
+                            
 
                             <div class="uk-margin uk-text-center uk-margin-medium-top">
                             <a href="{{ route('homeIndexPanel') }}">

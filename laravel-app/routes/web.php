@@ -49,9 +49,6 @@ Route::view('/login', "login")->name('login');
 Route::view('/home', "home")->middleware('auth')->name('home');
 
 
-
-//Actividades
-Route::get('/actividades', [ActividadesController::class, 'index'])->name('actividades');
 //Create Actividades
 Route::get('/actividades/create', [ActividadesController::class, 'createActividades'])->name('createActividades');
 //Store Actividades
@@ -162,9 +159,6 @@ Route::get('/home/admin/egresos', [AdminController::class, 'egresosIndex'])->mid
 
 //Show Historico Egreso
 Route::get('/home/admin/egresos/{id}/historico', [AdminController::class, 'historicoEgreso'])->middleware('auth')->name('showHistoricoEgreso');
-
-//Admin General por Hospitalf
-Route::view('/admin/general', "admin.indexGeneral")->middleware('auth')->name('indexGeneral');
 
 //Show Historico Censo
 Route::get('/home/admin/censo/{id}/historico', [AdminController::class, 'historicoCenso'])->middleware('auth')->name('showHistoricoCenso');
