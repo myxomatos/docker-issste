@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" media="all">
     <div uk-grid>
         <div class="uk-visible@m uk-width-1-6@m">
-            @include('partials.sidebarsub')
+            @include('partials.sidebar')
         </div>
         <div class="uk-width-expand@m padd_style">
             <div class="uk-text-center">

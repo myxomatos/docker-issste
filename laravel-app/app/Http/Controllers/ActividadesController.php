@@ -13,18 +13,17 @@ use Illuminate\Support\Facades\DB;
 
 class ActividadesController extends Controller
 {
-    public function showActividades($id){
-        $user = Auth::User();
-        $actividades = Actividades::find($id);
-
-
-        return view ('showActividades',compact('actividades', 'user'));
-    }
 
     public function createActividades(){
         $user = Auth::User();
 
-        return view ('createActividades',compact('user'));
+        if(!$user){
+            return redirect(route('login'));
+        }else{
+
+            return view ('createActividades',compact('user'));
+        }
+
     }
 
     public function storeActividades(Request $request){
@@ -56,14 +55,7 @@ class ActividadesController extends Controller
         $reportes->save();
 
         return redirect()->route("homeIndexPanel")->with("success");
-    }
 
-    public function updateActividades(Request $request, $id){
-        $actividades = Actividades::find($id);
-        $actividades->status = $request->status;
-        $actividades->save();
-
-        return redirect()->route("homeIndexPanel")->with("success");
     }
 
     public function reporteDate($inicio = null, $fin = null)
