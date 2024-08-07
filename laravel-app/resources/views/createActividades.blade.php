@@ -4,7 +4,7 @@
 
     <div uk-grid>
         <div class="uk-visible@m uk-width-1-6@m">
-            @include('partials.sidebarsub')
+            @include('partials.sidebar')
         </div>
         <div class="uk-width-expand@m padd_style" style="margin: 150px;">
             <div class="uk-text-center">
@@ -152,7 +152,7 @@
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-stacked-text" style="font-size: 18px">Notas</label>
                             <div class="uk-margin uk-form-width-large">
-                            <textarea name="notas" class="uk-textarea" rows="5" placeholder="Notas o comentarios"></textarea>
+                            <textarea required name="notas" class="uk-textarea" rows="5" placeholder="Notas ó comentarios"></textarea>
                             </div>
                             <div class="uk-form-controls uk-hidden">
                                 <select required name="status" class="uk-select" id="form-stacked-select">
