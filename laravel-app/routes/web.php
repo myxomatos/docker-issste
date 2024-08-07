@@ -41,23 +41,14 @@ Route::get('/', function () {
    return view('login');
 });
 
-// Registro
-Route::view('/registro', "register")->name('registro');
 // Login
 Route::view('/login', "login")->name('login');
-// Home
-Route::view('/home', "home")->middleware('auth')->name('home');
-
 
 //Create Actividades
 Route::get('/actividades/create', [ActividadesController::class, 'createActividades'])->name('createActividades');
+
 //Store Actividades
 Route::post('/actividades/store', [ActividadesController::class, 'storeActividades'])->middleware('auth')->name('storeActividades');
-//Show Actividades
-Route::get('/actividades/{id}', [ActividadesController::class, 'showActividades'])->middleware('auth')->name('showActividades');
-//Update Actividades
-Route::post('/actividades/{id}/update', [ActividadesController::class, 'updateActividades'])->middleware('auth')->name('updateActividades');
-
 
 //Create Incidencias
 Route::get('/incidencias/create/{id}', [IncidenciasController::class, 'createIncidencias'])->middleware('auth')->name('createIncidencias');

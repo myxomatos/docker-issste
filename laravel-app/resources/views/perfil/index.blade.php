@@ -4,7 +4,7 @@
 
     <div uk-grid>
         <div class="uk-visible@m uk-width-1-6@m">
-            @include('partials.sidebarsub')
+            @include('partials.sidebar')
         </div>
         <div class="uk-width-expand@m uk-margin-large-top uk-margin-large-bottom">
             <a href="{{ route('homeIndexPanel') }}">
