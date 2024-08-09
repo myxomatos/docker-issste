@@ -117,7 +117,6 @@
                                         <option value="{{ $censo->dato_salud }}">{{ $censo->dato_salud }}</option>
                                         <option value="Valoración">Valoración</option>
                                         <option value="Internamiento">Internamiento</option>
-                                        <option value="Egreso a Domicilio">Egreso a Domicilio</option>
                                         <option value="Pasa a Piso">Pasa a Piso</option>
                                         <option value="Quirófano">Quirófano</option>
                                     </select>
@@ -126,7 +125,7 @@
                             <div class="uk-margin">
                             <label class="uk-form-label" for="form-stacked-text">Fecha de Ingreso</label>
                                 <div class="uk-form-controls">
-                                    <input  onfocus="(this.type='date')"  value="{{ $censo->created_at }}" required name="fecha_ingreso" class="uk-input" id="form-stacked-text" type="text" placeholder="date">
+                                    <input  readonly  value="{{ $censo->created_at }}" required name="fecha_ingreso" class="uk-input" id="form-stacked-text" type="text" placeholder="date">
                                 </div>
                             </div>
                             <div class="uk-margin">
@@ -178,25 +177,32 @@
                                 </div>
                             </div>
                             <div class="uk-margin">
+                                
                                 <label class="uk-form-label" for="form-stacked-select">Tipo Hopitalización *</label>
                                 <div class="uk-form-controls">
                                     <select required name="tipo_hospitalizacion" class="uk-select" id="form-stacked-select">
                                         <option value="{{ $censo->tipo_hospitalizacion }}">{{ $censo->tipo_hospitalizacion }}</option>
-                                        <option value="Choque">Choque</option>
                                         <option value="Aislado">Aislado</option>
+                                        <option value="Banca">Banca</option>
                                         <option value="Cama">Cama</option>
                                         <option value="Camilla">Camilla</option>
-                                        <option value="Filtro">Filtro</option>
+                                        <option value="Choque">Choque</option>
                                         <option value="Corta_Estancia">Corta_Estancia</option>
-                                        <option value="Reposet">Reposet</option>
-                                        <option value="Solucion">Solucion</option>
-                                        <option value="Silla">Silla</option>
-                                        <option value="Banca">Banca</option>
-                                        <option value="Pediatria">Pediatria</option>
+                                        <option value="Filtro">Filtro</option>
                                         <option value="Ginecologia">Ginecologia</option>
-
+                                        <option value="Reposet">Reposet</option>
+                                        <option value="Pediatria">Pediatria</option>
+                                        <option value="Silla">Silla</option>
+                                        <option value="Solucion">Solucion</option>
+                                        <option value="Tococirugia">Tococirugia</option>
+                                        
                                     </select>
                                 </div>
+                            </div>
+                            <div class="uk-margin">
+                                    <button  onclick="myFunction()" type="button" class="button_back_2" style="margin-top: 35px;">
+                                        Egresar <span class="uk-margin-small-left" uk-icon="icon: pull"></span>
+                                    </button>
                             </div>
                         </div>
                     </div>
@@ -212,8 +218,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div id="myDIV" style="display: none;">
                             <div class="uk-margin  uk-margin-medium-top">
+                                
                                 <label class="uk-form-label" for="form-stacked-select">Tipo de Egreso</label>
                                 <div class="uk-form-controls">
                                     <select name="tipo_egreso" class="uk-select" id="form-stacked-select">
@@ -234,20 +241,19 @@
 
                     </div>
 
-                    <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
-                        <div>
-                            <div class="uk-margin  uk-margin-medium-top" style="text-align: right">
+                        <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
+                        
+                            <div class="uk-margin  uk-margin-medium-top" style="text-align: right;">
                                 <a href="{{ route('indexCensos') }}">
-                                    <span class="button_back"style="padding: 1px 38px 6px 38px;">
+                                    <span class="button_back" style="padding: 6px 38px 6px 38px;">
                                         Cancelar
                                     </span>
                                 </a>
 
                             </div>
-                        </div>
                         <div>
-                            <div class="uk-margin uk-margin-medium-top"style="text-align: left">
-                                <button type="submit" class="button_back"style="width: 150px;height: 30px">
+                            <div class="uk-margin uk-margin-medium-top" style="text-align: left">
+                                <button type="submit" class="button_back" style="width: 150px;height: 30px">
                                     Guardar
                                 </button>
                             </div>
@@ -260,7 +266,16 @@
 
         </div>
     </div>
-
+    <script>
+        function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        }
+    </script>
 
 
 @endsection

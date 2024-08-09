@@ -249,7 +249,7 @@
                                 <div></div>
                             @else
                                 <a style="color: red;" href="{{ route('editCenso',[$i->id]) }}">
-                                    Editar
+                                    Actualizar Paciente
                                 </a><br>
                             @endif
                                 <a style="color: #0FA4AF;" href="{{ route('showHistoricoCenso',[$i->id]) }}">

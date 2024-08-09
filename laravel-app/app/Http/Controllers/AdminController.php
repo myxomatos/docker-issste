@@ -287,6 +287,33 @@ class AdminController extends Controller
             $egresos = Censos::orderBy('censos.created_at', 'DESC')->where('censos.tipo_egreso', '!=', '')->paginate(150);
             return view ('admin.egresosIndex',compact('egresos'));
         }
+        
+        public function reingreso($id){
+            $paciente = Censos::find($id);
+            $usuario = Auth::User();
+            $hospitalH = $usuario->hospital_id;
+            $paciente->cama = null;
+            $paciente->tipo_egreso = null;
+            $paciente->status = null;
+            $paciente->tipo_hospitalizacion = null;
+            $paciente->dato_salud = null;
+            $paciente->folio = null;
+            $paciente->created_at = Carbon::now()->toDateTimeString();
+            $paciente->hospital_id = $hospitalH;
+            $paciente->save();
+            $comment = 'Reingreso';
+
+            DB::table('historico_censo')
+                ->insert(array("censo_id" => $id,
+                    "creado_por" => $usuario->id,
+                    "comentario" => $comment,
+                    'created_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
+                    'updated_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
+                    "egreso" => null,
+                    "hospital" => $hospitalH,
+                ));
+            return view ('admin.pruebas',compact('paciente'));
+        }
 
         public function aeropuerto(){
             $usuario = Auth::User();
@@ -422,6 +449,8 @@ class AdminController extends Controller
                     "comentario" => $request->comentario,
                     'created_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
                     'updated_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
+                    "egreso" => $request->tipo_egreso,
+                    "hospital" => $request->hospital,
                 ));
                 $censos->updated_at = $current_date_time = Carbon::now()->toDateTimeString();
 
@@ -447,7 +476,7 @@ class AdminController extends Controller
         $usuario = Auth::User();
         $censo = Censos::find($id);
         $historial = DB::table('historico_censo')
-            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','users.name', 'users.apellido','historico_censo.created_at as fecha_coment')
+            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','historico_censo.egreso','historico_censo.hospital','users.name', 'users.apellido','historico_censo.created_at as fecha_coment')
             ->join('users', 'users.id', '=', 'historico_censo.creado_por')
             ->join('censos', 'censos.id', '=', 'historico_censo.censo_id')
             ->where('historico_censo.censo_id',$id)
@@ -460,7 +489,7 @@ class AdminController extends Controller
         $usuario = Auth::User();
         $censo = Censos::find($id);
         $historial = DB::table('historico_censo')
-            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','users.name', 'users.apellido','historico_censo.created_at as fecha_coment')
+            ->select('historico_censo.censo_id','historico_censo.creado_por','historico_censo.comentario','historico_censo.egreso','historico_censo.hospital','users.name', 'users.apellido','historico_censo.created_at as fecha_coment')
             ->join('users', 'users.id', '=', 'historico_censo.creado_por')
             ->join('censos', 'censos.id', '=', 'historico_censo.censo_id')
             ->where('historico_censo.censo_id',$id)

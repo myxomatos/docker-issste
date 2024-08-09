@@ -50,6 +50,14 @@
     color: white;
     border-radius: 8px;
     width: 110px;
+    padding: 2px;
+}
+.button_back_3 {
+    background-color: #58691c;
+    border: 2px solid white;
+    color: white;
+    border-radius: 8px;
+    width: 110px;
 }
 .button_back {
     background-color: #9f2241;
@@ -65,15 +73,15 @@
     border-radius: 8px;
     width: 110px;
 }
-.button_back_2 {
-    background-color: #bc955c;
+.button_back_2:hover {
+    background: #bc955c;
     border: 1px solid white;
     color: white;
     border-radius: 8px;
     width: 110px;
 }
-.button_back_2:hover {
-    background: #bc955c;
+.button_back_3:hover {
+    background: #1c6953;
     border: 1px solid white;
     color: white;
     border-radius: 8px;

@@ -60,7 +60,7 @@
         @if(Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace')
         <div class="uk-text-left" style="margin-top: 40px">
             <a href="{{ route('createActividades') }}">
-                <button type="submit" class="button_back_2"style="width: 170px;height: 30px; font-size: 14px;">
+                <button type="button" class="button_back_2"style="width: 170px;height: 30px; font-size: 14px;">
                 Crear Actividad
                 </button>
             </a>

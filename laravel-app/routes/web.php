@@ -148,6 +148,9 @@ Route::get('/home/admin/pacientes', [AdminController::class, 'indexPacientes'])-
 //Egresos
 Route::get('/home/admin/egresos', [AdminController::class, 'egresosIndex'])->middleware('auth')->name('egresosIndex');
 
+//Egresos
+Route::get('/home/admin/reingreso/{id}', [AdminController::class, 'reingreso'])->middleware('auth')->name('reingreso');
+
 //Show Historico Egreso
 Route::get('/home/admin/egresos/{id}/historico', [AdminController::class, 'historicoEgreso'])->middleware('auth')->name('showHistoricoEgreso');
 

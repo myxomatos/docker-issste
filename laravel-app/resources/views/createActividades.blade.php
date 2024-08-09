@@ -72,6 +72,9 @@
                         "ISSSTE Tel": {
                             "Reportar": ["Folio", "Registro de Queja", "Oficios de Solicitud", "Orientación", "Informe de Solicitudes"],
                         },
+                        "Telefonía Gratuita": {
+                            "Conteo": [1,2,3,4,5,6,7,8,9,10],
+                        },
                         "Orientación": {
                             "Tipo de Orientación": ["Ubicación de Servicios", "Prestaciones", "Trámites", "Procesos"],
                         },
@@ -83,11 +86,13 @@
                             "Médico Triage": [1,2,3,4,5,6,7,8,9,10,11,12],
                             "Trabajo Social": [1,2,3,4,5,6,7,8,9,10,11,12],
                             "Admisión": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Médico Urgenciólogo": [1,2,3,4,5,6,7,8,9,10,11,12],
                         },
                         "Supervisiones": {
-                            "Limpieza": ["Consultorio", "Sala de Urgencias", "Sala de Espera", "Sanitarios"],
+                            "Limpieza": ["Consultorio", "Sala de Urgencias", "Sala de Espera", "Sanitarios", "MOVU"],
                             "Mantenimiento": ["Eléctrico", "Fontanería", "Luminaria", "Mantenimiento en General", "Pintura"],
-                            "Silla de Ruedas": ["Conteo"],
+                            "Paraguas": ["Préstamo de Paraguas"],
+                            "Silla de Ruedas": ["Conteo", "Préstamo"],
                             "Vigilancia": ["Observaciones"],
 
                         },

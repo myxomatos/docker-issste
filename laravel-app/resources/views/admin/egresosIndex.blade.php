@@ -202,17 +202,6 @@
                     <img src="../../public/img/search.png" alt="">
                 </div>
                 </section>
-                @if(Auth::User()->rol === 'coordinadorad')
-                <div></div>
-                @else
-                <div>
-                    <a href="{{ route('createCenso') }}">        
-                        <button class="button_back" style="margin-left: 20px;">
-                            Nuevo Censo
-                        </button>
-                    </a>
-                </div>
-                @endif
                 
             <section class="table__body">
                 @if(count($egresos) !== 0)
