@@ -23,7 +23,7 @@
         ?>
         @if($start > 1)
             <li class="page-item">
-                <a class="page-link paginate_new" href="{{ $paginator->url(1) }}">{{1}}</a>
+                <a class="page-link paginate_new" href="{{ $paginator->url(1) }}" >{{1}}</a>
             </li>
             @if($paginator->currentPage() != 2)
                 {{-- "Three Dots" Separator --}}

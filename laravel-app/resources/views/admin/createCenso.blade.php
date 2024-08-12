@@ -2,6 +2,24 @@
 
 @section('content')
 
+    <style>
+    .button_confirm {
+        background: #235B4E;
+        border: 1px solid #235B4E;
+        color: white;
+        border-radius: 8px;
+        width: 110px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+    .button_confirm:hover {
+        background: white;
+        border: 1px solid #235B4E;
+        color: #235B4E;
+        border-radius: 8px;
+        width: 110px;
+    }
+    </style>
+
     <div uk-grid>
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebar')
@@ -13,12 +31,12 @@
                </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body "style="margin: 14px; border: solid #D0D0D0 1px;">
-            <div class="uk-text-center uk-margin-medium">
-                    <a href="{{ route('indexCensos') }}">
-                        <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
-                            Volver
-                        </button>
+            <div class="uk-card uk-card-default uk-card-body" style="margin: 14px; border: solid #D0D0D0 1px;">
+                <div class="uk-text-right uk-margin-medium">
+                    <a>
+                        <span type="button" style="color: #be335a;" class="uk-margin-medium-right" onclick="modal()">
+                            Ver Aviso de Privacidad
+                        </span>
                     </a>
 
                 </div>
@@ -108,7 +126,6 @@
                                     <select required name="dato_salud" class="uk-select" id="form-stacked-select">
                                         <option value="Valoración">Valoración</option>
                                         <option value="Internamiento">Internamiento</option>
-                                        <option value="Egreso a Domicilio">Egreso a Domicilio</option>
                                         <option value="Pasa a Piso">Pasa a Piso</option>
                                         <option value="Quirófano">Quirófano</option>
                                     </select>
@@ -119,11 +136,15 @@
                                 <label class="uk-form-label" for="form-stacked-text">RFC *</label>
                                 <div class="uk-form-controls">
                                 <input maxlength="10" required name="rfc" class="uk-input" id="form-stacked-text" type="text" placeholder="RFC">
-                                @error('rfc')
-                                        <span class="invalid-feedback" role="alert" style="text-transform: uppercase;color: red">
-                                             <strong>{{ $message }}</strong>
-                                         </span>
-                                    @enderror
+                                @if ($errors->any())
+                                    <div>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li style="color: #be335a; font-weight: bold;">!El RFC que ingresaste ya existe¡, por favor valida los datos otra vez</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 </div>
                             </div>
 
@@ -141,7 +162,7 @@
 
 
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">Cama *</label>
+                                <label class="uk-form-label" for="form-stacked-text">#Cama *</label>
                                 <div class="uk-form-controls">
                                     <input required name="cama" class="uk-input" id="form-stacked-text" type="text" placeholder="Cama">
                                 </div>
@@ -176,12 +197,12 @@
                                 </div>
                             </div>
                             <div class="uk-margin uk-text-center uk-margin-medium-top">
-                                <a href="{{ route('indexCensos') }}" class="button_back" style="padding: 2px 20px 2px 20px; margin: 20px; text-decoration: none;y">
+                                <a href="{{ route('indexCensos') }}" class="button_back_2" style="padding: 3px 20px 3px 20px; margin: 20px; text-decoration: none;y">
                                 
                                         Cancelar
                                     
                                  </a>
-                                <button type="submit" class="button_back">
+                                <button type="submit" class="button_confirm">
                                     Guardar
                                 </button>
                             </div>
@@ -196,9 +217,9 @@
 
         </div>
     </div>
-    <a style="display: none" class="uk-button uk-button-default" href="#modal-overflow" uk-toggle>Open</a>
+    <a style="display: none" class="uk-button uk-button-default" href="#modal-overflow">Open</a>
 
-<div id="modal-overflow" uk-modal bg-close="false">
+<div id="modal-overflow" bg-close="false">
     <div class="uk-modal-dialog" >
         <a href="{{ route('homeIndexPanel') }}">
             <button style="float: right;margin: 15px 15px 0px 0px" type="button" uk-close></button>
@@ -283,23 +304,23 @@ privacidad, a través de la liga <a style="color: blue;"href="#">http://www.isss
 
         </div>
 
-        <div class="uk-modal-footer uk-text-right">
+        <div class="uk-margin uk-text-center uk-margin-medium-top">
             <img src="../../../public/img/Screenshot2024.png" alt="">
-            <a href="{{ route('indexCensos') }}">
-                <button class="button_back_2" type="button">Cancelar</button>
+            <a href="{{ route('indexCensos') }}" style="text-decoration: none;">
+                <button class="button_back" type="button" style="width: 120px; height: 26px" >Cancelar</button>
             </a>
 
-            <button class="button_back uk-modal-close" type="button">Aceptar</button>
+            <button class="button_confirm uk-modal-close" type="button">Aceptar</button>
         </div>
 
     </div>
 </div>
 
 <script>
-UIkit.modal('#modal-overflow').show();
+    function modal(){
+        UIkit.modal('#modal-overflow').show();
+    }
 </script>
-
-
 
 @endsection
 

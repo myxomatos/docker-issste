@@ -2,18 +2,35 @@
 
 @section('content')
 
-    <div uk-grid>
+    <style>
+        .button_confirm {
+        background: #235B4E;
+        border: 1px solid #235B4E;
+        color: white;
+        border-radius: 8px;
+        width: 110px;
+    }
+    .button_confirm:hover {
+        background: white;
+        border: 1px solid #235B4E;
+        color: #235B4E;
+        border-radius: 8px;
+        width: 110px;
+    }
+    </style>
+
+    <div uk-grid >
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebar')
         </div>
-        <div class="uk-width-expand@m padd_style">
+        <div class="uk-width-expand@m padd_style" style="margin: 10px 40px 30px 0px;">
             <div class="uk-text-center">
                 <h2>
                    Editar registro
                 </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body "style="margin: 14px;">
+            <div class="uk-card uk-card-default uk-card-body "style="padding: 14px; border: solid #D0D0D0 1px;">
             <div class="uk-text-center uk-margin-medium">
                     <a href="{{ route('indexCensos') }}">
                         <button class="uk-margin-medium-left button_back" style="float: right;margin: 0px 40px 0px 0px">
@@ -169,7 +186,6 @@
                                 <label class="uk-form-label" for="form-stacked-select">Estado *</label>
                                 <div class="uk-form-controls">
                                     <select required name="status" class="uk-select" id="form-stacked-select">
-                                        <option value="{{ $censo->status }}">{{ $censo->status }}</option>
                                         <option value="delicado">Delicado</option>
                                         <option value="muy delicado">Muy Delicado</option>
                                         <option value="grave">Grave</option>
@@ -201,7 +217,7 @@
                             </div>
                             <div class="uk-margin">
                                     <button  onclick="myFunction()" type="button" class="button_back_2" style="margin-top: 35px;">
-                                        Egresar <span class="uk-margin-small-left" uk-icon="icon: pull"></span>
+                                        Egresar<span class="uk-margin-small-left" uk-icon="icon: pull"></span>
                                     </button>
                             </div>
                         </div>
@@ -241,19 +257,27 @@
 
                     </div>
 
-                        <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
+
+                        <!-- <div class="uk-margin uk-text-center uk-margin-medium-top">
+                            <a href="{{ route('homeIndexPanel') }}">
+                                <button type="button" class="button_back" style="width: 150px;height: 30px">
+                                Cancelar
+                                </button>
+                            </a>
+                                <button type="submit" class="button_confirm"style="width: 150px;height: 30px">
+                                    Crear actividad
+                                </button>
+                            </div> -->
+
+                            <div class="uk-margin uk-text-center uk-margin-medium-top">
                         
-                            <div class="uk-margin  uk-margin-medium-top" style="text-align: right;">
-                                <a href="{{ route('indexCensos') }}">
-                                    <span class="button_back" style="padding: 6px 38px 6px 38px;">
+                                <a href="{{ route('indexCensos') }}" style="text-decoration: none;">
+                                    <button type="button" class="button_back" style="width: 150px; height: 24px">
                                         Cancelar
-                                    </span>
+                                    </button>
                                 </a>
 
-                            </div>
-                        <div>
-                            <div class="uk-margin uk-margin-medium-top" style="text-align: left">
-                                <button type="submit" class="button_back" style="width: 150px;height: 30px">
+                                <button type="submit" class="button_confirm" style="width: 150px;height: 24px">
                                     Guardar
                                 </button>
                             </div>

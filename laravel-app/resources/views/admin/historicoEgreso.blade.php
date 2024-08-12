@@ -31,7 +31,7 @@
     @endphp
     <div uk-grid>
     <div class="uk-panel uk-panel-box" style="background-color: #691c32;">
-        <h2 class="uk-panel-title" style="color: #ffffff; margin: 10px 20px; font-size: 2.4vh;">Historial del paciente Egresado:</h2>
+        <h2 class="uk-panel-title" style="color: #ffffff; margin: 30px 20px; font-size: 2.4vh;">Historial del paciente Egresado</h2>
         <ul class="uk-nav uk-nav-side" style="font-size: 1.4vh; background-color: #be335a; margin: 4px 8px; padding: 16px;">
         <li>
             <h3 class="uk-panel-title" style="color: #ffffff; margin: 10px 14px; font-size: 1.8vh;">{{ $censo->nombre }} {{ $censo->apellidos }}</h3>        
@@ -72,29 +72,31 @@
                     </button>
                 </a>
             </div> 
-
-            @if($historial == '[]')
-            
-            <h4 class="uk-article-title color_1" style="text-align: left;">Paciente sin historial</h4>
-            
-            @else
-            
-            <h2 class="uk-article-title color_1" style="margin-left: 110px;">Historial</h2>
+            <div style="margin: 50px;">
+                @if($historial == '[]')
+                
+                <h4 class="uk-article-title color_1" style="text-align: left;">Paciente sin historial</h4>
+                
+                @else
+                
+                <h2 class="uk-article-title color_1" style="text-align: right;">Historial</h2>
+            </div>
             <div class="timeline">
 
             
             @foreach($historial as $h)
             @php
-            setlocale(LC_TIME, 'Spanish');
+            setlocale(LC_ALL, 'Spanish');
             $fecha = new Carbon\Carbon($h->fecha_coment);
-            $fecha_coment = $fecha->formatLocalized('%d %B %Y - %H:%M');
+            $fecha_coment = $fecha->formatLocalized('%d %m %Y - %H:%M');
             @endphp
-            <article class="uk-comment uk-comment-primary" role="comment" style="margin-bottom: 40px; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+            <article class="uk-comment-primary" role="comment" style="position: relative; margin-bottom: 80px; box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px, rgba(0, 0, 0, 0.1) 0px 3px 6px;">
+            <div style="color: white; border-radius: 6px; padding: 8px; position: absolute; top: -20px; left: -40px; background-color: #33be97; box-shadow: rgba(14, 30, 37, 0.60) 0px 2px 4px 0px, rgba(14, 30, 37, 0.30) 0px 2px 16px 0px;">{{ $fecha_coment }}</div>
                     <header class="uk-comment-header">
                         <div class="uk-grid-medium uk-flex-middle" uk-grid>
                             <div class="uk-width-expand">
                                 <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                    <li style="font-size: 18px;" >Fecha de Actualizacíon {{ $fecha_coment }} por&nbsp<span style="font-size: 18px; color: #9f2241;">{{ $h->name }} {{ $h->apellido }}</span>:</li>
+                                    <li style="font-size: 18px;" ><span style="font-size: 18px; color: #9f2241;">{{ $h->name }} {{ $h->apellido }}</span>:</li>
                                     @if ($h->hospital == '')
                                         <div></div>
                                     @else

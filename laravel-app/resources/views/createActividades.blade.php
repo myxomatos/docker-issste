@@ -2,6 +2,24 @@
 
 @section('content')
 
+    <style>
+    .button_confirm {
+        background: #235B4E;
+        border: 1px solid #235B4E;
+        color: white;
+        border-radius: 8px;
+        width: 110px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+    .button_confirm:hover {
+        background: white;
+        border: 1px solid #235B4E;
+        color: #235B4E;
+        border-radius: 8px;
+        width: 110px;
+    }
+    </style>
+
     <div uk-grid>
         <div class="uk-visible@m uk-width-1-6@m">
             @include('partials.sidebar')
@@ -13,7 +31,7 @@
                 </h2>
 
             </div>
-            <div class="uk-card uk-card-default uk-card-body "style="background: #bc955c">
+            <div class="uk-card uk-card-default uk-card-body" style="padding: 50px; border: solid #D0D0D0 1px;">
                 <form action="{{route('storeActividades')}}"  method="POST" class="uk-form-stacked">
                     @csrf
                     <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-text-left" uk-grid>
@@ -63,33 +81,34 @@
                         let subjectObject = {
                         "MOVU":{
                            "Supervisiones":["Coordinador AD","Enlaces","Jefatura"],
-                           "Encidencias en el MOVU":["Otro"],
+                           "Incidencias en el MOVU":["Otro"],
 
                         },
                         "Otra Actividad":{
                            "Otra Actividad":["Familiares", "Pacientes","Personal de Hospital"],
                         },
                         "ISSSTE Tel": {
-                            "Reportar": ["Folio", "Registro de Queja", "Oficios de Solicitud", "Orientación", "Informe de Solicitudes"],
+                            "Reportar": ["Folio", "Informe de Solicitudes", "Oficios de Solicitud", "Orientación", "Registro de Queja"],
                         },
                         "Telefonía Gratuita": {
                             "Conteo": [1,2,3,4,5,6,7,8,9,10],
                         },
                         "Orientación": {
-                            "Tipo de Orientación": ["Ubicación de Servicios", "Prestaciones", "Trámites", "Procesos"],
+                            "Tipo de Orientación": ["Prestaciones", "Procesos", "Trámites", "Ubicación de Servicios"],
                         },
                         "Pláticas": {
                             "Reportar Pláticas": ["Otro"],
                         },
                         "Personal en Turno": {
-                            "Médicos en Consulta": [1,2,3,4,5,6,7,8,9,10,11,12],
-                            "Médico Triage": [1,2,3,4,5,6,7,8,9,10,11,12],
-                            "Trabajo Social": [1,2,3,4,5,6,7,8,9,10,11,12],
                             "Admisión": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Dirección": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Médicos en Consulta": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Médicos Triage": [1,2,3,4,5,6,7,8,9,10,11,12],
                             "Médico Urgenciólogo": [1,2,3,4,5,6,7,8,9,10,11,12],
+                            "Trabajo Social": [1,2,3,4,5,6,7,8,9,10,11,12],
                         },
                         "Supervisiones": {
-                            "Limpieza": ["Consultorio", "Sala de Urgencias", "Sala de Espera", "Sanitarios", "MOVU"],
+                            "Limpieza": ["Consultorio", "MOVU", "Sala de Urgencias", "Sala de Espera", "Sanitarios"],
                             "Mantenimiento": ["Eléctrico", "Fontanería", "Luminaria", "Mantenimiento en General", "Pintura"],
                             "Paraguas": ["Préstamo de Paraguas"],
                             "Silla de Ruedas": ["Conteo", "Préstamo"],
@@ -156,9 +175,9 @@
 
                         <div class="uk-margin">
                             <label class="uk-form-label" for="form-stacked-text" style="font-size: 18px">Notas</label>
-                            <div class="uk-margin uk-form-width-large">
+                            
                             <textarea required name="notas" class="uk-textarea" rows="5" placeholder="Notas ó comentarios"></textarea>
-                            </div>
+                          
                             <div class="uk-form-controls uk-hidden">
                                 <select required name="status" class="uk-select" id="form-stacked-select">
                                     <option value="pendiente">Pendiente</option>
@@ -171,12 +190,12 @@
                             
 
                             <div class="uk-margin uk-text-center uk-margin-medium-top">
-                            <a href="{{ route('homeIndexPanel') }}">
-                                <button type="button" class="button_back"style="width: 150px;height: 30px">
+                            <a href="{{ route('homeIndexPanel') }}" style="text-decoration: none;" >
+                                <button type="button" class="button_back" style="width: 150px;height: 30px">
                                 Cancelar
                                 </button>
                             </a>
-                                <button type="submit" class="button_back"style="width: 150px;height: 30px">
+                                <button type="submit" class="button_confirm" style="width: 150px;height: 30px">
                                     Crear actividad
                                 </button>
                             </div>

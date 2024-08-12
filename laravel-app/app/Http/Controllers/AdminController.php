@@ -259,6 +259,7 @@ class AdminController extends Controller
         }
         public function indexCensos(){
             $usuario = Auth::User();
+            $t_censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->count();
             $test= DB::table('censos')
             ->select('censos.id','censos.created_at','censos.nombre','censos.apellidos','censos.diagnostico','enlace.name as enlaceNombre','enlace.apellido as enlaceApellido','censos.cama','censos.rfc','censos.genero','censos.edad','censos.tipo_derechohabiente','censos.tipo_hospitalizacion','censos.hospital_id','censos.tipo_egreso','censos.status','censos.dato_salud')
             ->join('hospitales', 'hospitales.id', '=', 'censos.hospital_id')
@@ -275,7 +276,7 @@ class AdminController extends Controller
                 }elseif($usuario->rol== 'enlace' or $usuario->rol== 'coordinadorad'){
                     $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(150);
                 }
-            return view ('admin.indexCensos',compact('censos'));
+            return view ('admin.indexCensos',compact('censos', 't_censos'));
         }
 
         public function indexPacientes(){
@@ -312,7 +313,7 @@ class AdminController extends Controller
                     "egreso" => null,
                     "hospital" => $hospitalH,
                 ));
-            return view ('admin.pruebas',compact('paciente'));
+            return view ('admin.succesReingreso',compact('id'));
         }
 
         public function aeropuerto(){
@@ -376,43 +377,56 @@ class AdminController extends Controller
         }
     
         public function storeCenso(Request $request){
-            $request->validate([
-                'rfc' => ['required', 'unique:censos'],
-            ]);
-            $usuario = Auth::User();
-            $censos = new Censos();
-            $censos->nombre = $request->nombre;
-            $censos->apellidos = $request->apellidos;
-            $censos->genero = $request->genero;
-            $censos->edad = $request->edad;
-            $censos->hospital_id = $request->hospital;
-            $censos->telefono = $request->telefono;
-            $censos->doctor = $request->doctor;
-            $censos->rfc = $request->rfc;
-            $censos->tipo_derechohabiente = $request->tipo_derechohabiente;
-            $censos->tipo_hospitalizacion = $request->tipo_hospitalizacion;
-            $censos->diagnostico = $request->diagnostico;
-            $censos->cama = $request->cama;
-            $censos->folio = $request->folio;
-            $censos->dato_salud = $request->dato_salud;
-            $censos->status = $request->status;
-            $censos->creado_por = $usuario->id;
-            $censos->save();
-    
-            if($usuario){
-                DB::table('actividades')
+            $type = substr($request->tipo_derechohabiente, 0, 2);
+            $rfc = $request->rfc;
+            $rfc = "$rfc-$type";
+            $validar = Censos::where('rfc', $rfc)->pluck('rfc');
+
+            if($validar->isNotEmpty()){
+
+                return view ('admin.errorPaciente');
+
+            } else {
+                $usuario = Auth::User();
+                $censo = new Censos();
+                $censo->nombre = $request->nombre;
+                $censo->apellidos = $request->apellidos;
+                $censo->genero = $request->genero;
+                $censo->edad = $request->edad;
+                $censo->hospital_id = $request->hospital;
+                $censo->telefono = $request->telefono;
+                $censo->doctor = $request->doctor;
+                $censo->rfc = $rfc;
+                $censo->tipo_derechohabiente = $request->tipo_derechohabiente;
+                $censo->tipo_hospitalizacion = $request->tipo_hospitalizacion;
+                $censo->diagnostico = $request->diagnostico;
+                $censo->cama = $request->cama;
+                $censo->folio = $request->folio;
+                $censo->dato_salud = $request->dato_salud;
+                $censo->status = $request->status;
+                $censo->creado_por = $usuario->id;
+                $censo->save();
+                
+                if($usuario){
+                    DB::table('actividades')
                     ->insert(array("nombre" => 'Ingreso Censo',
-                        "descripcion_actividad" => 'Descripcion',
-                        "descripcion_subactividad" => 'Descripcion',
-                        "status" => 'pendiente',
-                        "notas" => 'Ingreso de Censo',
-                        "hospital_id" => $usuario->hospital_id,
-                        "user_id" => $usuario->id,
-                       'created_at'=> $current_date_time = Carbon::now()->toDateTimeString(),
-                        'updated_at'=> $current_date_time = Carbon::now()->toDateTimeString()));
-    
+                    "descripcion_actividad" => 'Descripcion',
+                    "descripcion_subactividad" => 'Descripcion',
+                    "status" => 'pendiente',
+                    "notas" => 'Ingreso de Censo',
+                    "hospital_id" => $usuario->hospital_id,
+                    "user_id" => $usuario->id,
+                    "created_at" => $current_date_time = Carbon::now()->toDateTimeString(),
+                    "updated_at" => $current_date_time = Carbon::now()->toDateTimeString()));
+                    
+                }
+
+                $t_censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->count();
+                $censos = Censos::where('hospital_id',$usuario->hospital_id)->orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(150);
+                
+                return view ('admin.indexCensos' ,compact('censos', 't_censos'));
             }
-            return redirect()->route('indexCensos');
+            
         }
     
         public function editCenso($id){

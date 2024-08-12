@@ -100,7 +100,7 @@
                         @else
                             <td>
                                 <li class="uk-text-center">
-                                    <a href="{{ route('createIncidencias', $i->id) }}" uk-icon="icon: file-edit"></a>
+                                    <a href="{{ route('createIncidencias', $i->id) }}" uk-icon="icon: file-edit" style="color: #be335a; font-weight: bold"></a>
                                 </li>
                             </td>
                         @endif
@@ -192,7 +192,7 @@
                             <td class="textTransform">{{ $i->notas }}</td>
                             <td class="textTransform">{{ $i->asignacion }}</td>
                             <td class="textTransform">
-                                <a href="{{ route('showIncidencia', $i->id) }}">
+                                <a href="{{ route('showIncidencia', $i->id) }}" style="color: #be335a; font-weight: bold;">
                                     {{ $i->status }}
                                 </a>
                             </td>

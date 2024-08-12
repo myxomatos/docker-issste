@@ -1,8 +1,8 @@
 .card_admin_sidebar {
     height: 100%;
-    padding: 20px;
     background-color: #691c32;
     border-radius: inherit;
+    position: relative;
 }
 .card_counter {
     background-color: #10312b;
@@ -23,21 +23,22 @@
     background-color: darkgreen;
 }
 .button_add {
-    background: transparent;
-    border: 1px solid #bc955c;
-    color: white;
-    border-radius: 8px;
-    width: 110px;
-}
-.button_add:hover {
     background: #bc955c;
     border: 1px solid #bc955c;
     color: white;
     border-radius: 8px;
     width: 110px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.button_add:hover {
+    background: white;
+    border: 1px solid #bc955c;
+    color: #bc955c;
+    border-radius: 8px;
+    width: 110px;
 }
 .paginate_new {
-    background-color: #ddc9a3;
+    background-color: #dda3a6;
     color: gray;
 }
 .paginate_new:hover {
@@ -46,47 +47,39 @@
 }
 .button_back_2 {
     background-color: #aa7729;
-    border: 2px solid white;
+    border: 1px solid #aa7729;
     color: white;
     border-radius: 8px;
     width: 110px;
     padding: 2px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.button_back_3 {
-    background-color: #58691c;
-    border: 2px solid white;
-    color: white;
-    border-radius: 8px;
-    width: 110px;
-}
+
 .button_back {
     background-color: #9f2241;
-    border: 1px solid white;
     color: white;
     border-radius: 8px;
     width: 110px;
+    text-decoration: none;
+    border: 1px solid #9f2241;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .button_back:hover {
-    background: #691c32;
-    border: 1px solid white;
-    color: white;
+    background: white;
+    color: #9f2241;
     border-radius: 8px;
     width: 110px;
+    text-decoration: none;
+    border: 1px solid #9f2241;
 }
 .button_back_2:hover {
-    background: #bc955c;
-    border: 1px solid white;
-    color: white;
+    background: white;
+    border: 1px solid #aa7729;
+    color: #aa7729;
     border-radius: 8px;
     width: 110px;
 }
-.button_back_3:hover {
-    background: #1c6953;
-    border: 1px solid white;
-    color: white;
-    border-radius: 8px;
-    width: 110px;
-}
+
 .textTransform {
     text-transform: uppercase !important;
 }

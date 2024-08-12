@@ -194,7 +194,7 @@
                 
                 <section class="table__header">
                 <h1 class="color_7">
-                        Censos
+                        Censos @if(Auth::User()->rol === 'coordinadorad' or Auth::User()->rol === 'enlace')<span style="font-size: 16px;">total de pacientes en el hospital <span style="font-size: 18px; color: #be335a; font-weight: bold;">{{ $t_censos }}</span> </span>@endif
                 </h1>
                 
                 <div class="input-group">

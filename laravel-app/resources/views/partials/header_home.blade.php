@@ -1,5 +1,6 @@
-<nav class="uk-navbar-container" uk-navbar>
-    <img style ="width: 40vw; " src="../../../public/img/Screenshot2024.png" alt="">
+<div class="uk-navbar uk-navbar-container">
+    <a href="{{ route('homeIndexPanel') }}" ><img style ="width: 40vw; " src="../../../public/img/Screenshot2024.png" alt=""></a>
+        
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
     @if(\Request::is('home/admin/aeropuerto') )
@@ -23,7 +24,7 @@
                     });
 
                 </script>
-                <div id="">
+                <div>
                     @if( ($notificacion->count() > 0 ))
                         <div class="uk-inline uk-margin-right">
                             <span class="box_animation" type="button" uk-icon="icon: mail;ratio: 1.4"></span>
@@ -78,4 +79,4 @@
         </div>
      @endif
 
-</nav>
+</div>
