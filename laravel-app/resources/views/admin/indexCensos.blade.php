@@ -261,7 +261,7 @@
                                 {{ date('d-m-Y H:i:s', strtotime($i->created_at)) }}
                             </td>
                             <td class="textTransform">
-                                {{ $i->nombre }} {{ $i->apellidos }}
+                                {{ $i->apellidos }} {{ $i->nombre }}
                             </td>
                             <td>
                                 {{ $i->cama }}

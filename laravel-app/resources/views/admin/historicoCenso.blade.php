@@ -35,7 +35,7 @@
         <h2 class="uk-panel-title" style="color: #ffffff; margin: 30px 20px; font-size: 2.4vh;">Paciente:</h2>
         <ul class="uk-nav uk-nav-side" style="font-size: 1.4vh; background-color: #be335a; margin: 4px 8px; padding: 16px;">
             <li>
-                <h3 class="uk-panel-title" style="color: #ffffff; margin: 10px 14px; font-size: 1.8vh;">{{ $censo->nombre }} {{ $censo->apellidos }}</h3>        
+                <h3 class="uk-panel-title" style="color: #ffffff; margin: 10px 14px; font-size: 1.8vh;">{{ $censo->apellidos }} {{ $censo->nombre }}</h3>        
             </li>
             <li>
                 <h3 class="uk-panel-title" style="color: #c8c8c8; margin: 10px 14px; font-size: 1.8vh;">Genero: <span style="text-transform: capitalize; color: #ffffff;">{{ $censo->genero }}</span></h3>        

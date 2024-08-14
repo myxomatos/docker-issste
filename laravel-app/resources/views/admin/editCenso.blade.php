@@ -9,6 +9,7 @@
         color: white;
         border-radius: 8px;
         width: 110px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
     .button_confirm:hover {
         background: white;
@@ -98,6 +99,7 @@
                                         <option value="70-Hijo">70-Hijo</option>
                                         <option value="71-Hijo de Conyugue">71-Hijo de Conyuge</option>
                                         <option value="90-Pensionado">90-Pensionado</option>
+                                        <option value="91-Pensionada">91-Pensionada</option>
                                         <option value="92-Familiar de pensionado">92-Familiar de pensionado</option>
                                         <option value="95-Asegurado INSABI Masculino">95-Asegurado INSABI Masculino</option>
                                         <option value="96-Asegurado INSABI Femenino">96-Asegurado INSABI Femenino</option>
@@ -160,7 +162,7 @@
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">RFC *</label>
                                 <div class="uk-form-controls">
-                                    <input  value="{{ $censo->rfc }}" required name="rfc" class="uk-input" id="form-stacked-text" type="text" placeholder="RFC">
+                                    <input  readonly value="{{ $censo->rfc }}" required name="rfc" class="uk-input" id="form-stacked-text" type="text" placeholder="RFC">
                                 </div>
                             </div>
 
@@ -177,7 +179,7 @@
                             </div>
                             
                             <div class="uk-margin">
-                                <label class="uk-form-label" for="form-stacked-text">Cama *</label>
+                                <label class="uk-form-label" for="form-stacked-text">#Cama *</label>
                                 <div class="uk-form-controls">
                                     <input  value="{{ $censo->cama}}" required name="cama" class="uk-input" id="form-stacked-text" type="text" placeholder="Cama">
                                 </div>

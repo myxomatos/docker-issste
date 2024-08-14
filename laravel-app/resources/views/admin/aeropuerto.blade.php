@@ -28,7 +28,7 @@
 //                                $historico = \App\Models\HistoricoCenso::where('censo_id',$i->id)
 //                            ->orderBy('updated_at', 'desc')->first();
 //                            ?>
-                            {{ $i->updated_at }}
+                            {{ date('d-m-Y H:i:s', strtotime($i->updated_at)) }}
                         </td>
                     </tr>
                 @endforeach

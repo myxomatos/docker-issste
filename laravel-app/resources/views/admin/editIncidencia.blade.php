@@ -88,10 +88,10 @@
                         <option value="{{ $subcordinador->name}} {{ $subcordinador->apellido}}">{{ $subcordinador->name }} {{ $subcordinador->apellido}}</option>
                         @foreach($usuarios as $u)
                             <option value="{{ $u->name}} {{ $u->apellido }} ">{{ $u->name }} {{ $u->apellido }}</option>
-                    @endforeach
-                    @foreach($coordinador as $c)
+                        @endforeach
+                        @foreach($coordinador as $c)
                             <option value="{{ $c->name}} {{ $c->apellido }} ">{{ $c->name }} {{ $c->apellido }}</option>
-                    @endforeach
+                        @endforeach
 
                     </select>
                 </div>

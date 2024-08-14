@@ -437,6 +437,18 @@ class AdminController extends Controller
         }
     
         public function updateCenso(Request $request, $id){
+
+
+            $censo_rfc = Censos::where('id', $id)->pluck('rfc');
+            $type = substr($request->tipo_derechohabiente, 0, 2);
+            $n_rfc = $request->rfc;
+            if($censo_rfc[0] === $n_rfc && strpos($n_rfc, $type)){
+                $checkedRfc = $n_rfc;
+            } else {
+                $n_rfc = substr($n_rfc, 0, 10);
+                $checkedRfc = "$n_rfc-$type";
+            }
+
             $usuario = Auth::User();
             $censos = Censos::find($id);
             $censos->nombre = $request->nombre;
@@ -444,7 +456,7 @@ class AdminController extends Controller
             $censos->genero = $request->genero;
             $censos->edad = $request->edad;
             $censos->hospital_id = $request->hospital;
-            $censos->rfc = $request->rfc;
+            $censos->rfc = $checkedRfc;
             $censos->telefono = $request->telefono;
             $censos->tipo_derechohabiente = $request->tipo_derechohabiente;
             $censos->diagnostico = $request->diagnostico;
