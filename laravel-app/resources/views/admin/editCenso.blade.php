@@ -124,7 +124,7 @@
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-stacked-text">Folio *</label>
                                 <div class="uk-form-controls">
-                                    <input maxlength="10"  value="{{ $censo->folio }}" required name="folio" class="uk-input" id="form-stacked-text" type="text" placeholder="Folio">
+                                    <input maxlength="12"  value="{{ $censo->folio }}" required name="folio" class="uk-input" id="form-stacked-text" type="text" placeholder="Folio">
                                 </div>
                             </div>
                         </div>

@@ -280,12 +280,12 @@ class AdminController extends Controller
         }
 
         public function indexPacientes(){
-            $pacientes = Censos::orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(150);
+            $pacientes = Censos::orderBy('censos.created_at', 'DESC')->whereNull('censos.tipo_egreso')->paginate(500);
             return view ('admin.indexPacientes',compact('pacientes'));
         }
 
         public function egresosIndex(){
-            $egresos = Censos::orderBy('censos.created_at', 'DESC')->where('censos.tipo_egreso', '!=', '')->paginate(150);
+            $egresos = Censos::orderBy('censos.created_at', 'DESC')->where('censos.tipo_egreso', '!=', '')->paginate(500);
             return view ('admin.egresosIndex',compact('egresos'));
         }
         
@@ -381,10 +381,11 @@ class AdminController extends Controller
             $rfc = $request->rfc;
             $rfc = "$rfc-$type";
             $validar = Censos::where('rfc', $rfc)->pluck('rfc');
+            $datos = Censos::where('rfc', $rfc)->get();
 
             if($validar->isNotEmpty()){
 
-                return view ('admin.errorPaciente');
+                return view ('admin.errorPaciente',compact('datos'));
 
             } else {
                 $usuario = Auth::User();
