@@ -40,20 +40,20 @@
                             <caption style="margin: 5px; color: black; font-weight: bold; background-color: #ddc9a3">Datos Generales</caption><br>
                                 <tr style="background-color: #ededed;">
                                     <td style='color: black; font-weight: bold;'>Nombre del Programa:</td>
-                                    <td colspan="3">Trato Digno y de Calidad en las Salas de Espera de Urgencias en las Unidades de Segundo y Tercer Nivel de Atención</td>
+                                    <td colspan="4">Trato Digno y de Calidad en las Salas de Espera de Urgencias en las Unidades de Segundo y Tercer Nivel de Atención</td>
                                 </tr>
-                                <tr style="height: 24px;"><td colspan="4"></td></tr>
+                                <tr style="height: 24px;"><td colspan="5"></td></tr>
                                 <tr style="background-color: #ededed;">
                                     <td style='color: black; font-weight: bold;'>Nombre de Prestador de Servicio:</td>
                                     <td id="enlace">{{Auth::user()->name}} {{Auth::user()->apellido}}</td>
-                                    <td style='color: black; font-weight: bold;'>Número Telefónico</td>
+                                    <td colspan="2" style='color: black; font-weight: bold;'>Número Telefónico</td>
                                     <td>{{Auth::user()->telefono}}</td>
 
                                 </tr>
                                 <tr>
                                     <td style='color: black; font-weight: bold;'>Tipo de Prestador de Servicio:</td>
                                     <td>{{Auth::user()->rol}}</td>
-                                    <td style='color: black; font-weight: bold;'>Correo Electrónico:</td>
+                                    <td colspan="2" style='color: black; font-weight: bold;'>Correo Electrónico:</td>
                                     <td>{{Auth::user()->email}}</td>
                                 </tr>
                                 <tr style="background-color: #ededed;">
@@ -97,59 +97,59 @@
                                     @elseif (Auth::user()->hospital_id == 19)
                                     <td class="textTransform">H.R. MERIDA</td>
                                     @endif
-                                    <td style='color: black; font-weight: bold;'>Horario de Servicio:</td>
+                                    <td colspan="2" style='color: black; font-weight: bold;'>Horario de Servicio:</td>
                                     <td>{{Auth::user()->dias_laborales}}</td>
                                     
                                 </tr>
                                 <tr>
                                     <td style='color: black; font-weight: bold;'>Periodo del Reporte:</td>
                                     <td>{{ $inicio }} al {{ $fin }}</td>
-                                    <td style='color: black; font-weight: bold;'>Nombre del Subcoordinador:</td>
+                                    <td colspan="2" style='color: black; font-weight: bold;'>Nombre del Subcoordinador:</td>
                                     @if (Auth::user()->subcordinador_id == 7)
                                         <td class="textTransform">Monica Peláez</td>
                                     @elseif (Auth::user()->subcordinador_id == 7)
                                         <td class="textTransform">Monica Peláez</td>
                                     @endif
-                                    <tr style="height: 24px;"><td colspan="4"></td></tr>
+                                    <tr style="height: 24px;"><td colspan="5"></td></tr>
                                 </tr>
                                 @if (Auth::user()->hospital_id == 1)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. 1° DE OCTUBRE</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. 1° DE OCTUBRE</td>
                                     @elseif (Auth::user()->hospital_id == 2)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. DR. FERNANDO QUIROZ GUTIÉRREZ</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. DR. FERNANDO QUIROZ GUTIÉRREZ</td>
                                     @elseif (Auth::user()->hospital_id == 3)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. DR. DARÍO FERNÁNDEZ FIERRO</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. DR. DARÍO FERNÁNDEZ FIERRO</td>
                                     @elseif (Auth::user()->hospital_id == 4)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. GRAL. IGNACIO ZARAGOZA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. GRAL. IGNACIO ZARAGOZA</td>
                                     @elseif (Auth::user()->hospital_id == 5)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. GRAL. JOSÉ MARÍA MORELOS Y PAVÓN</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. GRAL. JOSÉ MARÍA MORELOS Y PAVÓN</td>
                                     @elseif (Auth::user()->hospital_id == 6)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">CENTRO MÉDICO NACIONAL 20 DE NOVIEMBRE</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">CENTRO MÉDICO NACIONAL 20 DE NOVIEMBRE</td>
                                     @elseif (Auth::user()->hospital_id == 7)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. LIC. ADOLFO LÓPEZ MATEOS</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. LIC. ADOLFO LÓPEZ MATEOS</td>
                                     @elseif (Auth::user()->hospital_id == 8)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. TACUBA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.G. TACUBA</td>
                                     @elseif (Auth::user()->hospital_id == 9)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.A.E. BICENTENARIO DE LA INDEPENDENCIA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.A.E. BICENTENARIO DE LA INDEPENDENCIA</td>
                                     @elseif (Auth::user()->hospital_id == 10)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. LEON</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. LEON</td>
                                     @elseif (Auth::user()->hospital_id == 11)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. VALENTIN GOMEZ FARIAS</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. VALENTIN GOMEZ FARIAS</td>
                                     @elseif (Auth::user()->hospital_id == 12)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. MORELIA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. MORELIA</td>
                                     @elseif (Auth::user()->hospital_id == 13)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.A.E. CENTENARIO DE LA REVOLUCION MEXICANA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.A.E. CENTENARIO DE LA REVOLUCION MEXICANA</td>
                                     @elseif (Auth::user()->hospital_id == 14)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. MONTERREY</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. MONTERREY</td>
                                     @elseif (Auth::user()->hospital_id == 15)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. PRESIDENTE BENITO JUAREZ</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. PRESIDENTE BENITO JUAREZ</td>
                                     @elseif (Auth::user()->hospital_id == 16)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. PUEBLA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. PUEBLA</td>
                                     @elseif (Auth::user()->hospital_id == 17)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. 1° DE OCTUBRE</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. 1° DE OCTUBRE</td>
                                     @elseif (Auth::user()->hospital_id == 18)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.A.E. VERACRUZ</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.A.E. VERACRUZ</td>
                                     @elseif (Auth::user()->hospital_id == 19)
-                                    <td colspan="4" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. MERIDA</td>
+                                    <td colspan="5" style="text-align: center; margin: 5px; color: white; font-weight: bold; background-color: #760a09">H.R. MERIDA</td>
                                     @endif
 
                             
@@ -160,7 +160,7 @@
                                 <th style="border: 1px solid black">Tarea</th>
                                 <th style="border: 1px solid black">Tipo de Actividad</th>
                                 <th style="border: 1px solid black">Cantidad</th>
-                                <!-- <th style="border: 1px solid black">Fecha</th> -->
+                                <th style="border: 1px solid black">Fecha</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -171,7 +171,7 @@
                                     <td style="border: 1px solid black; width:250px">{{ $invoice->descripcion_actividad }}</td>
                                     <td style="border: 1px solid black; width:280px">{{ $invoice->descripcion_subactividad }}</td>
                                     <td style="border: 1px solid black; width:120px"> {{ $invoice->cantidad }}</td>
-                                    <!-- <td style="border: 1px solid black; width:200px">{{ $invoice->fecha }}</td> -->
+                                    <td style="border: 1px solid black; width:200px">{{ $invoice->fecha }}</td>
 
 
 
@@ -180,7 +180,7 @@
                             </tbody>
                         </table>
 
-
+<!--
                         <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.6vw; empty-cells: show; text-align: center;">
                             <caption style="margin: 5px; color: black; font-weight: bold;">Bitácora de Registro</caption><br>
                             
@@ -383,7 +383,7 @@
                         </tr>
 
                         </table>
-
+                        -->
                         <table border="1" id="reportesOLD" style="width: 100%; font-size: 0.75vw;">
 
 
