@@ -119,7 +119,7 @@
             @endif
         </li>
         @if(Auth::User()->rol === 'subcoordinador' or Auth::User()->rol === 'enlace')
-        <li style="margin-top: 60px">
+        <li style="margin: 40px">
             <a href="{{ route('createActividades') }}">
                 <button type="button" class="button_back_2"style="width: 150px;height: 30px; font-size: 14px;">
                 Crear Actividad
